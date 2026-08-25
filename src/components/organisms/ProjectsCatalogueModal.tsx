@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 import {
   X,
   Search,
-  SlidersHorizontal,
   Building2,
   MapPin,
   ArrowUpRight,
@@ -30,6 +29,7 @@ export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<FilterCategory>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const pillsRef = useRef<HTMLDivElement | null>(null);
 
   // Lock body scroll when open
   useEffect(() => {
@@ -106,18 +106,18 @@ export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
         aria-modal="true"
         aria-labelledby="catalogue-modal-title"
       >
-        {/* Top Floating Control Bar */}
+        {/* Top Header Bar */}
         <div className="catalogue-header">
           <div className="catalogue-header-left">
             <div className="catalogue-badge">
-              <Building2 size={15} />
-              <span>CATALOGUE COMPLET & OUVRAGES BTP</span>
+              <Building2 size={13} />
+              <span>CATALOGUE BTP ({filteredProjects.length})</span>
             </div>
             <h2 id="catalogue-modal-title">
-              Toutes nos réalisations <em>d'ingénierie & de prestige</em>
+              Toutes nos réalisations <em>d'ingénierie</em>
             </h2>
-            <p>
-              Explorez l'intégralité de nos chantiers livrés et en cours. Cliquez sur une réalisation pour ouvrir sa fiche technique détaillée.
+            <p className="catalogue-header-desc">
+              Explorez nos chantiers livrés. Touchez une carte pour ouvrir son dossier technique.
             </p>
           </div>
 
@@ -127,18 +127,18 @@ export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
             onClick={onClose}
             aria-label="Fermer le catalogue de projets"
           >
-            <X size={22} />
+            <X size={20} />
           </button>
         </div>
 
-        {/* Filter & Search Toolbar */}
+        {/* Filter & Search Toolbar (Sticky) */}
         <div className="catalogue-toolbar">
           {/* Search Box */}
           <div className="catalogue-search-box">
-            <Search size={16} className="search-icon" />
+            <Search size={15} className="search-icon" />
             <input
               type="text"
-              placeholder="Rechercher par mot-clé, ville, superficie..."
+              placeholder="Rechercher par mot-clé, ville, surface..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="catalogue-search-input"
@@ -148,14 +148,15 @@ export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
                 type="button"
                 className="search-clear-btn"
                 onClick={() => setSearchQuery("")}
+                aria-label="Effacer la recherche"
               >
                 <X size={14} />
               </button>
             )}
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="catalogue-filter-pills">
+          {/* Category Filter Pills (Horizontally Scrollable Carousel on Mobile) */}
+          <div className="catalogue-filter-pills" ref={pillsRef}>
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -179,7 +180,7 @@ export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
                   key={project.id}
                   className="catalogue-project-card"
                   onClick={() => onSelectProject(project)}
-                  style={{ animationDelay: `${idx * 40}ms` }}
+                  style={{ animationDelay: `${idx * 35}ms` }}
                 >
                   <div className="card-media-wrapper">
                     <Image
@@ -203,14 +204,14 @@ export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
                       className="card-open-btn"
                       aria-label={`Voir le dossier de ${project.title}`}
                     >
-                      <ArrowUpRight size={18} />
+                      <ArrowUpRight size={16} />
                     </button>
                   </div>
 
                   {/* Card Info Bottom */}
                   <div className="card-content-block">
                     <div className="card-location-row">
-                      <MapPin size={13} />
+                      <MapPin size={12} />
                       <span>{project.location}</span>
                     </div>
 
@@ -219,16 +220,16 @@ export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
 
                     <div className="card-specs-footer">
                       <div className="spec-item">
-                        <Maximize2 size={13} />
+                        <Maximize2 size={12} />
                         <span>{project.surface}</span>
                       </div>
                       <div className="spec-divider" />
                       <div className="spec-item">
-                        <Layers size={13} />
-                        <span>{project.scope.length} Corps d'état</span>
+                        <Layers size={12} />
+                        <span>{project.scope.length} lots</span>
                       </div>
                       <div className="spec-divider" />
-                      <span className="spec-view-link">Voir la fiche &rarr;</span>
+                      <span className="spec-view-link">Fiche &rarr;</span>
                     </div>
                   </div>
                 </article>
@@ -236,9 +237,9 @@ export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
             </div>
           ) : (
             <div className="catalogue-empty-state">
-              <Sparkles size={36} className="empty-icon" />
-              <h3>Aucun projet ne correspond à votre recherche</h3>
-              <p>Essayez de modifier votre filtre de catégorie ou votre terme de recherche.</p>
+              <Sparkles size={32} className="empty-icon" />
+              <h3>Aucun projet trouvé</h3>
+              <p>Essayez un autre mot-clé ou réinitialisez vos filtres.</p>
               <button
                 type="button"
                 className="btn btn-outline"
