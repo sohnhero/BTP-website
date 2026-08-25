@@ -31,7 +31,7 @@ export const ContactSection: React.FC = () => {
         {/* Top Header Row with 3-Way Segmented Switcher */}
         <div className="contact-hybrid-header">
           <div className="contact-heading-left">
-            <span className="overline">Formulaires de Contact</span>
+            <span className="overline">Contact</span>
             <h2>
               {mode === "general" && (
                 <>

@@ -14,7 +14,7 @@ export const ProjectsSection: React.FC = () => {
     <section className="projects section-pad" id="projects">
       <div ref={ref} className={`section-heading ${revealClass}`}>
         <div>
-          <span className="overline">Sélection de projets</span>
+          <span className="overline">Nos réalisations</span>
           <h2>
             Des ouvrages pensés pour<br />
             <em>durer et impressionner.</em>

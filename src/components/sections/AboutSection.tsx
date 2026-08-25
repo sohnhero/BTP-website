@@ -13,7 +13,7 @@ export const AboutSection: React.FC = () => {
   return (
     <section className="intro section-pad" id="about">
       <div ref={copyReveal.ref} className={`intro-copy ${copyReveal.revealClass}`}>
-        <span className="overline">Notre vision</span>
+        <span className="overline">A propos</span>
         <h2>
           Une construction fondée sur <em>la précision, la maîtrise</em> et la confiance.
         </h2>
