@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { ProjectItem, mainProjectsData, secondaryProjectsData } from "@/data/projects";
 import { ProjectCard } from "@/components/molecules/ProjectCard";
 import { useReveal } from "@/hooks/useReveal";
@@ -15,14 +16,29 @@ export const ProjectsSection: React.FC = () => {
 
   return (
     <section className="projects section-pad" id="projects">
-      <div ref={ref} className={`section-heading ${revealClass}`}>
-        <div>
+      <div ref={ref} className={`section-heading projects-heading-wrap ${revealClass}`}>
+        <div className="heading-left">
           <span className="overline">Nos réalisations</span>
           <h2>
             Des ouvrages pensés pour<br />
             <em>durer et impressionner.</em>
           </h2>
         </div>
+
+        {/* 3D Realistic Industrial Concrete Mixer in Center Empty Space */}
+        <div className="concrete-mixer-container" aria-hidden="true">
+          <div className="concrete-mixer-media">
+            <Image
+              src="/images/Gemini_Generated_Image_ogbicsogbicsogbi-removebg-preview.png.png"
+              alt="Bétonnière de chantier BTP"
+              width={520}
+              height={380}
+              priority
+              className="concrete-mixer-img"
+            />
+          </div>
+        </div>
+
         <button
           type="button"
           className="btn btn-outline projects-cta-btn"

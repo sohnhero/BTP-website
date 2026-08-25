@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import {
   ShieldCheck,
   Building2,
@@ -90,7 +91,18 @@ export const PartnersSection: React.FC = () => {
           </h2>
         </div>
 
-        <div className="heading-right">
+        <div className="heading-right partners-heading-right">
+          {/* 3D Realistic Industrial Handshake (Gants de chantier BTP) */}
+          <div className="partners-handshake-media" aria-hidden="true">
+            <Image
+              src="/images/Adobe Express - file.png"
+              alt="Partenariat BTP et alliance stratégique"
+              width={340}
+              height={190}
+              priority
+              className="partners-handshake-img"
+            />
+          </div>
           <p>
             Nous collaborons avec les leaders du secteur BTP, bureaux de contrôle certifiés et industriels de premier ordre pour garantir des ouvrages conformes aux standards internationaux.
           </p>
