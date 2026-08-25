@@ -6,7 +6,7 @@ interface ButtonProps {
   variant?: "primary" | "dark" | "light" | "outline" | "accent";
   href?: string;
   type?: "button" | "submit" | "reset";
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
   className?: string;
   ariaLabel?: string;
   disabled?: boolean;
@@ -34,7 +34,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (href) {
     return (
-      <Link href={href} className={combinedClasses} aria-label={ariaLabel}>
+      <Link href={href} onClick={onClick} className={combinedClasses} aria-label={ariaLabel}>
         {children}
       </Link>
     );

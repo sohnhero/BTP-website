@@ -27,7 +27,7 @@ export const TeamSection: React.FC = () => {
   };
 
   return (
-    <section className="team-section section-pad" id="equipe">
+    <section className="team-section section-pad" id="team">
       {/* Top Header Row with Title & Controls */}
       <div ref={ref} className={`section-heading team-heading-row ${revealClass}`}>
         <div className="heading-left">

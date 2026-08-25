@@ -21,8 +21,14 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 85px;
   overflow-x: hidden;
   max-width: 100vw;
+}
+
+section[id],
+.section-pad[id] {
+  scroll-margin-top: 85px;
 }
 
 body {
@@ -219,22 +225,37 @@ button {
 
 .desktop-nav a {
   font-size: 13px;
-  color: #444944;
+  color: #555b55;
   position: relative;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.desktop-nav a:hover,
+.desktop-nav a.is-active {
+  color: var(--ink);
 }
 
 .desktop-nav a::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -6px;
   width: 0;
-  height: 1px;
-  background: var(--ink);
-  transition: width .25s ease;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
 }
 
 .desktop-nav a:hover::after {
+  width: 50%;
+}
+
+.desktop-nav a.is-active::after {
   width: 100%;
 }
 
@@ -453,9 +474,22 @@ button {
 }
 
 .minimal-nav-item:hover,
-.minimal-nav-item:active {
+.minimal-nav-item:active,
+.minimal-nav-item.is-active {
   color: var(--accent);
   transform: translateX(8px);
+}
+
+.minimal-nav-item.is-active {
+  font-weight: 600;
+}
+
+.minimal-nav-item.is-active::before {
+  content: "—";
+  margin-right: 12px;
+  color: var(--accent);
+  font-family: var(--font-manrope), sans-serif;
+  font-weight: 800;
 }
 
 /* Footer CTA */

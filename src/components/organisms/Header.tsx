@@ -10,6 +10,7 @@ import { navItems } from "@/data/navigation";
 export const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
@@ -18,7 +19,34 @@ export const Header: React.FC = () => {
     window.scrollTo(0, 0);
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
+      // Transition to bubble as soon as user scrolls past 25px
+      setScrolled(window.scrollY > 25);
+
+      // Robust ScrollSpy to track active section
+      const scrollPosition = window.scrollY + 160;
+      const sectionIds = navItems.map((item) => item.href.replace("#", ""));
+
+      let current = "";
+      for (let i = 0; i < sectionIds.length; i++) {
+        const id = sectionIds[i];
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            current = `#${id}`;
+            break;
+          } else if (scrollPosition >= top) {
+            current = `#${id}`;
+          }
+        }
+      }
+
+      if (window.scrollY < 200) {
+        current = "";
+      }
+
+      setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -45,20 +73,55 @@ export const Header: React.FC = () => {
   const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLElement>, href: string) => {
+    e.preventDefault();
+    closeMenu();
+
+    if (href === "#top") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.location.hash) {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+      return;
+    }
+
+    const targetId = href.replace("#", "");
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      const offset = 80;
+      const elementPosition = targetEl.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+      window.history.pushState(null, "", href);
+    }
+  };
+
   return (
     <>
       <header className={`site-header ${scrolled && !menuOpen ? "header--bubble" : ""}`} id="top">
         <BrandLogo />
 
         <nav className="desktop-nav" aria-label="Navigation principale">
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href}>
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = activeSection === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={isActive ? "is-active" : ""}
+                aria-current={isActive ? "page" : undefined}
+                onClick={(e) => handleNavClick(e, item.href)}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        <Button variant="dark" href="#contact" className="desktop-cta">
+        <Button variant="dark" href="#contact" className="desktop-cta" onClick={(e) => handleNavClick(e, "#contact")}>
           Démarrer un projet
           <ArrowUpRight size={16} />
         </Button>
@@ -91,18 +154,22 @@ export const Header: React.FC = () => {
             </button>
           </div>
 
-          {/* Clean Airy Nav Links */}
+          {/* Clean Airy Nav Links with Active State */}
           <nav className="minimal-mobile-nav" aria-label="Navigation mobile">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="minimal-nav-item"
-                onClick={closeMenu}
-              >
-                <span>{item.label}</span>
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`minimal-nav-item ${isActive ? "is-active" : ""}`}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Minimalist Bottom CTA */}
@@ -110,7 +177,7 @@ export const Header: React.FC = () => {
             <Link
               href="#contact"
               className="minimal-drawer-btn"
-              onClick={closeMenu}
+              onClick={(e) => handleNavClick(e, "#contact")}
             >
               <span>Démarrer un projet</span>
               <ArrowUpRight size={16} />
