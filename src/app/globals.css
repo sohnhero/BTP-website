@@ -1891,46 +1891,7 @@ button {
 }
 
 .team-accordion-card:not(.is-active) .accordion-overlay {
-  background: linear-gradient(
-    180deg,
-    rgba(16, 18, 15, 0.25) 0%,
-    rgba(16, 18, 15, 0.75) 100%
-  );
-}
-
-/* Collapsed Content (Inactive Strips) */
-.accordion-collapsed-content {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  padding: 30px 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  opacity: 1;
-  transition: opacity 0.4s ease;
-}
-
-.team-accordion-card.is-active .accordion-collapsed-content {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.collapsed-role {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-  margin-bottom: 6px;
-  white-space: nowrap;
-}
-
-.collapsed-name {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--white);
-  white-space: nowrap;
+  background: rgba(16, 18, 15, 0.12);
 }
 
 /* Expanded Content (Active Card) */
@@ -2589,6 +2550,196 @@ button {
   transform: translateY(0) scale(1);
 }
 
+/* ══════════════════════════════════════════════════════════════
+   PARTNERS SECTION — Minimal Light Marquee
+   ══════════════════════════════════════════════════════════════ */
+.partners-section {
+  position: relative;
+  padding: 80px 64px 90px;
+  background: var(--paper);
+  overflow: hidden;
+}
+
+/* Subtle top/bottom hairline */
+.partners-section::before,
+.partners-section::after {
+  content: "";
+  position: absolute;
+  left: 64px;
+  right: 64px;
+  height: 1px;
+  background: var(--line);
+}
+
+.partners-section::before { top: 0; }
+.partners-section::after  { bottom: 0; }
+
+/* ── Header ────────────────────────────────────────────────── */
+.partners-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.partners-overline {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.partners-title {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.partners-title em {
+  font-family: var(--font-playfair), serif;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* ── Marquee Zone ──────────────────────────────────────────── */
+.partners-marquee-zone {
+  position: relative;
+}
+
+.marquee-track {
+  overflow: hidden;
+  position: relative;
+  padding: 6px 0;
+}
+
+.marquee-track + .marquee-track {
+  margin-top: 14px;
+}
+
+.marquee-track:hover .marquee-inner {
+  animation-play-state: paused;
+}
+
+.marquee-inner {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+}
+
+.marquee-ltr .marquee-inner {
+  animation: marqueeScrollLTR 55s linear infinite;
+}
+
+.marquee-rtl .marquee-inner {
+  animation: marqueeScrollRTL 60s linear infinite;
+}
+
+@keyframes marqueeScrollLTR {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
+
+@keyframes marqueeScrollRTL {
+  0%   { transform: translateX(-25%); }
+  100% { transform: translateX(0); }
+}
+
+/* Edge fades */
+.marquee-fade-left,
+.marquee-fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.marquee-fade-left {
+  left: 0;
+  background: linear-gradient(90deg, var(--paper), transparent);
+}
+
+.marquee-fade-right {
+  right: 0;
+  background: linear-gradient(-90deg, var(--paper), transparent);
+}
+
+/* ── Partner Pill ──────────────────────────────────────────── */
+.partner-pill {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 24px 14px 14px;
+  border-radius: 60px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  cursor: default;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  white-space: nowrap;
+}
+
+.partner-pill:hover,
+.partner-pill.is-hovered {
+  border-color: rgba(214, 169, 73, 0.5);
+  box-shadow:
+    0 4px 20px rgba(16, 18, 15, 0.06),
+    0 0 0 3px rgba(214, 169, 73, 0.08);
+  transform: translateY(-3px);
+}
+
+/* Monogram circle */
+.partner-pill-mono {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(214, 169, 73, 0.14), rgba(214, 169, 73, 0.06));
+  border: 1px solid rgba(214, 169, 73, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  transition: all 0.4s ease;
+}
+
+.partner-pill:hover .partner-pill-mono {
+  background: var(--accent);
+  color: var(--white);
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(214, 169, 73, 0.3);
+}
+
+.partner-pill-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  transition: color 0.3s ease;
+}
+
+.partner-pill-domain {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  padding-left: 12px;
+  border-left: 1px solid var(--line);
+  transition: all 0.3s ease;
+}
+
+.partner-pill:hover .partner-pill-domain {
+  color: var(--accent);
+  border-left-color: rgba(214, 169, 73, 0.3);
+}
+
+
 /* ── BACK TO TOP (ADAPTIVE DARK SECTION COLORING) ──────── */
 .back-to-top {
   position: fixed;
@@ -2889,6 +3040,74 @@ button {
     .team-card-modern {
       height: 420px;
     }
+  }
+  /* Partners responsive */
+  .partners-section {
+    padding: 80px 24px 64px;
+  }
+
+  .partners-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .partners-trust-hub {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 48px;
+  }
+
+  .trust-metric-card {
+    padding: 24px 20px;
+  }
+
+  .trust-metric-value {
+    font-size: 28px;
+  }
+
+  .partner-marquee-card {
+    width: 240px;
+    padding: 20px 18px;
+  }
+
+  .spotlight-inner {
+    padding: 28px 24px;
+  }
+
+  .spotlight-stats {
+    gap: 24px;
+  }
+
+  .partners-cta-row {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .team-accordion-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .team-accordion-card {
+    height: 120px;
+    flex: unset !important;
+  }
+
+  .team-accordion-card.is-active {
+    height: 420px;
+    flex: unset !important;
+  }
+
+  .team-heading-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .heading-right {
+    align-items: flex-start;
   }
 
   .site-footer {}

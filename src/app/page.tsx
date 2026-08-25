@@ -8,6 +8,7 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { TeamSection } from "@/components/sections/TeamSection";
+import { PartnersSection } from "@/components/sections/PartnersSection";
 import { TestimonialSection } from "@/components/sections/TestimonialSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 
@@ -23,6 +24,7 @@ export default function HomePage() {
         <ProjectsSection />
         <ProcessSection />
         <TeamSection />
+        <PartnersSection />
         <TestimonialSection />
         <ContactSection />
       </main>

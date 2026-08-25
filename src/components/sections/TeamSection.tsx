@@ -106,11 +106,7 @@ export const TeamSection: React.FC = () => {
                 <div className="accordion-overlay"></div>
               </div>
 
-              {/* Inactive Vertical Label */}
-              <div className="accordion-collapsed-content">
-                <span className="collapsed-role">{member.role}</span>
-                <strong className="collapsed-name">{member.name}</strong>
-              </div>
+
 
               {/* Active Expanded Card Content */}
               <div className="accordion-expanded-content">
