@@ -7,6 +7,7 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { TeamSection } from "@/components/sections/TeamSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { PartnersSection } from "@/components/sections/PartnersSection";
+import { TestimonialSection } from "@/components/sections/TestimonialSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function HomePage() {
@@ -32,7 +33,10 @@ export default function HomePage() {
         {/* 6. PARTENAIRES */}
         <PartnersSection />
 
-        {/* 7. CONTACT */}
+        {/* 7. TÉMOIGNAGES */}
+        <TestimonialSection />
+
+        {/* 8. CONTACT */}
         <ContactSection />
       </main>
       <Footer />
