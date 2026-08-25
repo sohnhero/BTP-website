@@ -2,16 +2,14 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, ArrowUpRight, Sparkles } from "lucide-react";
-import { teamMembers, teamCategories, TeamMember } from "@/data/team";
-import { TeamMemberModal } from "@/components/organisms/TeamMemberModal";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { teamMembers, teamCategories } from "@/data/team";
 import { useReveal } from "@/hooks/useReveal";
 
 export const TeamSection: React.FC = () => {
   const { ref, revealClass } = useReveal();
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   const filteredMembers = teamMembers.filter((m) => {
     if (activeCategory === "all") return true;
@@ -91,7 +89,7 @@ export const TeamSection: React.FC = () => {
               key={member.id}
               className={`team-accordion-card ${isActive ? "is-active" : ""}`}
               onMouseEnter={() => setActiveIndex(index)}
-              onClick={() => setSelectedMember(member)}
+              onClick={() => setActiveIndex(index)}
             >
               {/* Portrait Background */}
               <div className="accordion-media">
@@ -105,8 +103,6 @@ export const TeamSection: React.FC = () => {
                 />
                 <div className="accordion-overlay"></div>
               </div>
-
-
 
               {/* Active Expanded Card Content */}
               <div className="accordion-expanded-content">
@@ -124,29 +120,12 @@ export const TeamSection: React.FC = () => {
                       </span>
                     ))}
                   </div>
-
-                  <button
-                    className="expanded-action-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedMember(member);
-                    }}
-                  >
-                    <span>Voir le profil complet</span>
-                    <ArrowUpRight size={18} />
-                  </button>
                 </div>
               </div>
             </article>
           );
         })}
       </div>
-
-      {/* Interactive Detail Modal */}
-      <TeamMemberModal
-        member={selectedMember}
-        onClose={() => setSelectedMember(null)}
-      />
     </section>
   );
 };
