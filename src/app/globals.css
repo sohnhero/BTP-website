@@ -1839,7 +1839,7 @@ button {
 }
 
 .team-accordion-card {
-  flex: 1;
+  flex: 1 1 0%;
   height: 100%;
   border-radius: 32px;
   position: relative;
@@ -1847,16 +1847,19 @@ button {
   cursor: pointer;
   background: var(--ink);
   border: 1px solid rgba(16, 18, 15, 0.1);
+  will-change: flex-grow, transform, box-shadow;
   transition:
-    flex 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 12px 32px rgba(16, 18, 15, 0.08);
+    flex-grow 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.85s ease;
+  box-shadow: 0 10px 30px rgba(16, 18, 15, 0.06);
 }
 
 .team-accordion-card.is-active {
-  flex: 4;
-  box-shadow: 0 24px 60px rgba(16, 18, 15, 0.22);
+  flex-grow: 4.2;
+  box-shadow: 0 24px 60px rgba(16, 18, 15, 0.2);
+  border-color: rgba(214, 169, 73, 0.3);
 }
 
 /* Media Background */
@@ -1864,17 +1867,24 @@ button {
   position: absolute;
   inset: 0;
   z-index: 1;
-  transition: filter 0.65s ease;
+  overflow: hidden;
+}
+
+.accordion-media img {
+  will-change: transform, filter;
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.85s cubic-bezier(0.22, 1, 0.36, 1) !important;
 }
 
 .team-accordion-card:not(.is-active) .accordion-media img {
-  filter: grayscale(85%) contrast(105%);
+  filter: grayscale(90%) contrast(102%);
+  transform: scale(1);
 }
 
 .team-accordion-card.is-active .accordion-media img {
   filter: grayscale(0%) contrast(100%);
   transform: scale(1.03);
-  transition: transform 0.8s ease, filter 0.65s ease;
 }
 
 .accordion-overlay {
@@ -1882,16 +1892,16 @@ button {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(16, 18, 15, 0.15) 0%,
-    rgba(16, 18, 15, 0.4) 40%,
+    rgba(16, 18, 15, 0.1) 0%,
+    rgba(16, 18, 15, 0.35) 45%,
     rgba(16, 18, 15, 0.88) 100%
   );
   z-index: 2;
-  transition: opacity 0.65s ease;
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .team-accordion-card:not(.is-active) .accordion-overlay {
-  background: rgba(16, 18, 15, 0.12);
+  background: rgba(16, 18, 15, 0.14);
 }
 
 /* Expanded Content (Active Card) */
@@ -1905,14 +1915,19 @@ button {
   justify-content: space-between;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
-  transform: translateY(12px);
+  transform: translateY(14px);
+  transition:
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .team-accordion-card.is-active .accordion-expanded-content {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.22s,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.22s;
 }
 
 .expanded-top {
