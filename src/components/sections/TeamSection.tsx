@@ -3,11 +3,80 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
-import { teamMembers, teamCategories } from "@/data/team";
+import { teamMembers, teamCategories, TeamMember } from "@/data/team";
 import { useReveal } from "@/hooks/useReveal";
+
+/* ─── Individual Team Member Card with Staggered Scroll Reveal ─── */
+const TeamMemberCard: React.FC<{
+  member: TeamMember;
+  index: number;
+  isActive: boolean;
+  onSelect: () => void;
+}> = ({ member, index, isActive, onSelect }) => {
+  const { ref, revealClass } = useReveal({
+    variant: "brick",
+    delay: Math.min(index * 110, 550),
+  });
+
+  return (
+    <article
+      ref={ref}
+      className={`team-accordion-card ${isActive ? "is-active" : ""} ${revealClass}`}
+      onMouseEnter={onSelect}
+      onClick={onSelect}
+    >
+      {/* Portrait Background */}
+      <div className="accordion-media">
+        <Image
+          src={member.imageSrc || "/team-director.png"}
+          alt={`${member.name} — ${member.role}`}
+          fill
+          sizes="(max-width: 900px) 100vw, 50vw"
+          style={{ objectFit: "cover", objectPosition: "top center" }}
+          priority={index === 0}
+        />
+        <div className="accordion-overlay"></div>
+      </div>
+
+      {/* Subtle Collapsed Hint Bar */}
+      {!isActive && (
+        <div className="accordion-collapsed-hint">
+          <div className="collapsed-info">
+            <span className="collapsed-role">{member.role}</span>
+            <strong className="collapsed-name">{member.name}</strong>
+          </div>
+          <div className="collapsed-action-pill">
+            <span>Toucher pour déplier</span>
+            <ChevronDown size={13} className="collapsed-icon" />
+          </div>
+        </div>
+      )}
+
+      {/* Active Expanded Card Content */}
+      <div className="accordion-expanded-content">
+        <div className="expanded-top">
+          <span className="expanded-role">{member.role}</span>
+          <h3 className="expanded-name">{member.name}</h3>
+          <p className="expanded-tagline">{member.tagline}</p>
+        </div>
+
+        <div className="expanded-bottom">
+          <div className="expanded-chips">
+            {member.specialties.map((spec, i) => (
+              <span key={i} className="chip">
+                {spec}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+};
 
 export const TeamSection: React.FC = () => {
   const { ref, revealClass } = useReveal();
+  const filterReveal = useReveal({ variant: "fade", delay: 100 });
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
@@ -64,7 +133,10 @@ export const TeamSection: React.FC = () => {
       </div>
 
       {/* Filter Tabs */}
-      <div className="team-filter-bar">
+      <div
+        ref={filterReveal.ref}
+        className={`team-filter-bar ${filterReveal.revealClass}`}
+      >
         {teamCategories.map((cat) => (
           <button
             key={cat.id}
@@ -79,64 +151,19 @@ export const TeamSection: React.FC = () => {
         ))}
       </div>
 
-      {/* Accordion Focus Slider Container */}
+      {/* Accordion Focus Slider Container with Staggered Elements */}
       <div className="team-accordion-wrapper">
         {filteredMembers.map((member, index) => {
           const isActive = index === (activeIndex % total);
 
           return (
-            <article
+            <TeamMemberCard
               key={member.id}
-              className={`team-accordion-card ${isActive ? "is-active" : ""}`}
-              onMouseEnter={() => setActiveIndex(index)}
-              onClick={() => setActiveIndex(index)}
-            >
-              {/* Portrait Background */}
-              <div className="accordion-media">
-                <Image
-                  src={member.imageSrc || "/team-director.png"}
-                  alt={`${member.name} — ${member.role}`}
-                  fill
-                  sizes="(max-width: 900px) 100vw, 50vw"
-                  style={{ objectFit: "cover", objectPosition: "top center" }}
-                  priority={index === 0}
-                />
-                <div className="accordion-overlay"></div>
-              </div>
-
-              {/* Subtle Collapsed Hint Bar (Indicating user can tap to unfold on mobile) */}
-              {!isActive && (
-                <div className="accordion-collapsed-hint">
-                  <div className="collapsed-info">
-                    <span className="collapsed-role">{member.role}</span>
-                    <strong className="collapsed-name">{member.name}</strong>
-                  </div>
-                  <div className="collapsed-action-pill">
-                    <span>Toucher pour déplier</span>
-                    <ChevronDown size={13} className="collapsed-icon" />
-                  </div>
-                </div>
-              )}
-
-              {/* Active Expanded Card Content */}
-              <div className="accordion-expanded-content">
-                <div className="expanded-top">
-                  <span className="expanded-role">{member.role}</span>
-                  <h3 className="expanded-name">{member.name}</h3>
-                  <p className="expanded-tagline">{member.tagline}</p>
-                </div>
-
-                <div className="expanded-bottom">
-                  <div className="expanded-chips">
-                    {member.specialties.map((spec, i) => (
-                      <span key={i} className="chip">
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </article>
+              member={member}
+              index={index}
+              isActive={isActive}
+              onSelect={() => setActiveIndex(index)}
+            />
           );
         })}
       </div>

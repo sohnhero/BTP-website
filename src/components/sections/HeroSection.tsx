@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowDownRight } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
+import { AnimatedNumber } from "@/components/atoms/AnimatedNumber";
 
 export const HeroSection: React.FC = () => {
   const { ref, revealClass } = useReveal();
@@ -70,7 +71,9 @@ export const HeroSection: React.FC = () => {
             ></span>
           </div>
           <div>
-            <strong>4.9/5</strong>
+            <strong>
+              <AnimatedNumber value={4.9} decimals={1} duration={2200} />/5
+            </strong>
             <small>Satisfaction client</small>
           </div>
         </div>

@@ -22,14 +22,16 @@ import {
 export type ContactMode = "general" | "partnership" | "career";
 
 export const ContactSection: React.FC = () => {
-  const { ref, revealClass } = useReveal();
+  const headingReveal = useReveal({ variant: "up" });
+  const infoReveal = useReveal({ variant: "left", delay: 100 });
+  const formReveal = useReveal({ variant: "right", delay: 220 });
   const [mode, setMode] = useState<ContactMode>("general");
 
   return (
     <section className="contact-hybrid-section section-pad" id="contact">
-      <div ref={ref} className={`contact-hybrid-container ${revealClass}`}>
+      <div className="contact-hybrid-container">
         {/* Section Heading harmonized with the entire site */}
-        <div className="section-heading contact-heading-row">
+        <div ref={headingReveal.ref} className={`section-heading contact-heading-row ${headingReveal.revealClass}`}>
           <div className="heading-left">
             <span className="overline">Contact & Partenariat</span>
             <h2>
@@ -94,10 +96,10 @@ export const ContactSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Console Dual Panel */}
+        {/* Console Dual Panel with Staggered Scroll Entrance */}
         <div className="contact-console-grid">
           {/* Left Info Panel (Dynamic based on mode) */}
-          <div className="console-info-card">
+          <div ref={infoReveal.ref} className={`console-info-card ${infoReveal.revealClass}`}>
             {mode === "general" && (
               <>
                 <div className="info-badge">
@@ -277,7 +279,7 @@ export const ContactSection: React.FC = () => {
           </div>
 
           {/* Right Interactive Form Console */}
-          <div className="console-form-card">
+          <div ref={formReveal.ref} className={`console-form-card ${formReveal.revealClass}`}>
             <ContactForm mode={mode} />
           </div>
         </div>

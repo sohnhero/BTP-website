@@ -24,8 +24,8 @@ export const ServicesSection: React.FC = () => {
       </div>
 
       <div className="service-grid">
-        {servicesData.map((service) => (
-          <ServiceCard key={service.id} {...service} />
+        {servicesData.map((service, index) => (
+          <ServiceCard key={service.id} {...service} index={index} />
         ))}
       </div>
     </section>

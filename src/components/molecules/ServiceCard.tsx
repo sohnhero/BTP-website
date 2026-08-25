@@ -13,13 +13,21 @@ const iconMap = {
   "clipboard-check": ClipboardCheck,
 };
 
-export const ServiceCard: React.FC<ServiceItem> = ({
+interface ServiceCardProps extends ServiceItem {
+  index?: number;
+}
+
+export const ServiceCard: React.FC<ServiceCardProps> = ({
   number,
   iconName,
   title,
   description,
+  index = 0,
 }) => {
-  const { ref: revealRef, revealClass } = useReveal();
+  const { ref: revealRef, revealClass } = useReveal({
+    variant: "brick",
+    delay: Math.min(index * 110, 550),
+  });
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0, glareX: 50, glareY: 50 });
   const [isHovered, setIsHovered] = useState(false);
