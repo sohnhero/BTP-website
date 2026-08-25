@@ -3,6 +3,7 @@ import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
+import { ConstructionRibbon } from "@/components/molecules/ConstructionRibbon";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { TeamSection } from "@/components/sections/TeamSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
@@ -20,6 +21,9 @@ export default function HomePage() {
 
         {/* 2. À PROPOS */}
         <AboutSection />
+
+        {/* ── BTP CHANTIER CONSTRUCTION RIBBON ── */}
+        <ConstructionRibbon />
 
         {/* 3. SERVICES */}
         <ServicesSection />
