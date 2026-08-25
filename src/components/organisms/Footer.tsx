@@ -4,12 +4,17 @@ import React from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { BrandLogo } from "@/components/atoms/BrandLogo";
+import { useReveal } from "@/hooks/useReveal";
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const { ref, revealClass } = useReveal({
+    threshold: 0.05,
+    rootMargin: "0px 0px -40px 0px",
+  });
 
   return (
-    <footer className="site-footer">
+    <footer ref={ref} className={`site-footer ${revealClass}`}>
       <div className="footer-card">
         {/* Top Row: Brand Logo & Social Media Bar */}
         <div className="footer-top-bar">

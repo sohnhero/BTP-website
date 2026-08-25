@@ -9,6 +9,7 @@ interface UseRevealOptions {
   variant?: RevealVariant;
   delay?: number;
   once?: boolean;
+  rootMargin?: string;
 }
 
 export function useReveal(options: UseRevealOptions | number = {}) {
@@ -16,6 +17,7 @@ export function useReveal(options: UseRevealOptions | number = {}) {
   const variant = typeof options === "number" ? "up" : options.variant ?? "up";
   const delay = typeof options === "number" ? 0 : options.delay ?? 0;
   const once = typeof options === "number" ? false : options.once ?? false;
+  const rootMargin = typeof options === "number" ? "-10% 0px -10% 0px" : options.rootMargin ?? "-10% 0px -10% 0px";
 
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -46,7 +48,7 @@ export function useReveal(options: UseRevealOptions | number = {}) {
       },
       {
         threshold,
-        rootMargin: "-10% 0px -10% 0px",
+        rootMargin,
       }
     );
 

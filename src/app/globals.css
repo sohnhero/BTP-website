@@ -2234,6 +2234,20 @@ button {
   padding: 0 44px 44px;
 }
 
+.site-footer.reveal {
+  opacity: 0;
+  transform: translateY(50px) scale(0.97);
+  transition:
+    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.site-footer.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 .footer-card {
   position: relative;
   overflow: hidden;
@@ -2243,6 +2257,47 @@ button {
   padding: 56px 64px 40px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-footer.reveal.visible .footer-card {
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28);
+}
+
+/* Staggered entry for inner components */
+.site-footer.reveal .footer-top-bar,
+.site-footer.reveal .footer-grid,
+.site-footer.reveal .footer-watermark,
+.site-footer.reveal .footer-bottom-bar {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.site-footer.reveal.visible .footer-top-bar {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+.site-footer.reveal.visible .footer-grid {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.28s;
+}
+
+.site-footer.reveal.visible .footer-watermark {
+  opacity: 0.9;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.site-footer.reveal.visible .footer-bottom-bar {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.48s;
 }
 
 /* Top Row Bar */
