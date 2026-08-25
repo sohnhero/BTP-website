@@ -13,11 +13,12 @@ interface UseRevealOptions {
 }
 
 export function useReveal(options: UseRevealOptions | number = {}) {
-  const threshold = typeof options === "number" ? options : options.threshold ?? 0.2;
+  const threshold = typeof options === "number" ? options : options.threshold ?? 0.08;
   const variant = typeof options === "number" ? "up" : options.variant ?? "up";
   const delay = typeof options === "number" ? 0 : options.delay ?? 0;
-  const once = typeof options === "number" ? false : options.once ?? false;
-  const rootMargin = typeof options === "number" ? "-10% 0px -10% 0px" : options.rootMargin ?? "-10% 0px -10% 0px";
+  // Default to once = true to eliminate scroll jitter / re-trigger fluttering
+  const once = typeof options === "number" ? true : options.once ?? true;
+  const rootMargin = typeof options === "number" ? "0px 0px -40px 0px" : options.rootMargin ?? "0px 0px -40px 0px";
 
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -25,6 +26,14 @@ export function useReveal(options: UseRevealOptions | number = {}) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Check if already in viewport or reduced motion
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top <= windowHeight - 40 && rect.bottom >= 0) {
+      setIsVisible(true);
+      if (once) return;
+    }
 
     let timer: NodeJS.Timeout | null = null;
 
@@ -38,6 +47,7 @@ export function useReveal(options: UseRevealOptions | number = {}) {
           }
           if (once) {
             observer.unobserve(entry.target);
+            observer.disconnect();
           }
         } else {
           if (timer) clearTimeout(timer);
@@ -58,7 +68,7 @@ export function useReveal(options: UseRevealOptions | number = {}) {
       if (timer) clearTimeout(timer);
       observer.disconnect();
     };
-  }, [threshold, delay, once]);
+  }, [threshold, delay, once, rootMargin]);
 
   const variantClass = `reveal-${variant}`;
 

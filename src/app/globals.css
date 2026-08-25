@@ -2847,73 +2847,74 @@ button {
 /* ── ELABORATE SCROLL ANIMATIONS ───────────────────────── */
 .reveal {
   opacity: 0;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
   transition:
-    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Variant 1: Up (Default) */
 .reveal-up {
-  transform: translateY(36px) scale(0.98);
+  transform: translate3d(0, 28px, 0);
 }
 .reveal-up.visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translate3d(0, 0, 0);
 }
 
-/* Variant 2: Fade (Blur to sharp focus) */
+/* Variant 2: Fade (Smooth focus) */
 .reveal-fade {
-  filter: blur(10px);
-  transform: scale(0.97);
+  opacity: 0;
+  transform: scale(0.98);
 }
 .reveal-fade.visible {
   opacity: 1;
-  filter: blur(0);
   transform: scale(1);
 }
 
 /* Variant 3: Left (Slide in from left) */
 .reveal-left {
-  transform: translateX(-40px);
+  transform: translate3d(-30px, 0, 0);
 }
 .reveal-left.visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* Variant 4: Right (Slide in from right) */
 .reveal-right {
-  transform: translateX(40px);
+  transform: translate3d(30px, 0, 0);
 }
 .reveal-right.visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 
 /* Variant 5: Scale (Micro expansion) */
 .reveal-scale {
-  transform: scale(0.93);
+  transform: scale(0.96);
 }
 .reveal-scale.visible {
   opacity: 1;
   transform: scale(1);
 }
 
-/* Variant 6: Brick Drop & Masonry Impact */
+/* Variant 6: Brick / Smooth Lift */
 .reveal-brick {
   opacity: 0;
-  transform: translateY(-70px) scale(0.96);
+  transform: translate3d(0, 32px, 0);
   transition:
     opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
 .reveal-brick.visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translate3d(0, 0, 0);
 }
 
 /* ══════════════════════════════════════════════════════════════
