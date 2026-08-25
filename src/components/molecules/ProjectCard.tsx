@@ -8,6 +8,7 @@ import { useReveal } from "@/hooks/useReveal";
 
 interface ProjectCardProps extends ProjectItem {
   index?: number;
+  isMini?: boolean;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -17,23 +18,30 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   subtitle,
   imageUrl,
   isLarge,
+  isMini,
   index = 0,
 }) => {
   const { ref, revealClass } = useReveal({
     variant: "brick",
-    delay: index * 180,
+    delay: Math.min(index * 120, 600),
   });
 
   return (
     <article
       ref={ref}
-      className={`project-card ${isLarge ? "project-large" : ""} ${revealClass}`}
+      className={`project-card ${isLarge ? "project-large" : ""} ${isMini ? "project-mini" : ""} ${revealClass}`}
     >
       <Image
         src={imageUrl}
         alt={title}
         fill
-        sizes={isLarge ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+        sizes={
+          isLarge
+            ? "(max-width: 768px) 100vw, 66vw"
+            : isMini
+            ? "(max-width: 768px) 100vw, 33vw"
+            : "(max-width: 768px) 100vw, 50vw"
+        }
         style={{ objectFit: "cover" }}
         unoptimized={imageUrl.startsWith("http")}
       />
@@ -46,7 +54,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <p>{subtitle}</p>
       </div>
       <button className="project-open" aria-label={`Voir le projet ${title}`}>
-        <ArrowUpRight size={18} />
+        <ArrowUpRight size={isMini ? 16 : 18} />
       </button>
     </article>
   );

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import { projectsData } from "@/data/projects";
+import { mainProjectsData, secondaryProjectsData } from "@/data/projects";
 import { ProjectCard } from "@/components/molecules/ProjectCard";
 import { Button } from "@/components/atoms/Button";
 import { useReveal } from "@/hooks/useReveal";
@@ -25,9 +25,22 @@ export const ProjectsSection: React.FC = () => {
         </Button>
       </div>
 
+      {/* Main Top Grid (Featured Projects) */}
       <div className="projects-grid">
-        {projectsData.map((project, index) => (
+        {mainProjectsData.map((project, index) => (
           <ProjectCard key={project.id} {...project} index={index} />
+        ))}
+      </div>
+
+      {/* Single Bottom Row of Compact Secondary Project Cards */}
+      <div className="projects-secondary-row">
+        {secondaryProjectsData.map((project, index) => (
+          <ProjectCard
+            key={project.id}
+            {...project}
+            isMini
+            index={index + 3}
+          />
         ))}
       </div>
     </section>
