@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { ContactForm } from "@/components/organisms/ContactForm";
 import { useReveal } from "@/hooks/useReveal";
 import {
-  Building2,
-  UserPlus,
+  MessageSquare,
+  Handshake,
+  Briefcase,
   PhoneCall,
   Mail,
   MapPin,
@@ -14,72 +15,89 @@ import {
   HardHat,
   Ruler,
   Layers,
+  Award,
+  Users,
 } from "lucide-react";
 
-export type ContactMode = "project" | "career";
+export type ContactMode = "general" | "partnership" | "career";
 
 export const ContactSection: React.FC = () => {
   const { ref, revealClass } = useReveal();
-  const [mode, setMode] = useState<ContactMode>("project");
+  const [mode, setMode] = useState<ContactMode>("general");
 
   return (
     <section className="contact-hybrid-section section-pad" id="contact">
       <div ref={ref} className={`contact-hybrid-container ${revealClass}`}>
-        {/* Top Header Row with Segmented Pill Switcher */}
+        {/* Top Header Row with 3-Way Segmented Switcher */}
         <div className="contact-hybrid-header">
           <div className="contact-heading-left">
-            <span className="overline">Ingénierie, Chantier & Talents</span>
+            <span className="overline">Formulaires de Contact</span>
             <h2>
-              {mode === "project" ? (
+              {mode === "general" && (
                 <>
-                  Concevons votre projet<br />
-                  <em>avec rigueur et excellence.</em>
+                  Échangeons sur votre projet<br />
+                  <em>avec réactivité et rigueur.</em>
                 </>
-              ) : (
+              )}
+              {mode === "partnership" && (
                 <>
-                  Construisez votre carrière<br />
-                  <em>au cœur de l’ingénierie.</em>
+                  Devenons partenaires<br />
+                  <em>pour bâtir l’excellence.</em>
+                </>
+              )}
+              {mode === "career" && (
+                <>
+                  Rejoignez notre équipe<br />
+                  <em>au cœur des grands chantiers.</em>
                 </>
               )}
             </h2>
           </div>
 
-          {/* Luxury Segmented Slider Switcher */}
-          <div className="segmented-switcher">
+          {/* Luxury 3-Way Segmented Switcher */}
+          <div className="segmented-switcher segmented-switcher--three">
             <button
               type="button"
-              className={`segmented-btn ${mode === "project" ? "active" : ""}`}
-              onClick={() => setMode("project")}
+              className={`segmented-btn ${mode === "general" ? "active" : ""}`}
+              onClick={() => setMode("general")}
             >
-              <Building2 size={16} />
-              <span>Vous avez un projet</span>
+              <MessageSquare size={16} />
+              <span>Contact Général</span>
+            </button>
+            <button
+              type="button"
+              className={`segmented-btn ${mode === "partnership" ? "active" : ""}`}
+              onClick={() => setMode("partnership")}
+            >
+              <Handshake size={16} />
+              <span>Partenariat</span>
             </button>
             <button
               type="button"
               className={`segmented-btn ${mode === "career" ? "active" : ""}`}
               onClick={() => setMode("career")}
             >
-              <UserPlus size={16} />
-              <span>Rejoindre l'équipe</span>
+              <Briefcase size={16} />
+              <span>Demande d'Emploi</span>
             </button>
           </div>
         </div>
 
         {/* Console Dual Panel */}
         <div className="contact-console-grid">
-          {/* Left Info Panel */}
+          {/* Left Info Panel (Dynamic based on mode) */}
           <div className="console-info-card">
-            <div className="info-badge">
-              <HardHat size={15} />
-              <span>{mode === "project" ? "Coordination Chantier & Bureau d'Études" : "Recrutement & Partenariats BTP"}</span>
-            </div>
-
-            {mode === "project" ? (
+            {mode === "general" && (
               <>
+                <div className="info-badge">
+                  <HardHat size={15} />
+                  <span>Bureau d'Études & Information Client</span>
+                </div>
+
                 <div>
-                  <h3>Votre ouvrage mérite une exécution irréprochable.</h3>
+                  <h3>Une écoute attentive pour vos projets & questions.</h3>
                   <p>
-                    De la brique initiale à la remise des clés, notre bureau d'études et nos équipes de chantier maîtrisent chaque étape technique.
+                    Particuliers, investisseurs et collectivités : notre équipe d'ingénierie et de suivi de chantier vous apporte une réponse précise et personnalisée.
                   </p>
 
                   <div className="info-feature-list">
@@ -88,8 +106,8 @@ export const ContactSection: React.FC = () => {
                         <Clock size={18} />
                       </div>
                       <div>
-                        <strong>Réponse & Déplacement sous 24h</strong>
-                        <span>Prise en charge rapide et cadrage sur site.</span>
+                        <strong>Réponse garantie sous 24h</strong>
+                        <span>Prise en charge rapide et cadrage de vos besoins.</span>
                       </div>
                     </div>
 
@@ -98,8 +116,8 @@ export const ContactSection: React.FC = () => {
                         <Ruler size={18} />
                       </div>
                       <div>
-                        <strong>Études d'Ingénierie & Métré précis</strong>
-                        <span>Plans techniques et chiffrage rigoureux.</span>
+                        <strong>Études d'Ingénierie & Devis</strong>
+                        <span>Métrés, plans d'exécution et estimations budgétaires.</span>
                       </div>
                     </div>
 
@@ -108,8 +126,8 @@ export const ContactSection: React.FC = () => {
                         <ShieldCheck size={18} />
                       </div>
                       <div>
-                        <strong>Sécurité Chantier & Normes BTP</strong>
-                        <span>Garantie décennale et contrôle qualité.</span>
+                        <strong>Garantie Décennale & Suivi</strong>
+                        <span>Contrôle qualité rigoureux et conformité aux normes.</span>
                       </div>
                     </div>
                   </div>
@@ -120,18 +138,25 @@ export const ContactSection: React.FC = () => {
                     <PhoneCall size={14} />
                     <span>+221 33 800 00 00</span>
                   </a>
-                  <a href="mailto:contact@fidele.sn" className="contact-chip">
+                  <a href="mailto:contact@fidelesarl.com" className="contact-chip">
                     <Mail size={14} />
-                    <span>contact@fidele.sn</span>
+                    <span>contact@fidelesarl.com</span>
                   </a>
                 </div>
               </>
-            ) : (
+            )}
+
+            {mode === "partnership" && (
               <>
+                <div className="info-badge">
+                  <Handshake size={15} />
+                  <span>Alliances BTP & Co-traitance Stratégique</span>
+                </div>
+
                 <div>
-                  <h3>Construisez l'avenir sur nos chantiers d'exception.</h3>
+                  <h3>Bâtissons des synergies solides et durables.</h3>
                   <p>
-                    Rejoignez des équipes exigeantes : ingénieurs béton/structure, architectes, chefs de chantier et artisans d'élite.
+                    Entreprises de BTP, sous-traitants d'élite, bureaux d'études et fournisseurs de matériaux : unissons nos expertises sur des projets d'envergure.
                   </p>
 
                   <div className="info-feature-list">
@@ -140,7 +165,66 @@ export const ContactSection: React.FC = () => {
                         <Layers size={18} />
                       </div>
                       <div>
-                        <strong>Grands Ouvrages & Structures</strong>
+                        <strong>Co-traitance & Sous-traitance</strong>
+                        <span>Alliances techniques sur marchés publics et privés.</span>
+                      </div>
+                    </div>
+
+                    <div className="info-feature-item">
+                      <div className="feature-icon-box">
+                        <Award size={18} />
+                      </div>
+                      <div>
+                        <strong>Fournisseurs & Matériaux Certifiés</strong>
+                        <span>Approvisionnement de qualité et traçabilité absolue.</span>
+                      </div>
+                    </div>
+
+                    <div className="info-feature-item">
+                      <div className="feature-icon-box">
+                        <Users size={18} />
+                      </div>
+                      <div>
+                        <strong>Pôle Partenariats Dédié</strong>
+                        <span>Traitement direct par la direction des partenariats.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="info-direct-contacts">
+                  <a href="mailto:partenariat@fidelesarl.com" className="contact-chip">
+                    <Mail size={14} />
+                    <span>partenariat@fidelesarl.com</span>
+                  </a>
+                  <div className="contact-chip">
+                    <MapPin size={14} />
+                    <span>Dakar, Sénégal</span>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {mode === "career" && (
+              <>
+                <div className="info-badge">
+                  <Briefcase size={15} />
+                  <span>Recrutement & Développement des Talents</span>
+                </div>
+
+                <div>
+                  <h3>Construisez l'avenir sur nos chantiers d'exception.</h3>
+                  <p>
+                    Rejoignez des équipes passionnées et exigeantes : ingénieurs structure, architectes BIM, conducteurs de travaux et chefs de chantier.
+                  </p>
+
+                  <div className="info-feature-list">
+                    <div className="info-feature-item">
+                      <div className="feature-icon-box">
+                        <Layers size={18} />
+                      </div>
+                      <div>
+                        <strong>Grands Ouvrages & Défis Techniques</strong>
                         <span>Projets tertiaires et résidentiels de premier plan.</span>
                       </div>
                     </div>
@@ -150,31 +234,31 @@ export const ContactSection: React.FC = () => {
                         <HardHat size={18} />
                       </div>
                       <div>
-                        <strong>Équipements & Sécurité Terrain</strong>
-                        <span>Normes EPI strictes et matériel de pointe.</span>
+                        <strong>Sécurité & Matériel de Pointe</strong>
+                        <span>Normes HSE strictes et équipements de qualité.</span>
                       </div>
                     </div>
 
                     <div className="info-feature-item">
                       <div className="feature-icon-box">
-                        <MapPin size={18} />
+                        <Award size={18} />
                       </div>
                       <div>
-                        <strong>Chantiers Stratégiques</strong>
-                        <span>Implantation solide à Dakar et en région.</span>
+                        <strong>Évolution & Reconnaissance</strong>
+                        <span>Perspectives d'avancement et cadre valorisant.</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="info-direct-contacts">
-                  <a href="mailto:recrutement@fidele.sn" className="contact-chip">
+                  <a href="mailto:emploi@fidelesarl.com" className="contact-chip">
                     <Mail size={14} />
-                    <span>recrutement@fidele.sn</span>
+                    <span>emploi@fidelesarl.com (avec CV)</span>
                   </a>
                   <div className="contact-chip">
                     <MapPin size={14} />
-                    <span>Dakar, Sénégal</span>
+                    <span>Dakar & Régions</span>
                   </div>
                 </div>
               </>

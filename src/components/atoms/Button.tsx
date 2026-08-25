@@ -9,6 +9,7 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   ariaLabel?: string;
+  disabled?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -19,6 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   className = "",
   ariaLabel,
+  disabled = false,
 }) => {
   const variantClassMap = {
     primary: "btn btn-primary",
@@ -44,6 +46,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       className={combinedClasses}
       aria-label={ariaLabel}
+      disabled={disabled}
     >
       {children}
     </button>
