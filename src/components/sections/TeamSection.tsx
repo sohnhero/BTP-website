@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import { teamMembers, teamCategories } from "@/data/team";
 import { useReveal } from "@/hooks/useReveal";
 
@@ -103,6 +103,20 @@ export const TeamSection: React.FC = () => {
                 />
                 <div className="accordion-overlay"></div>
               </div>
+
+              {/* Subtle Collapsed Hint Bar (Indicating user can tap to unfold on mobile) */}
+              {!isActive && (
+                <div className="accordion-collapsed-hint">
+                  <div className="collapsed-info">
+                    <span className="collapsed-role">{member.role}</span>
+                    <strong className="collapsed-name">{member.name}</strong>
+                  </div>
+                  <div className="collapsed-action-pill">
+                    <span>Toucher pour déplier</span>
+                    <ChevronDown size={13} className="collapsed-icon" />
+                  </div>
+                </div>
+              )}
 
               {/* Active Expanded Card Content */}
               <div className="accordion-expanded-content">

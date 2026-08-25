@@ -2379,24 +2379,66 @@ button {
   transform: translate(2px, -2px);
 }
 
-.team-bento-card:hover .member-action-btn {
-  transform: scale(1.12) rotate(45deg);
-  background: #e1b95f;
-}
-
-/* ── INTERACTIVE MODAL DRAWER ────────────────────────────── */
-.team-modal-backdrop {
-  position: fixed;
+/* Subtle Collapsed Hint Bar (Mobile indication to tap & unfold) */
+.accordion-collapsed-hint {
+  position: absolute;
   inset: 0;
-  z-index: 200;
-  background: rgba(13, 16, 14, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 24px;
-  animation: modalFadeIn 0.3s ease forwards;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: linear-gradient(90deg, rgba(16, 18, 15, 0.85) 0%, rgba(16, 18, 15, 0.45) 55%, rgba(16, 18, 15, 0.7) 100%);
+  color: var(--white);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.collapsed-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.collapsed-role {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.collapsed-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+
+.collapsed-action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.02em;
+}
+
+.collapsed-icon {
+  color: var(--accent);
+}
+
+@media (min-width: 991px) {
+  .accordion-collapsed-hint {
+    display: none;
+  }
 }
 
 @keyframes modalFadeIn {
@@ -3462,8 +3504,29 @@ button {
   .header--bubble {
     top: 12px;
     width: calc(100% - 24px);
-    height: 54px;
-    padding: 0 16px;
+    height: 56px;
+    padding: 0 8px 0 12px;
+  }
+
+  .header--bubble .brand-text {
+    opacity: 1;
+    max-width: 200px;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .header--bubble .brand-text strong {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+  }
+
+  .header--bubble .brand-text small {
+    font-size: 8.5px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
   }
 
   .section-pad {
@@ -3619,9 +3682,30 @@ button {
   .header--bubble {
     top: 8px;
     width: calc(100% - 16px);
-    height: 50px;
-    padding: 0 12px;
+    height: 52px;
+    padding: 0 6px 0 10px;
     border-radius: 40px;
+  }
+
+  .header--bubble .brand-text {
+    opacity: 1;
+    max-width: 170px;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .header--bubble .brand-text strong {
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+  }
+
+  .header--bubble .brand-text small {
+    font-size: 8px;
+    letter-spacing: 0.03em;
+    color: var(--muted);
   }
 
   .section-pad {
@@ -3722,9 +3806,19 @@ button {
   }
 
   .service-card {
-    min-height: 240px;
+    min-height: 220px;
     padding: 22px;
     border-radius: 20px;
+  }
+
+  .service-icon {
+    margin-bottom: 24px;
+  }
+
+  .service-card > a {
+    top: 20px;
+    right: 20px;
+    bottom: auto;
   }
 
   .team-heading-row {
@@ -3754,7 +3848,7 @@ button {
   }
 
   .team-accordion-card {
-    height: 85px;
+    height: 96px;
     border-radius: 18px;
     flex: unset !important;
   }
