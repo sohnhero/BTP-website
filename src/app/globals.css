@@ -3121,68 +3121,28 @@ button {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   PARTNERS SECTION — Minimal Light Marquee
+   PARTNERS SECTION — Minimal Light Marquee with High-Contrast Logos
    ══════════════════════════════════════════════════════════════ */
 .partners-section {
   position: relative;
-  padding: 80px 64px 90px;
   background: var(--paper);
   overflow: hidden;
 }
 
-/* Subtle top/bottom hairline */
-.partners-section::before,
-.partners-section::after {
-  content: "";
-  position: absolute;
-  left: 64px;
-  right: 64px;
-  height: 1px;
-  background: var(--line);
-}
-
-.partners-section::before { top: 0; }
-.partners-section::after  { bottom: 0; }
-
-/* ── Header ────────────────────────────────────────────────── */
-.partners-header {
-  text-align: center;
+.partners-heading-row {
   margin-bottom: 48px;
-}
-
-.partners-overline {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-
-.partners-title {
-  font-size: clamp(26px, 3vw, 38px);
-  font-weight: 800;
-  color: var(--ink);
-  line-height: 1.15;
-}
-
-.partners-title em {
-  font-family: var(--font-playfair), serif;
-  font-style: italic;
-  font-weight: 500;
-  color: var(--accent);
 }
 
 /* ── Marquee Zone ──────────────────────────────────────────── */
 .partners-marquee-zone {
   position: relative;
+  margin-top: 10px;
 }
 
 .marquee-track {
   overflow: hidden;
   position: relative;
-  padding: 6px 0;
+  padding: 8px 0;
 }
 
 .marquee-track + .marquee-track {
@@ -3195,7 +3155,7 @@ button {
 
 .marquee-inner {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   width: max-content;
 }
 
@@ -3223,7 +3183,7 @@ button {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 100px;
+  width: 120px;
   z-index: 5;
   pointer-events: none;
 }
@@ -3238,75 +3198,100 @@ button {
   background: linear-gradient(-90deg, var(--paper), transparent);
 }
 
-/* ── Partner Pill ──────────────────────────────────────────── */
-.partner-pill {
+/* ── Partner Card / Pill with Prominent Logo ───────────────── */
+.partner-card {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 24px 14px 14px;
+  padding: 10px 22px 10px 10px;
   border-radius: 60px;
   background: var(--white);
-  border: 1px solid var(--line);
+  border: 1px solid rgba(16, 18, 15, 0.12);
   cursor: default;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(16, 18, 15, 0.04);
 }
 
-.partner-pill:hover,
-.partner-pill.is-hovered {
-  border-color: rgba(214, 169, 73, 0.5);
+.partner-card:hover,
+.partner-card.is-hovered {
+  border-color: rgba(214, 169, 73, 0.6);
   box-shadow:
-    0 4px 20px rgba(16, 18, 15, 0.06),
-    0 0 0 3px rgba(214, 169, 73, 0.08);
-  transform: translateY(-3px);
+    0 8px 24px rgba(16, 18, 15, 0.08),
+    0 0 0 3px rgba(214, 169, 73, 0.12);
+  transform: translateY(-2px);
 }
 
-/* Monogram circle */
-.partner-pill-mono {
-  width: 40px;
-  height: 40px;
+/* Dedicated Logo Badge Box */
+.partner-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f6f6f0;
+  border: 1px solid rgba(16, 18, 15, 0.08);
+  padding: 5px 12px 5px 5px;
+  border-radius: 40px;
+  transition: all 0.3s ease;
+}
+
+.partner-card:hover .partner-logo-container {
+  background: #fdfaf0;
+  border-color: rgba(214, 169, 73, 0.3);
+}
+
+.partner-logo-badge {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(214, 169, 73, 0.14), rgba(214, 169, 73, 0.06));
-  border: 1px solid rgba(214, 169, 73, 0.22);
+  background: var(--ink);
+  color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: 0.02em;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
-.partner-pill:hover .partner-pill-mono {
+.partner-card:hover .partner-logo-badge {
   background: var(--accent);
-  color: var(--white);
-  border-color: var(--accent);
-  box-shadow: 0 4px 12px rgba(214, 169, 73, 0.3);
+  color: var(--ink);
+  transform: scale(1.05);
 }
 
-.partner-pill-name {
-  font-size: 14px;
+.partner-vector-icon {
+  flex-shrink: 0;
+}
+
+.partner-logo-mark {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  font-family: var(--font-manrope), sans-serif;
+  text-transform: uppercase;
+}
+
+/* Info Text Box */
+.partner-info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.partner-brand-name {
+  font-size: 13.5px;
   font-weight: 700;
   color: var(--ink);
-  transition: color 0.3s ease;
+  letter-spacing: -0.01em;
 }
 
-.partner-pill-domain {
+.partner-brand-domain {
   font-size: 11px;
   font-weight: 500;
   color: var(--muted);
-  padding-left: 12px;
-  border-left: 1px solid var(--line);
-  transition: all 0.3s ease;
-}
-
-.partner-pill:hover .partner-pill-domain {
-  color: var(--accent);
-  border-left-color: rgba(214, 169, 73, 0.3);
 }
 
 

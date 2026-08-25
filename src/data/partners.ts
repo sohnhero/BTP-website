@@ -1,10 +1,14 @@
+import React from "react";
+
 export interface Partner {
   id: string;
   name: string;
   domain: string;
-  logoText: string;       // SVG-text abbreviation for the logo
+  logoType: string;
+  iconType: "shield" | "building" | "cube" | "triangle" | "compass" | "zap" | "layers" | "badge" | "award" | "box";
+  colorAccent?: string;
   description: string;
-  yearsSince: number;     // Years of partnership
+  yearsSince: number;
   projectCount: number;
 }
 
@@ -13,7 +17,8 @@ export const partnersData: Partner[] = [
     id: "socotec",
     name: "SOCOTEC",
     domain: "Contrôle Technique & Qualité",
-    logoText: "SC",
+    logoType: "SOCOTEC",
+    iconType: "compass",
     description: "Contrôle technique, inspection et certification pour la conformité de nos ouvrages aux normes en vigueur.",
     yearsSince: 12,
     projectCount: 34,
@@ -21,8 +26,9 @@ export const partnersData: Partner[] = [
   {
     id: "lafarge-holcim",
     name: "LafargeHolcim",
-    domain: "Ciment & Béton Prêt à l'Emploi",
-    logoText: "LH",
+    domain: "Ciment & Béton Haute Performance",
+    logoType: "HOLCIM",
+    iconType: "cube",
     description: "Fourniture de béton haute performance et solutions cimentaires pour nos projets structurels les plus exigeants.",
     yearsSince: 15,
     projectCount: 48,
@@ -30,8 +36,9 @@ export const partnersData: Partner[] = [
   {
     id: "eiffage",
     name: "Eiffage Sénégal",
-    domain: "Construction & Infrastructures",
-    logoText: "EF",
+    domain: "Génie Civil & Infrastructures",
+    logoType: "EIFFAGE",
+    iconType: "building",
     description: "Partenariat stratégique en co-traitance sur les marchés d'infrastructures et de génie civil d'envergure.",
     yearsSince: 8,
     projectCount: 12,
@@ -39,8 +46,9 @@ export const partnersData: Partner[] = [
   {
     id: "bureau-veritas",
     name: "Bureau Veritas",
-    domain: "Certification & Inspection",
-    logoText: "BV",
+    domain: "Certification & Audit ISO",
+    logoType: "BUREAU VERITAS",
+    iconType: "shield",
     description: "Certification qualité ISO et audits de conformité structurelle pour garantir l'excellence de nos livrables.",
     yearsSince: 10,
     projectCount: 26,
@@ -48,8 +56,9 @@ export const partnersData: Partner[] = [
   {
     id: "saint-gobain",
     name: "Saint-Gobain",
-    domain: "Matériaux & Solutions",
-    logoText: "SG",
+    domain: "Matériaux & Solutions Façades",
+    logoType: "SAINT-GOBAIN",
+    iconType: "layers",
     description: "Approvisionnement en matériaux de construction premium : isolation, façades, et solutions intérieures haut de gamme.",
     yearsSince: 11,
     projectCount: 38,
@@ -57,8 +66,9 @@ export const partnersData: Partner[] = [
   {
     id: "schneider",
     name: "Schneider Electric",
-    domain: "Systèmes Électriques & Énergie",
-    logoText: "SE",
+    domain: "Énergie & Domotique Bâtiment",
+    logoType: "SCHNEIDER",
+    iconType: "zap",
     description: "Intégration de solutions électriques, domotique et gestion intelligente de l'énergie sur nos ouvrages tertiaires.",
     yearsSince: 9,
     projectCount: 22,
@@ -66,8 +76,9 @@ export const partnersData: Partner[] = [
   {
     id: "vinci",
     name: "Vinci Construction",
-    domain: "Bâtiment & Infrastructure",
-    logoText: "VC",
+    domain: "Bâtiment & Grands Travaux",
+    logoType: "VINCI",
+    iconType: "box",
     description: "Alliance sur les projets de grande envergure nécessitant une co-maîtrise d'œuvre et des moyens techniques exceptionnels.",
     yearsSince: 6,
     projectCount: 8,
@@ -75,8 +86,9 @@ export const partnersData: Partner[] = [
   {
     id: "apave",
     name: "APAVE",
-    domain: "Inspection Technique & Sécurité",
-    logoText: "AP",
+    domain: "Inspection Sécurité & HSE",
+    logoType: "APAVE",
+    iconType: "badge",
     description: "Vérifications techniques réglementaires, contrôles HSE et audits de sécurité sur l'ensemble de nos chantiers.",
     yearsSince: 14,
     projectCount: 42,
@@ -84,8 +96,9 @@ export const partnersData: Partner[] = [
   {
     id: "sika",
     name: "Sika",
-    domain: "Adjuvants & Étanchéité",
-    logoText: "SK",
+    domain: "Étanchéité & Adjuvants Béton",
+    logoType: "SIKA",
+    iconType: "triangle",
     description: "Solutions d'étanchéité, d'adjuvants béton et de collage structural pour les finitions et la durabilité des ouvrages.",
     yearsSince: 7,
     projectCount: 19,
@@ -93,8 +106,9 @@ export const partnersData: Partner[] = [
   {
     id: "cse",
     name: "CSE Ingénierie",
-    domain: "Bureau d'Études Techniques",
-    logoText: "CS",
+    domain: "Bureau d'Études Structures & Fluides",
+    logoType: "CSE ING",
+    iconType: "award",
     description: "Études techniques CVC, fluides et électricité pour la conception de bâtiments intelligents et performants.",
     yearsSince: 5,
     projectCount: 14,
