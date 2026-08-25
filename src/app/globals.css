@@ -3681,6 +3681,17 @@ button {
     z-index: 60;
   }
 
+  /* Prevent iOS/Mobile Safari auto-zoom on form focus */
+  input,
+  textarea,
+  select,
+  .input-field,
+  .select-field,
+  .textarea-field,
+  .newsletter-input {
+    font-size: 16px !important;
+  }
+
   .header--bubble {
     top: 8px;
     width: calc(100% - 16px);
