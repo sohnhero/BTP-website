@@ -20,31 +20,31 @@ import { useReveal } from "@/hooks/useReveal";
 const PartnerIcon: React.FC<{ type: Partner["iconType"] }> = ({ type }) => {
   switch (type) {
     case "compass":
-      return <Compass size={20} className="partner-vector-icon" />;
+      return <Compass size={24} className="partner-vector-icon" />;
     case "cube":
-      return <Hexagon size={20} className="partner-vector-icon" />;
+      return <Hexagon size={24} className="partner-vector-icon" />;
     case "building":
-      return <Building2 size={20} className="partner-vector-icon" />;
+      return <Building2 size={24} className="partner-vector-icon" />;
     case "shield":
-      return <ShieldCheck size={20} className="partner-vector-icon" />;
+      return <ShieldCheck size={24} className="partner-vector-icon" />;
     case "layers":
-      return <Layers size={20} className="partner-vector-icon" />;
+      return <Layers size={24} className="partner-vector-icon" />;
     case "zap":
-      return <Zap size={20} className="partner-vector-icon" />;
+      return <Zap size={24} className="partner-vector-icon" />;
     case "box":
-      return <Box size={20} className="partner-vector-icon" />;
+      return <Box size={24} className="partner-vector-icon" />;
     case "badge":
-      return <Award size={20} className="partner-vector-icon" />;
+      return <Award size={24} className="partner-vector-icon" />;
     case "triangle":
-      return <Triangle size={20} className="partner-vector-icon" />;
+      return <Triangle size={24} className="partner-vector-icon" />;
     case "award":
-      return <Sparkles size={20} className="partner-vector-icon" />;
+      return <Sparkles size={24} className="partner-vector-icon" />;
     default:
-      return <Building2 size={20} className="partner-vector-icon" />;
+      return <Building2 size={24} className="partner-vector-icon" />;
   }
 };
 
-/* ─── Single Partner Card / Pill ─────────────────────────── */
+/* ─── Single Partner Card / Pill (Taller & High Contrast) ── */
 const PartnerCard: React.FC<{ partner: Partner }> = ({ partner }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -54,7 +54,7 @@ const PartnerCard: React.FC<{ partner: Partner }> = ({ partner }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Prominent Logo Box */}
+      {/* Prominent Large Logo Box */}
       <div className="partner-logo-container">
         <div className="partner-logo-badge">
           <PartnerIcon type={partner.iconType} />

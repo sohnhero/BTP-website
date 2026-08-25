@@ -3203,8 +3203,9 @@ button {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px 22px 10px 10px;
+  gap: 18px;
+  padding: 14px 28px 14px 14px;
+  min-height: 82px;
   border-radius: 60px;
   background: var(--white);
   border: 1px solid rgba(16, 18, 15, 0.12);
@@ -3212,38 +3213,38 @@ button {
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(16, 18, 15, 0.04);
+  box-shadow: 0 4px 20px rgba(16, 18, 15, 0.05);
 }
 
 .partner-card:hover,
 .partner-card.is-hovered {
   border-color: rgba(214, 169, 73, 0.6);
   box-shadow:
-    0 8px 24px rgba(16, 18, 15, 0.08),
-    0 0 0 3px rgba(214, 169, 73, 0.12);
-  transform: translateY(-2px);
+    0 10px 30px rgba(16, 18, 15, 0.1),
+    0 0 0 3px rgba(214, 169, 73, 0.14);
+  transform: translateY(-3px);
 }
 
-/* Dedicated Logo Badge Box */
+/* Dedicated Large Logo Badge Box */
 .partner-logo-container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   background: #f6f6f0;
-  border: 1px solid rgba(16, 18, 15, 0.08);
-  padding: 5px 12px 5px 5px;
+  border: 1px solid rgba(16, 18, 15, 0.1);
+  padding: 6px 18px 6px 6px;
   border-radius: 40px;
   transition: all 0.3s ease;
 }
 
 .partner-card:hover .partner-logo-container {
   background: #fdfaf0;
-  border-color: rgba(214, 169, 73, 0.3);
+  border-color: rgba(214, 169, 73, 0.4);
 }
 
 .partner-logo-badge {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: var(--ink);
   color: var(--accent);
@@ -3252,13 +3253,13 @@ button {
   justify-content: center;
   flex-shrink: 0;
   transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
 .partner-card:hover .partner-logo-badge {
   background: var(--accent);
   color: var(--ink);
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 .partner-vector-icon {
@@ -3266,9 +3267,9 @@ button {
 }
 
 .partner-logo-mark {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--ink);
   font-family: var(--font-manrope), sans-serif;
   text-transform: uppercase;
@@ -3278,18 +3279,18 @@ button {
 .partner-info-box {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .partner-brand-name {
-  font-size: 13.5px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 800;
   color: var(--ink);
   letter-spacing: -0.01em;
 }
 
 .partner-brand-domain {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--muted);
 }
@@ -3919,17 +3920,32 @@ button {
     right: 14px;
   }
 
-  .partner-pill {
-    padding: 8px 16px 8px 10px;
-    gap: 10px;
+  .partner-card {
+    min-height: 74px;
+    padding: 10px 20px 10px 10px;
+    gap: 14px;
   }
 
-  .partner-name {
-    font-size: 12px;
+  .partner-logo-container {
+    gap: 8px;
+    padding: 4px 12px 4px 4px;
   }
 
-  .partner-domain {
-    font-size: 10px;
+  .partner-logo-badge {
+    width: 42px;
+    height: 42px;
+  }
+
+  .partner-logo-mark {
+    font-size: 11.5px;
+  }
+
+  .partner-brand-name {
+    font-size: 13.5px;
+  }
+
+  .partner-brand-domain {
+    font-size: 10.5px;
   }
 
   .testimonial {
