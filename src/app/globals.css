@@ -347,12 +347,154 @@ button {
 
 .menu-toggle {
   display: none;
-  background: transparent;
-  border: 0;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(16, 18, 15, 0.06);
+  border: 1px solid rgba(16, 18, 15, 0.12);
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.mobile-menu {
-  display: none;
+.menu-toggle:hover,
+.menu-toggle.is-active {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   MINIMALIST LIGHT MODE MOBILE NAVIGATION
+   ══════════════════════════════════════════════════════════════ */
+.minimal-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 0.3s;
+}
+
+.minimal-mobile-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.minimal-mobile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 20px 28px 36px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Header */
+.minimal-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(16, 18, 15, 0.08);
+}
+
+.minimal-close-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(16, 18, 15, 0.05);
+  border: 1px solid rgba(16, 18, 15, 0.1);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.minimal-close-btn:hover {
+  background: var(--ink);
+  color: var(--white);
+  transform: rotate(90deg);
+}
+
+/* Clean Airy Nav */
+.minimal-mobile-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 36px 0;
+  flex: 1;
+}
+
+.minimal-nav-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-playfair), "Playfair Display", serif;
+  font-size: clamp(26px, 7vw, 36px);
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  width: fit-content;
+}
+
+.minimal-nav-item:hover,
+.minimal-nav-item:active {
+  color: var(--accent);
+  transform: translateX(8px);
+}
+
+/* Footer CTA */
+.minimal-mobile-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(16, 18, 15, 0.08);
+}
+
+.minimal-drawer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 50px;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 13.5px;
+  font-weight: 700;
+  border-radius: 40px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(16, 18, 15, 0.12);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.minimal-drawer-btn:hover {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.minimal-drawer-brand {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  letter-spacing: 0.05em;
+  font-weight: 500;
 }
 
 /* Hero */
@@ -3472,34 +3614,6 @@ button {
   .menu-toggle {
     display: flex;
     z-index: 60;
-  }
-
-  .mobile-menu {
-    position: fixed;
-    inset: 0;
-    z-index: 55;
-    background: rgba(245, 245, 240, 0.98);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 22px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .mobile-menu.open {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .mobile-menu a:not(.btn) {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--ink);
   }
 
   .header--bubble {

@@ -12,7 +12,6 @@ export const Header: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    // Force page reload to start at top so full header is always shown on refresh
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
@@ -28,57 +27,98 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => {
-    const nextState = !menuOpen;
-    setMenuOpen(nextState);
-    if (nextState) {
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
       document.body.classList.add("menu-open");
     } else {
+      document.body.style.overflow = "";
       document.body.classList.remove("menu-open");
     }
-  };
+    return () => {
+      document.body.style.overflow = "";
+      document.body.classList.remove("menu-open");
+    };
+  }, [menuOpen]);
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-    document.body.classList.remove("menu-open");
-  };
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className={`site-header ${scrolled ? "header--bubble" : ""}`} id="top">
-      <BrandLogo />
+    <>
+      <header className={`site-header ${scrolled && !menuOpen ? "header--bubble" : ""}`} id="top">
+        <BrandLogo />
 
-      <nav className="desktop-nav" aria-label="Navigation principale">
-        {navItems.map((item) => (
-          <Link key={item.href} href={item.href}>
-            {item.label}
-          </Link>
-        ))}
-      </nav>
+        <nav className="desktop-nav" aria-label="Navigation principale">
+          {navItems.map((item) => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
 
-      <Button variant="dark" href="#contact" className="desktop-cta">
-        Démarrer un projet
-        <ArrowUpRight size={16} />
-      </Button>
-
-      <button
-        className="menu-toggle"
-        onClick={toggleMenu}
-        aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-        aria-expanded={menuOpen}
-      >
-        {menuOpen ? <X size={20} /> : <Menu size={20} />}
-      </button>
-
-      <div className={`mobile-menu ${menuOpen ? "open" : ""}`} aria-hidden={!menuOpen}>
-        {navItems.map((item) => (
-          <Link key={item.href} href={item.href} onClick={closeMenu}>
-            {item.label}
-          </Link>
-        ))}
-        <Button variant="dark" href="#contact" onClick={closeMenu}>
+        <Button variant="dark" href="#contact" className="desktop-cta">
           Démarrer un projet
+          <ArrowUpRight size={16} />
         </Button>
+
+        <button
+          className={`menu-toggle ${menuOpen ? "is-active" : ""}`}
+          onClick={toggleMenu}
+          aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-expanded={menuOpen}
+        >
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </header>
+
+      {/* Minimalist Light Mode Fullscreen Mobile Navigation */}
+      <div
+        className={`minimal-mobile-overlay ${menuOpen ? "is-open" : ""}`}
+        aria-hidden={!menuOpen}
+      >
+        <div className="minimal-mobile-container">
+          {/* Top Bar */}
+          <div className="minimal-mobile-header">
+            <BrandLogo />
+            <button
+              className="minimal-close-btn"
+              onClick={closeMenu}
+              aria-label="Fermer le menu"
+            >
+              <X size={20} />
+            </button>
+          </div>
+
+          {/* Clean Airy Nav Links */}
+          <nav className="minimal-mobile-nav" aria-label="Navigation mobile">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="minimal-nav-item"
+                onClick={closeMenu}
+              >
+                <span>{item.label}</span>
+              </Link>
+            ))}
+          </nav>
+
+          {/* Minimalist Bottom CTA */}
+          <div className="minimal-mobile-footer">
+            <Link
+              href="#contact"
+              className="minimal-drawer-btn"
+              onClick={closeMenu}
+            >
+              <span>Démarrer un projet</span>
+              <ArrowUpRight size={16} />
+            </Link>
+            <span className="minimal-drawer-brand">FIDÈLE SARL • BTP & Ingénierie</span>
+          </div>
+        </div>
       </div>
-    </header>
+    </>
   );
 };
