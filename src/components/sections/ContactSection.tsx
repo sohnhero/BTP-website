@@ -28,10 +28,10 @@ export const ContactSection: React.FC = () => {
   return (
     <section className="contact-hybrid-section section-pad" id="contact">
       <div ref={ref} className={`contact-hybrid-container ${revealClass}`}>
-        {/* Top Header Row with 3-Way Segmented Switcher */}
-        <div className="contact-hybrid-header">
-          <div className="contact-heading-left">
-            <span className="overline">Contact</span>
+        {/* Section Heading harmonized with the entire site */}
+        <div className="section-heading contact-heading-row">
+          <div className="heading-left">
+            <span className="overline">Contact & Partenariat</span>
             <h2>
               {mode === "general" && (
                 <>
@@ -54,32 +54,43 @@ export const ContactSection: React.FC = () => {
             </h2>
           </div>
 
-          {/* Luxury 3-Way Segmented Switcher */}
-          <div className="segmented-switcher segmented-switcher--three">
-            <button
-              type="button"
-              className={`segmented-btn ${mode === "general" ? "active" : ""}`}
-              onClick={() => setMode("general")}
-            >
-              <MessageSquare size={16} />
-              <span>Contact Général</span>
-            </button>
-            <button
-              type="button"
-              className={`segmented-btn ${mode === "partnership" ? "active" : ""}`}
-              onClick={() => setMode("partnership")}
-            >
-              <Handshake size={16} />
-              <span>Partenariat</span>
-            </button>
-            <button
-              type="button"
-              className={`segmented-btn ${mode === "career" ? "active" : ""}`}
-              onClick={() => setMode("career")}
-            >
-              <Briefcase size={16} />
-              <span>Demande d'Emploi</span>
-            </button>
+          <div className="heading-right">
+            <p>
+              {mode === "general" &&
+                "Une question, une étude de faisabilité ou un devis personnalisé ? Nos ingénieurs sont à votre disposition pour vous répondre sous 24h."}
+              {mode === "partnership" &&
+                "Fournisseurs, sous-traitants, bureaux d’études : unissons nos expertises pour concevoir et exécuter des projets d'envergure."}
+              {mode === "career" &&
+                "Ingénieurs, conducteurs de travaux, techniciens : donnez une nouvelle dimension à votre carrière au sein d'une entreprise innovante."}
+            </p>
+
+            {/* Luxury 3-Way Segmented Switcher */}
+            <div className="segmented-switcher segmented-switcher--three">
+              <button
+                type="button"
+                className={`segmented-btn ${mode === "general" ? "active" : ""}`}
+                onClick={() => setMode("general")}
+              >
+                <MessageSquare size={15} />
+                <span>Contact Général</span>
+              </button>
+              <button
+                type="button"
+                className={`segmented-btn ${mode === "partnership" ? "active" : ""}`}
+                onClick={() => setMode("partnership")}
+              >
+                <Handshake size={15} />
+                <span>Partenariat</span>
+              </button>
+              <button
+                type="button"
+                className={`segmented-btn ${mode === "career" ? "active" : ""}`}
+                onClick={() => setMode("career")}
+              >
+                <Briefcase size={15} />
+                <span>Demande d'Emploi</span>
+              </button>
+            </div>
           </div>
         </div>
 

@@ -19,8 +19,14 @@ export const Header: React.FC = () => {
     window.scrollTo(0, 0);
 
     const handleScroll = () => {
-      // Transition to bubble as soon as user scrolls past 25px
-      setScrolled(window.scrollY > 25);
+      const y = window.scrollY;
+
+      // Hysteresis threshold: triggers bubble at >32px, reverts at <14px
+      setScrolled((prev) => {
+        if (!prev && y > 32) return true;
+        if (prev && y < 14) return false;
+        return prev;
+      });
 
       // Robust ScrollSpy to track active section
       const scrollPosition = window.scrollY + 160;

@@ -26,6 +26,25 @@ html {
   max-width: 100vw;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  label,
+  [role="button"],
+  .btn,
+  .service-card,
+  .project-card,
+  .team-accordion-card,
+  .partner-card {
+    cursor: none !important;
+  }
+}
+
 section[id],
 .section-pad[id] {
   scroll-margin-top: 85px;
@@ -89,10 +108,10 @@ button {
   gap: 28px;
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
-  width: auto;
-  transform: none;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 100%;
   background: rgba(245, 245, 240, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -100,48 +119,73 @@ button {
   border-radius: 0;
   margin: 0;
   border: 1px solid transparent;
-  box-shadow: none;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  will-change: width, height, top, border-radius, background, box-shadow, padding;
   transition:
-    all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    top 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    width 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    padding 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    border-radius 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.45s ease,
+    background-color 0.45s ease,
+    box-shadow 0.45s ease,
+    backdrop-filter 0.45s ease;
 }
 
-/* ── Bubble State (scrolled) ────────────────── */
+/* ── Bubble State (scrolled — Ultra Liquid Glass) ── */
 .header--bubble {
-  top: 16px;
-  left: 50%;
-  right: auto;
-  transform: translateX(-50%);
+  top: 14px;
   width: min(960px, calc(100% - 48px));
-  height: 58px;
+  height: 56px;
   padding: 0 8px 0 14px;
   border-radius: 60px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(16, 18, 15, 0.1);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.76) 0%,
+    rgba(255, 255, 255, 0.54) 50%,
+    rgba(255, 255, 255, 0.68) 100%
+  );
+  backdrop-filter: blur(28px) saturate(190%) contrast(104%) brightness(105%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%) contrast(104%) brightness(105%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   box-shadow:
-    0 8px 32px rgba(16, 18, 15, 0.08),
-    0 2px 8px rgba(16, 18, 15, 0.04);
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.4),
+    0 18px 40px -8px rgba(16, 18, 15, 0.13),
+    0 4px 14px -2px rgba(16, 18, 15, 0.06),
+    0 0 0 1px rgba(16, 18, 15, 0.05);
+}
+
+.header--bubble::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 30% -30%,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.15) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Push nav links to center, logo far-left, CTA far-right */
 .header--bubble .desktop-nav {
   flex: 1;
   justify-content: center;
+  gap: 22px;
 }
 
 .header--bubble .desktop-cta {
   height: 38px;
   min-height: 38px;
   padding: 0 18px;
-  font-size: 11px;
+  font-size: 11.5px;
   border-radius: 30px;
   transform: none !important;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
 }
 
 .header--bubble .desktop-cta:hover {
@@ -158,16 +202,22 @@ button {
 
 .desktop-cta {
   transition:
-    height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    padding 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    min-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    padding 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     font-size 0.4s ease,
-    border-radius 0.4s ease;
+    border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .header--bubble .brand-text {
   opacity: 0;
   max-width: 0;
-  overflow: hidden;
+  transform: translateX(-6px);
+  pointer-events: none;
 }
 
 .brand {
@@ -187,7 +237,10 @@ button {
   color: var(--white);
   font-weight: 800;
   font-size: 18px;
-  transition: border-radius 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .header--bubble .brand-mark {
@@ -198,12 +251,15 @@ button {
   display: flex;
   flex-direction: column;
   line-height: 1;
-  gap: 5px;
-  max-width: 120px;
+  gap: 4px;
+  max-width: 140px;
   opacity: 1;
+  overflow: hidden;
+  white-space: nowrap;
   transition:
-    opacity 0.3s ease,
-    max-width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .brand-text strong {
@@ -221,6 +277,7 @@ button {
   display: flex;
   align-items: center;
   gap: 34px;
+  transition: gap 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .desktop-nav a {
@@ -1638,18 +1695,32 @@ button {
   width: 100%;
 }
 
-.contact-hybrid-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
+.contact-heading-row {
   margin-bottom: 48px;
-  flex-wrap: wrap;
 }
 
-.contact-heading-left h2 {
-  font-size: clamp(34px, 4vw, 52px);
-  margin-top: 8px;
+.contact-heading-row .heading-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+  max-width: 540px;
+}
+
+.contact-heading-row .heading-right p {
+  text-align: right;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+@media (max-width: 990px) {
+  .contact-heading-row .heading-right {
+    align-items: flex-start;
+  }
+  .contact-heading-row .heading-right p {
+    text-align: left;
+  }
 }
 
 /* Luxury Segmented Switcher */
@@ -4244,5 +4315,177 @@ button {
   .reveal {
     opacity: 1 !important;
     transform: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BTP ARCHITECTURAL PRECISION CURSOR (0ms Latency, Hardware LERP)
+   ══════════════════════════════════════════════════════════════ */
+.btp-custom-cursor-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+/* 1. Precision Central Laser Dot (Instant 0ms update) */
+.btp-cursor-dot {
+  position: fixed;
+  top: -4px;
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(214, 169, 73, 0.9);
+  pointer-events: none;
+  will-change: transform;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.25s ease;
+}
+
+/* 2. Surveyor Precision Reticle Ring (Lerp Interpolation) */
+.btp-cursor-reticle {
+  position: fixed;
+  top: -18px;
+  left: -18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(16, 18, 15, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  will-change: transform, width, height, border-color, background-color;
+  transform: translate3d(-100px, -100px, 0);
+  transition:
+    width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    left 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    opacity 0.25s ease;
+}
+
+/* Micro Crosshair Ticks (Architect / Surveyor Markings) */
+.reticle-tick {
+  position: absolute;
+  background: var(--accent);
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.reticle-tick--top {
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5px;
+  height: 4px;
+}
+
+.reticle-tick--bottom {
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5px;
+  height: 4px;
+}
+
+.reticle-tick--left {
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1.5px;
+}
+
+.reticle-tick--right {
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 1.5px;
+}
+
+.reticle-label {
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-manrope), sans-serif;
+  user-select: none;
+}
+
+/* ── Cursor States ────────────────────────────── */
+
+/* State: Hover Interactive Element */
+.cursor--hover .btp-cursor-reticle {
+  top: -24px;
+  left: -24px;
+  width: 48px;
+  height: 48px;
+  border-color: var(--accent);
+  background: rgba(214, 169, 73, 0.12);
+}
+
+.cursor--hover .btp-cursor-dot {
+  background: var(--ink);
+  box-shadow: 0 0 8px rgba(16, 18, 15, 0.4);
+  transform: scale(0.85);
+}
+
+.cursor--hover .reticle-tick {
+  opacity: 1;
+}
+
+/* State: Hover Project Card (View Mode) */
+.cursor--view .btp-cursor-reticle {
+  top: -36px;
+  left: -36px;
+  width: 72px;
+  height: 72px;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.cursor--view .reticle-label {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cursor--view .btp-cursor-dot {
+  opacity: 0;
+}
+
+.cursor--view .reticle-tick {
+  opacity: 0;
+}
+
+/* Click animation pulse */
+.btp-cursor-reticle.is-clicked {
+  transform: scale(0.82) !important;
+}
+
+/* State: Hidden (when mouse leaves window) */
+.cursor--hidden .btp-cursor-dot,
+.cursor--hidden .btp-cursor-reticle {
+  opacity: 0;
+}
+
+/* Completely disable custom cursor on touchscreens & mobile devices */
+@media (pointer: coarse), (hover: none) {
+  .btp-custom-cursor-root {
+    display: none !important;
   }
 }
