@@ -120,9 +120,9 @@ export const ContactSection: React.FC = () => {
                     <PhoneCall size={14} />
                     <span>+221 33 800 00 00</span>
                   </a>
-                  <a href="mailto:contact@sohnbuild.sn" className="contact-chip">
+                  <a href="mailto:contact@fidele.sn" className="contact-chip">
                     <Mail size={14} />
-                    <span>contact@sohnbuild.sn</span>
+                    <span>contact@fidele.sn</span>
                   </a>
                 </div>
               </>
@@ -168,9 +168,9 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 <div className="info-direct-contacts">
-                  <a href="mailto:recrutement@sohnbuild.sn" className="contact-chip">
+                  <a href="mailto:recrutement@fidele.sn" className="contact-chip">
                     <Mail size={14} />
-                    <span>recrutement@sohnbuild.sn</span>
+                    <span>recrutement@fidele.sn</span>
                   </a>
                   <div className="contact-chip">
                     <MapPin size={14} />

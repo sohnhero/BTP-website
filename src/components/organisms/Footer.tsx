@@ -75,7 +75,7 @@ export const Footer: React.FC = () => {
               <span className="footer-col-header">Explorer</span>
               <ul>
                 <li><Link href="#projects">Projets récents</Link></li>
-                <li><Link href="#about">À propos de SOHN</Link></li>
+                <li><Link href="#about">À propos de FIDÈLE</Link></li>
                 <li><Link href="#process">Notre méthode</Link></li>
                 <li><Link href="#team">Notre équipe</Link></li>
               </ul>
@@ -85,7 +85,7 @@ export const Footer: React.FC = () => {
               <span className="footer-col-header">Aide & Contact</span>
               <ul>
                 <li><Link href="#contact">Formulaire projet</Link></li>
-                <li><a href="mailto:contact@sohnbuild.sn">contact@sohnbuild.sn</a></li>
+                <li><a href="mailto:contact@fidele.sn">contact@fidele.sn</a></li>
                 <li><a href="tel:+221338000000">+221 33 800 00 00</a></li>
                 <li><span>Dakar, Sénégal</span></li>
               </ul>
@@ -95,13 +95,13 @@ export const Footer: React.FC = () => {
 
         {/* Huge Watermark Typography Background */}
         <div className="footer-watermark" aria-hidden="true">
-          SOHN BUILD
+          FIDÈLE SARL
         </div>
 
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <span className="copyright">
-            © {currentYear} SOHN BUILD BTP & Ingénierie. Tous droits réservés.
+            © {currentYear} FIDÈLE SARL BTP & Ingénierie. Tous droits réservés.
           </span>
 
           <div className="legal-links">

@@ -29,9 +29,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "SOHN BUILD — Construire l’excellence",
+  title: "FIDÈLE SARL — Construire l’excellence",
   description:
-    "SOHN BUILD — Construction, rénovation et ingénierie avec une exigence premium. Nous concevons et réalisons des ouvrages durables et performants.",
+    "FIDÈLE SARL — Construction, rénovation et ingénierie avec une exigence premium. Nous concevons et réalisons des ouvrages durables et performants.",
   keywords: [
     "BTP",
     "Construction",
@@ -40,23 +40,23 @@ export const metadata: Metadata = {
     "Dakar",
     "Sénégal",
     "Génie civil",
-    "SOHN BUILD",
+    "FIDÈLE SARL",
   ],
-  authors: [{ name: "SOHN BUILD" }],
+  authors: [{ name: "FIDÈLE SARL" }],
   openGraph: {
-    title: "SOHN BUILD — Construire l’excellence",
+    title: "FIDÈLE SARL — Construire l’excellence",
     description:
-      "SOHN BUILD — Construction, rénovation et ingénierie avec une exigence premium.",
-    url: "https://sohnbuild.sn",
-    siteName: "SOHN BUILD",
+      "FIDÈLE SARL — Construction, rénovation et ingénierie avec une exigence premium.",
+    url: "https://fidele.sn",
+    siteName: "FIDÈLE SARL",
     locale: "fr_FR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SOHN BUILD — Construire l’excellence",
+    title: "FIDÈLE SARL — Construire l’excellence",
     description:
-      "SOHN BUILD — Construction, rénovation et ingénierie avec une exigence premium.",
+      "FIDÈLE SARL — Construction, rénovation et ingénierie avec une exigence premium.",
   },
   robots: {
     index: true,

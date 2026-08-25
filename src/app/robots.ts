@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://sohnbuild.sn/sitemap.xml",
+    sitemap: "https://fidele.sn/sitemap.xml",
   };
 }

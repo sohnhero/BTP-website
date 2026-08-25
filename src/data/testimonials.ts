@@ -33,7 +33,7 @@ export const testimonialsData: TestimonialItem[] = [
   {
     id: "3",
     badgeText: "Ingénierie & Structures Complexes",
-    quote: "Collaborer avec SOHN BUILD sur des ouvrages complexes est un vrai plaisir d'ingénieur. Rigueur technique exemplaire, conformité Eurocodes et présence réactive sur le terrain.",
+    quote: "Collaborer avec FIDÈLE SARL sur des ouvrages complexes est un vrai plaisir d'ingénieur. Rigueur technique exemplaire, conformité Eurocodes et présence réactive sur le terrain.",
     rating: 5,
     authorName: "Cabinet ArchiTech Studio",
     authorRole: "Architectes & Urbanistes — Paris / Dakar",

@@ -10,11 +10,11 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ isFooter = false }) => {
     <Link
       className={`brand ${isFooter ? "brand-footer" : ""}`}
       href="#top"
-      aria-label="SOHN BUILD - Accueil"
+      aria-label="FIDÈLE SARL - Accueil"
     >
-      <span className="brand-mark">S</span>
+      <span className="brand-mark">F</span>
       <span className="brand-text">
-        <strong>SOHN BUILD</strong>
+        <strong>FIDÈLE SARL</strong>
         <small>BTP & Ingénierie</small>
       </span>
     </Link>

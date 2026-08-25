@@ -1,20 +1,14 @@
-# NOVA BTP — Site vitrine premium
+# FIDÈLE SARL — Site vitrine premium BTP & Ingénierie
 
 ## Lancer le site
-Ouvrez simplement `index.html` dans votre navigateur.
+```bash
+npm run dev
+```
 
-Pour un meilleur confort en développement, vous pouvez lancer un petit serveur local :
-- VS Code : extension Live Server
-- Python : `python -m http.server 8000`
+## Production Build
+```bash
+npm run build
+```
 
-## Fichiers
-- `index.html` : structure complète
-- `styles.css` : design responsive
-- `script.js` : animations, menu mobile, compteurs, formulaire de démonstration
-
-## À personnaliser
-- Nom / logo de l'entreprise
-- Téléphone, e-mail, adresse
-- Photos et réalisations
-- Textes et chiffres clés
-- Connexion réelle du formulaire à un backend/API
+## Description
+Site vitrine premium pour **FIDÈLE SARL**, entreprise spécialisée dans la construction, le génie civil, la rénovation et l'ingénierie BTP à Dakar, Sénégal.
