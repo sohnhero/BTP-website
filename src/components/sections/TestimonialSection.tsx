@@ -6,9 +6,6 @@ import {
   HardHat,
   ShieldCheck,
   Star,
-  Hammer,
-  Wrench,
-  Ruler,
   ChevronLeft,
   ChevronRight,
   Quote,
@@ -19,6 +16,7 @@ export const TestimonialSection: React.FC = () => {
   const { ref, revealClass } = useReveal({ variant: "scale" });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
@@ -64,37 +62,34 @@ export const TestimonialSection: React.FC = () => {
     }
   };
 
-  // Continuous auto-play interval
+  // Continuous auto-play interval with pause on hover
   useEffect(() => {
+    if (isPaused) return;
     const interval = setInterval(() => {
       nextSlide();
     }, 5600);
     return () => clearInterval(interval);
-  }, [nextSlide]);
+  }, [nextSlide, isPaused]);
 
   return (
-    <section ref={ref} className={`testimonial ${revealClass}`}>
+    <section ref={ref} className={`testimonial ${revealClass}`} id="temoignages">
       {/* High-Definition Masonry Brick Background */}
       <div className="testimonial-blueprint-bg" aria-hidden="true" />
-
-      {/* 3D Opaque Floating BTP Badges in Empty Side Spaces */}
-      <div className="btp-watermark-icon watermark-top-left" aria-hidden="true">
-        <HardHat size={32} strokeWidth={1.6} />
-      </div>
-
-      <div className="btp-watermark-icon watermark-bottom-left" aria-hidden="true">
-        <Hammer size={30} strokeWidth={1.6} />
-      </div>
-
-      <div className="btp-watermark-icon watermark-top-right" aria-hidden="true">
-        <Ruler size={30} strokeWidth={1.6} />
-      </div>
-
-      <div className="btp-watermark-icon watermark-bottom-right" aria-hidden="true">
-        <Wrench size={30} strokeWidth={1.6} />
-      </div>
+      <div className="testimonial-edge-vignette" aria-hidden="true" />
 
       <div className="testimonial-content">
+        {/* Harmonized High-Contrast Section Header */}
+        <div className="testimonial-header-wrap">
+          <div className="testimonial-overline-badge">
+            <span className="overline-dot" />
+            <span>Témoignages Clients</span>
+          </div>
+          <h2 className="testimonial-heading-title">
+            La satisfaction de nos partenaires,<br />
+            <em>notre engagement au quotidien.</em>
+          </h2>
+        </div>
+
         {/* Navigation Arrow Left (Desktop) */}
         <button
           type="button"
@@ -118,6 +113,8 @@ export const TestimonialSection: React.FC = () => {
         {/* Central Frosted Glass Architectural Card with Touch Swipe */}
         <div
           className="testimonial-glass-card"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
