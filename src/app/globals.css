@@ -2706,7 +2706,72 @@ button {
   justify-content: space-between;
   gap: 32px;
   margin-bottom: 40px;
-  flex-wrap: wrap;
+  position: relative;
+}
+
+/* 3D Realistic Industrial Safety Helmet in Center Empty Space */
+.team-helmet-container {
+  position: absolute;
+  left: 55%;
+  bottom: -4px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 3;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.team-helmet-media {
+  position: relative;
+  width: 280px;
+  height: auto;
+  filter: drop-shadow(0 20px 32px rgba(16, 18, 15, 0.22));
+  animation: helmetSway 5.5s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes helmetSway {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(1deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.team-helmet-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 1350px) {
+  .team-helmet-container {
+    left: 54%;
+  }
+  .team-helmet-media {
+    width: 235px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .team-helmet-container {
+    left: 52%;
+  }
+  .team-helmet-media {
+    width: 190px;
+  }
+}
+
+@media (max-width: 950px) {
+  .team-helmet-container {
+    display: none;
+  }
 }
 
 .heading-right {

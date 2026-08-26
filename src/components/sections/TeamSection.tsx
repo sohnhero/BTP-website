@@ -107,6 +107,20 @@ export const TeamSection: React.FC = () => {
           </h2>
         </div>
 
+        {/* 3D Realistic Industrial Safety Helmet in Center Empty Space */}
+        <div className="team-helmet-container" aria-hidden="true">
+          <div className="team-helmet-media">
+            <Image
+              src="/images/Untitled - August 25, 2026 at 21.20.10 (1).png"
+              alt="Casque de chantier BTP de sécurité"
+              width={400}
+              height={270}
+              priority
+              className="team-helmet-img"
+            />
+          </div>
+        </div>
+
         <div className="heading-right">
           <p>
             Des ingénieurs, architectes et conducteurs de travaux unis par la même exigence de précision, d'innovation et de résultat.
