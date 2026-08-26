@@ -90,96 +90,99 @@ export const TestimonialSection: React.FC = () => {
           </h2>
         </div>
 
-        {/* Navigation Arrow Left (Desktop) */}
-        <button
-          type="button"
-          className="slider-nav-btn nav-btn-left"
-          onClick={prevSlide}
-          aria-label="Témoignage précédent"
-        >
-          <ChevronLeft size={20} />
-        </button>
+        {/* Carousel Wrapper: Exactly wraps the card so arrows center perfectly relative to the card */}
+        <div className="testimonial-carousel-wrapper">
+          {/* Navigation Arrow Left (Desktop) */}
+          <button
+            type="button"
+            className="slider-nav-btn nav-btn-left"
+            onClick={prevSlide}
+            aria-label="Témoignage précédent"
+          >
+            <ChevronLeft size={20} />
+          </button>
 
-        {/* Navigation Arrow Right (Desktop) */}
-        <button
-          type="button"
-          className="slider-nav-btn nav-btn-right"
-          onClick={nextSlide}
-          aria-label="Témoignage suivant"
-        >
-          <ChevronRight size={20} />
-        </button>
+          {/* Central Frosted Glass Architectural Card with Touch Swipe */}
+          <div
+            className="testimonial-glass-card"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div className={`testimonial-card-slide ${isFading ? "is-fading-out" : "is-fading-in"}`}>
+              {/* Top Badge & Rating Row */}
+              <div className="testimonial-top-row">
+                <div className="testimonial-btp-badge">
+                  <HardHat size={13} />
+                  <span>{current.badgeText}</span>
+                </div>
 
-        {/* Central Frosted Glass Architectural Card with Touch Swipe */}
-        <div
-          className="testimonial-glass-card"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-        >
-          <div className={`testimonial-card-slide ${isFading ? "is-fading-out" : "is-fading-in"}`}>
-            {/* Top Badge & Rating Row */}
-            <div className="testimonial-top-row">
-              <div className="testimonial-btp-badge">
-                <HardHat size={13} />
-                <span>{current.badgeText}</span>
-              </div>
-
-              <div className="testimonial-rating">
-                {[...Array(current.rating)].map((_, i) => (
-                  <Star key={i} size={13} fill="var(--accent)" color="var(--accent)" />
-                ))}
-              </div>
-            </div>
-
-            {/* Quote with Floating Mark */}
-            <div className="quote-mark">
-              <Quote size={22} className="quote-icon" />
-            </div>
-
-            <blockquote>“{current.quote}”</blockquote>
-
-            {/* Author and Trust Badge Footer */}
-            <div className="testimonial-footer">
-              <div className="testimonial-author-wrapper">
-                <img
-                  src={current.avatarUrl}
-                  alt={current.authorName}
-                  className="testimonial-avatar"
-                />
-                <div className="testimonial-author">
-                  <strong>{current.authorName}</strong>
-                  <span>{current.authorRole}</span>
+                <div className="testimonial-rating">
+                  {[...Array(current.rating)].map((_, i) => (
+                    <Star key={i} size={13} fill="var(--accent)" color="var(--accent)" />
+                  ))}
                 </div>
               </div>
 
-              <div className="testimonial-trust-tag">
-                <ShieldCheck size={13} className="trust-icon" />
-                <span>{current.trustTag}</span>
+              {/* Quote with Floating Mark */}
+              <div className="quote-mark">
+                <Quote size={22} className="quote-icon" />
+              </div>
+
+              <blockquote>“{current.quote}”</blockquote>
+
+              {/* Author and Trust Badge Footer */}
+              <div className="testimonial-footer">
+                <div className="testimonial-author-wrapper">
+                  <img
+                    src={current.avatarUrl}
+                    alt={current.authorName}
+                    className="testimonial-avatar"
+                  />
+                  <div className="testimonial-author">
+                    <strong>{current.authorName}</strong>
+                    <span>{current.authorRole}</span>
+                  </div>
+                </div>
+
+                <div className="testimonial-trust-tag">
+                  <ShieldCheck size={13} className="trust-icon" />
+                  <span>{current.trustTag}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Pagination Dots & Counter */}
+            <div className="testimonial-controls">
+              <span className="testimonial-counter">
+                0{currentIndex + 1} <small>/ 0{total}</small>
+              </span>
+
+              <div className="testimonial-dots">
+                {testimonialsData.map((item, index) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className={`dot-btn ${index === currentIndex ? "active" : ""}`}
+                    onClick={() => changeTo(index)}
+                    aria-label={`Aller au témoignage ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Pagination Dots & Counter */}
-          <div className="testimonial-controls">
-            <span className="testimonial-counter">
-              0{currentIndex + 1} <small>/ 0{total}</small>
-            </span>
-
-            <div className="testimonial-dots">
-              {testimonialsData.map((item, index) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  className={`dot-btn ${index === currentIndex ? "active" : ""}`}
-                  onClick={() => changeTo(index)}
-                  aria-label={`Aller au témoignage ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
+          {/* Navigation Arrow Right (Desktop) */}
+          <button
+            type="button"
+            className="slider-nav-btn nav-btn-right"
+            onClick={nextSlide}
+            aria-label="Témoignage suivant"
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
       </div>
     </section>
