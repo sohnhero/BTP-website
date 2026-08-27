@@ -2,13 +2,17 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { servicesData, serviceCategories } from "@/data/services";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { servicesData, serviceCategories, ServiceItem } from "@/data/services";
 import { ServiceCard } from "@/components/molecules/ServiceCard";
+import { ServiceDetailModal } from "@/components/organisms/ServiceDetailModal";
 import { useReveal } from "@/hooks/useReveal";
 
 export const ServicesSection: React.FC = () => {
   const { ref, revealClass } = useReveal();
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedServiceForModal, setSelectedServiceForModal] = useState<ServiceItem | null>(null);
+  const [showAllMobile, setShowAllMobile] = useState<boolean>(false);
 
   const filteredServices =
     selectedCategory === "all"
@@ -64,11 +68,46 @@ export const ServicesSection: React.FC = () => {
       </div>
 
       {/* Dynamic 3-column Responsive Grid for 9 Authentic Services */}
-      <div className="service-grid">
+      <div
+        className={`service-grid ${
+          !showAllMobile ? "service-grid--collapsed-mobile" : ""
+        }`}
+      >
         {filteredServices.map((service, index) => (
-          <ServiceCard key={service.id} {...service} index={index} />
+          <ServiceCard
+            key={service.id}
+            {...service}
+            index={index}
+            onCardClick={(s) => setSelectedServiceForModal(s)}
+          />
         ))}
       </div>
+
+      {/* Mobile Toggle Button: only shown on mobile when more than 4 cards */}
+      {filteredServices.length > 4 && (
+        <div className="services-mobile-toggle-wrap">
+          <button
+            type="button"
+            className="services-mobile-toggle-btn"
+            onClick={() => setShowAllMobile((prev) => !prev)}
+            aria-expanded={showAllMobile}
+          >
+            <span>
+              {showAllMobile
+                ? "Voir moins de services"
+                : `Voir tous les services (${filteredServices.length})`}
+            </span>
+            {showAllMobile ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
+        </div>
+      )}
+
+      {/* 3D Flip Centered Modal with HD Illustrative Visual & Deep Technical Details */}
+      <ServiceDetailModal
+        service={selectedServiceForModal}
+        isOpen={!!selectedServiceForModal}
+        onClose={() => setSelectedServiceForModal(null)}
+      />
     </section>
   );
 };
