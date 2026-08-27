@@ -43,7 +43,7 @@ export const CompanyVideoModal: React.FC<CompanyVideoModalProps> = ({
           // If browser blocks audio autoplay, fallback to muted autoplay
           if (videoRef.current) {
             videoRef.current.muted = true;
-            videoRef.current.play().catch(() => {});
+            videoRef.current.play().catch(() => { });
           }
         });
       }
@@ -61,7 +61,7 @@ export const CompanyVideoModal: React.FC<CompanyVideoModalProps> = ({
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
-        aria-label="Vidéo de présentation FIDÈLE SARL"
+        aria-label="Vidéo de présentation FIDELE SARL"
       >
         {/* Floating Close Button */}
         <button

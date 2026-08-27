@@ -9,7 +9,7 @@ export const ConstructionRibbon: React.FC = () => {
     { icon: HardHat, text: "PORT DU CASQUE OBLIGATOIRE" },
     { icon: ShieldCheck, text: "SÉCURITÉ & HAUTE EXIGENCE" },
     { icon: Ruler, text: "INGÉNIERIE & MAÎTRISE D'OUVRAGE" },
-    { icon: Hammer, text: "FIDÈLE SARL • BTP PREMIUM" },
+    { icon: Hammer, text: "FIDELE SARL • BTP PREMIUM" },
     { icon: Activity, text: "TRAVAUX EN COURS D'EXÉCUTION" },
   ];
 
@@ -18,7 +18,7 @@ export const ConstructionRibbon: React.FC = () => {
     { text: "02 • GROS ŒUVRE & STRUCTURES DURABLES" },
     { text: "03 • FINITIONS LUXE & LIVRAISON CLÉ EN MAIN" },
     { text: "04 • RESPECT STRICT DES DÉLAIS & NORMES ISO" },
-    { text: "FIDÈLE SARL • BTP & INGÉNIERIE" },
+    { text: "FIDELE SARL • BTP & INGÉNIERIE" },
   ];
 
   // 6x repetition ensures 100% full-width coverage across all monitor sizes

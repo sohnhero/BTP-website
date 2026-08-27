@@ -82,14 +82,14 @@ export const ContactForm: React.FC<ContactFormProps> = ({ mode }) => {
         setFormSuccess({
           title: "Message transmis avec succès !",
           description: `Merci ${name}. Votre demande de contact a été enregistrée. Une confirmation visiteur a été préparée et notre équipe a été notifiée pour vous répondre sous 24h ouvrées.`,
-          targetEmail: "contact@fidelesarl.com",
+          targetEmail: "Fidele@fidele.sn",
         });
       } else if (mode === "partnership") {
         const company = (formData.get("company") as string) || "votre structure";
         setFormSuccess({
           title: "Proposition de partenariat reçue !",
           description: `Merci ${name}. Votre demande de partenariat pour ${company} a été transmise à notre direction des partenariats et alliances stratégiques.`,
-          targetEmail: "partenariat@fidelesarl.com",
+          targetEmail: "Fidele@fidele.sn",
         });
       } else {
         const position = (formData.get("position") as string) || "le poste visé";
@@ -99,7 +99,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ mode }) => {
         setFormSuccess({
           title: "Candidature enregistrée !",
           description: `Merci ${name}. Votre dossier pour ${position}${fileNotice} a été transmis au département Recrutement & RH.`,
-          targetEmail: "emploi@fidelesarl.com",
+          targetEmail: "Fidele@fidele.sn",
         });
       }
 
@@ -237,12 +237,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({ mode }) => {
                 <option value="" disabled>
                   Secteur d'activité *
                 </option>
-                <option value="Bureau d'études techniques & Ingénierie">Bureau d'études & Ingénierie</option>
-                <option value="Fourniture de matériaux & Ciment">Fourniture de matériaux & Ciment</option>
-                <option value="Gros œuvre & Maçonnerie spécialisée">Gros œuvre & Maçonnerie spécialisée</option>
-                <option value="Second œuvre (Électricité, CVC, Plomberie)">Second œuvre (Électricité, CVC, Fluides)</option>
-                <option value="Finitions & Architecture d'intérieur">Finitions & Architecture d'intérieur</option>
-                <option value="Location engins & Équipements BTP">Location engins & Équipements BTP</option>
+                <option value="BTP & Construction générale">BTP & Construction générale</option>
+                <option value="Terrassement & Plateformes">Terrassement & Plateformes</option>
+                <option value="Pavage & Voiries urbaines">Pavage & Voiries urbaines</option>
+                <option value="Travaux de finition & Second œuvre">Travaux de finition & Second œuvre</option>
+                <option value="Pistes rurales & Désenclavement">Pistes rurales & Désenclavement</option>
+                <option value="Aménagement urbain & Espaces publics">Aménagement urbain & Espaces publics</option>
+                <option value="Adduction d'eau potable (AEP)">Adduction d'eau potable (AEP)</option>
+                <option value="Transport d'hydrocarbures">Transport d'hydrocarbures</option>
+                <option value="Fournitures diverses & Équipements BTP">Fournitures diverses & Équipements BTP</option>
                 <option value="Autre secteur">Autre secteur</option>
               </select>
             </div>

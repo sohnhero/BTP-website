@@ -1,13 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { servicesData } from "@/data/services";
+import { servicesData, serviceCategories } from "@/data/services";
 import { ServiceCard } from "@/components/molecules/ServiceCard";
 import { useReveal } from "@/hooks/useReveal";
 
 export const ServicesSection: React.FC = () => {
   const { ref, revealClass } = useReveal();
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+
+  const filteredServices =
+    selectedCategory === "all"
+      ? servicesData
+      : servicesData.filter((s) => s.category === selectedCategory);
 
   return (
     <section className="services section-pad" id="services">
@@ -25,22 +31,41 @@ export const ServicesSection: React.FC = () => {
 
       <div ref={ref} className={`section-heading services-heading-wrap ${revealClass}`}>
         <div className="heading-left">
-          <span className="overline">Nos Services</span>
+          <span className="overline">Nos Services & Expertises</span>
           <h2>
             Une maîtrise complète,<br />
-            <em>du concept au chantier.</em>
+            <em>du gros œuvre aux équipements.</em>
           </h2>
         </div>
 
         <div className="heading-right">
           <p>
-            Une équipe unique pour coordonner les études, la technique, l’exécution et la finition avec un niveau d’exigence constant.
+            BTP, voiries et adduction d'eau, transport sécurisé d'hydrocarbures et négoce d'équipements techniques : FIDELE SARL mobilise ses équipes et son matériel de pointe pour concrétiser vos projets.
           </p>
         </div>
       </div>
 
+      {/* Luxury Interactive Category Filter Pills */}
+      <div className="services-filter-bar">
+        {serviceCategories.map((cat) => {
+          const isActive = selectedCategory === cat.id;
+          return (
+            <button
+              key={cat.id}
+              type="button"
+              className={`services-filter-pill ${isActive ? "is-active" : ""}`}
+              onClick={() => setSelectedCategory(cat.id)}
+            >
+              <span>{cat.label}</span>
+              <span className="pill-badge">{cat.count}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Dynamic 3-column Responsive Grid for 9 Authentic Services */}
       <div className="service-grid">
-        {servicesData.map((service, index) => (
+        {filteredServices.map((service, index) => (
           <ServiceCard key={service.id} {...service} index={index} />
         ))}
       </div>

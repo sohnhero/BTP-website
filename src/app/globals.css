@@ -4,8 +4,11 @@
   --paper: #f5f5f0;
   --white: #ffffff;
   --line: rgba(16, 18, 15, 0.12);
-  --accent: #d6a949;
-  --accent-soft: #ecd9a6;
+  --accent: #004f9c;
+  --accent-rgb: 0, 79, 156;
+  --accent-hover: #0062c4;
+  --accent-light: #4da3ff;
+  --accent-soft: #dbe9f6;
   --deep: #17221f;
   --radius-xl: 42px;
   --radius-lg: 28px;
@@ -188,7 +191,7 @@ button {
 .header--bubble .desktop-cta:hover {
   transform: none !important;
   background-color: var(--accent);
-  color: var(--ink);
+  color: var(--white);
   border-color: var(--accent);
   box-shadow: none;
 }
@@ -225,19 +228,29 @@ button {
 }
 
 .brand-mark {
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
-  display: grid;
-  place-items: center;
-  background: var(--ink);
-  color: var(--white);
-  font-weight: 800;
-  font-size: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid rgba(0, 79, 156, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 79, 156, 0.14);
+  padding: 3px;
+  overflow: hidden;
   transition:
     border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
     transform 0.3s ease;
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .header--bubble .brand-mark {
@@ -404,16 +417,16 @@ button {
 /* Accent Button (Gold / BTP Signature) */
 .btn-accent {
   background-color: var(--accent);
-  color: var(--ink);
+  color: var(--white);
   border-color: var(--accent);
   font-weight: 700;
 }
 
 .btn-accent:hover {
-  background-color: #e8c45e;
-  color: var(--ink);
-  border-color: #e8c45e;
-  box-shadow: none;
+  background-color: var(--accent-hover);
+  color: var(--white);
+  border-color: var(--accent-hover);
+  box-shadow: 0 8px 24px rgba(0, 79, 156, 0.35);
 }
 
 .btn-accent:hover::before {
@@ -574,7 +587,7 @@ button {
 
 .minimal-drawer-btn:hover {
   background: var(--accent);
-  color: var(--ink);
+  color: var(--white);
 }
 
 .minimal-drawer-brand {
@@ -682,7 +695,7 @@ button {
   display: inline-block;
   width: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent) 0%, #f5d487 100%);
+  background: linear-gradient(90deg, var(--accent) 0%, #4da3ff 100%);
   border-radius: 2px;
   flex-shrink: 0;
   transition: width 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.15s, box-shadow 0.75s ease 0.15s;
@@ -692,7 +705,7 @@ button {
 .visible.overline::before,
 .is-visible .overline::before {
   width: 28px;
-  box-shadow: 0 0 8px rgba(214, 169, 73, 0.5);
+  box-shadow: 0 0 8px rgba(0, 79, 156, 0.5);
 }
 
 .eyebrow {
@@ -705,7 +718,7 @@ button {
   height: 7px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 6px rgba(214, 169, 73, .12);
+  box-shadow: 0 0 0 6px rgba(0, 79, 156, .12);
 }
 
 .hero h1 {
@@ -727,7 +740,8 @@ button {
 }
 
 .hero h1 em {
-  color: #f2dfaa;
+  color: #4da3ff;
+  text-shadow: 0 0 28px rgba(0, 79, 156, 0.45);
 }
 
 .hero-content>p {
@@ -800,13 +814,13 @@ button {
   background: rgba(12, 16, 14, 0.84);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1.5px solid rgba(214, 169, 73, 0.45);
+  border: 1.5px solid rgba(0, 79, 156, 0.45);
   border-radius: 60px;
   padding: 8px 18px 8px 10px;
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.45),
     0 0 0 1px rgba(255, 255, 255, 0.1),
-    0 0 24px rgba(214, 169, 73, 0.16);
+    0 0 24px rgba(0, 79, 156, 0.16);
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -820,11 +834,11 @@ button {
 .hero-video-trigger:hover {
   transform: translateY(-3px) scale(1.02);
   background: rgba(16, 21, 18, 0.94);
-  border-color: #f5d487;
+  border-color: #4da3ff;
   box-shadow:
     0 22px 50px rgba(0, 0, 0, 0.6),
     0 0 0 1px rgba(255, 255, 255, 0.18),
-    0 0 36px rgba(214, 169, 73, 0.35);
+    0 0 36px rgba(0, 79, 156, 0.35);
 }
 
 /* Left Play Button with Sonar Pulse */
@@ -843,7 +857,7 @@ button {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border: 1.5px solid rgba(214, 169, 73, 0.5);
+  border: 1.5px solid rgba(0, 79, 156, 0.5);
   pointer-events: none;
   animation: sonarPulse 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
 }
@@ -869,7 +883,7 @@ button {
   height: 42px;
   border-radius: 50%;
   background: rgba(22, 28, 24, 0.95);
-  border: 1.5px solid rgba(214, 169, 73, 0.65);
+  border: 1.5px solid rgba(0, 79, 156, 0.65);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -885,13 +899,13 @@ button {
   transform: scale(1.08);
   box-shadow:
     0 6px 18px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(214, 169, 73, 0.8);
+    0 0 20px rgba(0, 79, 156, 0.8);
 }
 
 /* BTP Compass Crosshair Ticks */
 .ch-tick {
   position: absolute;
-  background: rgba(214, 169, 73, 0.8);
+  background: rgba(0, 79, 156, 0.8);
   pointer-events: none;
 }
 
@@ -934,11 +948,11 @@ button {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  filter: drop-shadow(0 2px 6px rgba(214, 169, 73, 0.5));
+  filter: drop-shadow(0 2px 6px rgba(0, 79, 156, 0.5));
 }
 
 .hero-video-trigger:hover .play-icon-triangle {
-  color: #10120f;
+  color: #ffffff;
   transform: scale(1.12);
   filter: none;
 }
@@ -960,7 +974,7 @@ button {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #f5d487;
+  color: #4da3ff;
   line-height: 1;
 }
 
@@ -1002,7 +1016,7 @@ button {
 }
 
 .hero-video-trigger:hover .hero-video-arrow-cue {
-  color: #f5d487;
+  color: #4da3ff;
   transform: translateX(3px);
 }
 
@@ -1028,11 +1042,11 @@ button {
   width: min(980px, 94vw);
   background: #000000;
   border-radius: 24px;
-  border: 1px solid rgba(214, 169, 73, 0.35);
+  border: 1px solid rgba(0, 79, 156, 0.35);
   box-shadow:
     0 32px 90px rgba(0, 0, 0, 0.85),
     0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 0 45px rgba(214, 169, 73, 0.12);
+    0 0 45px rgba(0, 79, 156, 0.12);
   overflow: hidden;
   animation: modalSlideUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -1061,10 +1075,10 @@ button {
 
 .video-modal-floating-close:hover {
   background: var(--accent);
-  color: #10120f;
+  color: #ffffff;
   border-color: #ffffff;
   transform: scale(1.08) rotate(90deg);
-  box-shadow: 0 12px 28px rgba(214, 169, 73, 0.4);
+  box-shadow: 0 12px 28px rgba(0, 79, 156, 0.4);
 }
 
 /* 16:9 Video Player Container */
@@ -1233,7 +1247,7 @@ button {
 .about-pillar-chip:hover {
   transform: translateY(-2px);
   border-color: var(--accent);
-  box-shadow: 0 6px 16px rgba(214, 169, 73, 0.15);
+  box-shadow: 0 6px 16px rgba(0, 79, 156, 0.15);
 }
 
 .about-pillar-chip .pillar-icon {
@@ -1507,19 +1521,73 @@ button {
   }
 }
 
+.services-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.services-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.services-filter-pill .pill-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: #f0f2f5;
+  color: var(--muted);
+  transition: all 0.25s ease;
+}
+
+.services-filter-pill:hover {
+  border-color: rgba(0, 79, 156, 0.35);
+  transform: translateY(-1px);
+}
+
+.services-filter-pill.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(0, 79, 156, 0.28);
+}
+
+.services-filter-pill.is-active .pill-badge {
+  background: rgba(255, 255, 255, 0.22);
+  color: var(--white);
+}
+
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 
 .service-card {
-  min-height: 340px;
-  padding: 26px;
+  min-height: 350px;
+  padding: 28px 26px 36px;
+  background: #ffffff;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transform-style: preserve-3d;
   will-change: transform;
   touch-action: pan-y;
@@ -1533,10 +1601,10 @@ button {
 
 .service-card--active {
   box-shadow:
-    0 30px 60px rgba(17, 20, 16, 0.12),
-    0 10px 20px rgba(17, 20, 16, 0.06);
-  background: #faf8f2;
-  border-color: rgba(214, 169, 73, 0.35);
+    0 30px 60px rgba(0, 79, 156, 0.12),
+    0 10px 20px rgba(0, 79, 156, 0.06);
+  background: #f5f8fc;
+  border-color: rgba(0, 79, 156, 0.35);
 }
 
 /* Glare overlay — follows cursor */
@@ -1549,7 +1617,7 @@ button {
   transition: opacity 0.3s ease;
 }
 
-/* Accent glow — warm gold follows cursor */
+/* Accent glow — brand blue follows cursor */
 .service-card-glow {
   position: absolute;
   inset: -1px;
@@ -1559,6 +1627,44 @@ button {
   transition: opacity 0.3s ease;
 }
 
+.service-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.service-number {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #90968e;
+  font-family: var(--font-manrope), monospace;
+  transition: color 0.35s ease;
+}
+
+.service-card--active .service-number {
+  color: var(--accent);
+}
+
+.service-category-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(0, 79, 156, 0.08);
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
+
 .service-icon {
   width: 48px;
   height: 48px;
@@ -1566,41 +1672,27 @@ button {
   display: grid;
   place-items: center;
   background: #efefe9;
-  margin-bottom: 72px;
   position: relative;
-  z-index: 1;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease;
+  z-index: 2;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.35s ease, color 0.35s ease;
 }
 
 .service-card--active .service-icon {
   transform: translateZ(30px) scale(1.05);
   background: var(--accent);
-  color: var(--ink);
+  color: var(--white);
 }
 
 .service-icon svg {
   width: 21px;
 }
 
-.service-card>span {
-  font-size: 10px;
-  color: #90968e;
-  position: absolute;
-  top: 28px;
-  right: 28px;
-  z-index: 1;
-  transition: color 0.35s ease;
-}
-
-.service-card--active>span {
-  color: var(--accent);
-}
-
 .service-card h3 {
   font-size: 19px;
-  margin-bottom: 12px;
+  font-weight: 700;
+  margin-bottom: 4px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1608,12 +1700,25 @@ button {
   transform: translateZ(20px);
 }
 
+.service-tagline {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+  line-height: 1.4;
+}
+
 .service-card p {
   color: var(--muted);
   line-height: 1.65;
-  font-size: 12px;
+  font-size: 12.5px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  margin-top: 0;
+  margin-bottom: 24px;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1639,7 +1744,7 @@ button {
 .service-card--active>a {
   transform: translateZ(35px) scale(1.08);
   background: var(--accent);
-  color: var(--ink);
+  color: var(--white);
 }
 
 .service-card>a svg {
@@ -1860,9 +1965,9 @@ button {
 .project-card:hover .project-open {
   transform: scale(1.16) rotate(45deg);
   background-color: var(--accent);
-  color: var(--ink);
+  color: var(--white);
   border-color: var(--accent);
-  box-shadow: 0 8px 24px rgba(214, 169, 73, 0.55);
+  box-shadow: 0 8px 24px rgba(0, 79, 156, 0.55);
 }
 
 .project-open svg {
@@ -1970,7 +2075,7 @@ button {
   padding: 20px 42px 22px;
   box-shadow:
     0 16px 44px -8px rgba(16, 18, 15, 0.12),
-    0 0 0 1px rgba(214, 169, 73, 0.2),
+    0 0 0 1px rgba(0, 79, 156, 0.2),
     inset 0 1.5px 1.5px rgba(255, 255, 255, 1);
   max-width: min(780px, calc(100% - 32px));
 }
@@ -2091,7 +2196,7 @@ button {
   padding: 36px 46px 30px;
   box-shadow:
     0 24px 64px -12px rgba(16, 18, 15, 0.12),
-    0 0 0 1px rgba(214, 169, 73, 0.16),
+    0 0 0 1px rgba(0, 79, 156, 0.16),
     inset 0 2px 2px rgba(255, 255, 255, 1);
   display: flex;
   flex-direction: column;
@@ -2103,7 +2208,7 @@ button {
 .testimonial-glass-card:hover {
   box-shadow:
     0 28px 72px -12px rgba(16, 18, 15, 0.16),
-    0 0 0 1px rgba(214, 169, 73, 0.28),
+    0 0 0 1px rgba(0, 79, 156, 0.28),
     inset 0 2px 2px rgba(255, 255, 255, 1);
 }
 
@@ -2149,7 +2254,7 @@ button {
   padding: 5px 13px;
   border-radius: 24px;
   background: #fcfbfa;
-  border: 1px solid rgba(214, 169, 73, 0.35);
+  border: 1px solid rgba(0, 79, 156, 0.35);
   color: var(--ink);
   font-size: 10.5px;
   font-weight: 700;
@@ -2235,7 +2340,7 @@ button {
   gap: 7px;
   padding: 5px 14px;
   border-radius: 20px;
-  background: rgba(214, 169, 73, 0.16);
+  background: rgba(0, 79, 156, 0.16);
   color: #8f671c;
   font-size: 10.5px;
   font-weight: 600;
@@ -2387,7 +2492,7 @@ button {
     font-size: 10px;
     gap: 5px;
     border-radius: 16px;
-    background: rgba(214, 169, 73, 0.16);
+    background: rgba(0, 79, 156, 0.16);
     color: #8f671c;
     font-weight: 600;
   }
@@ -2557,7 +2662,7 @@ button {
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(214, 169, 73, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 79, 156, 0.15) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -2567,9 +2672,9 @@ button {
   gap: 8px;
   padding: 6px 14px;
   border-radius: 20px;
-  background: rgba(214, 169, 73, 0.15);
-  border: 1px solid rgba(214, 169, 73, 0.3);
-  color: #f5d78e;
+  background: rgba(0, 79, 156, 0.15);
+  border: 1px solid rgba(0, 79, 156, 0.3);
+  color: #4da3ff;
   font-size: 11px;
   font-weight: 600;
   width: fit-content;
@@ -2720,7 +2825,7 @@ button {
 .input-field:focus {
   border-color: var(--accent);
   background: var(--white);
-  box-shadow: 0 0 0 4px rgba(214, 169, 73, 0.18);
+  box-shadow: 0 0 0 4px rgba(0, 79, 156, 0.18);
 }
 
 .input-group:focus-within .input-icon {
@@ -2763,13 +2868,13 @@ button {
 .cv-dropzone:hover,
 .cv-dropzone.is-dragging {
   border-color: var(--accent);
-  background: rgba(214, 169, 73, 0.06);
+  background: rgba(0, 79, 156, 0.06);
 }
 
 .cv-dropzone.has-file {
   border-style: solid;
-  border-color: rgba(214, 169, 73, 0.4);
-  background: rgba(214, 169, 73, 0.08);
+  border-color: rgba(0, 79, 156, 0.4);
+  background: rgba(0, 79, 156, 0.08);
   cursor: default;
 }
 
@@ -2784,8 +2889,8 @@ button {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(214, 169, 73, 0.15);
-  border: 1px solid rgba(214, 169, 73, 0.25);
+  background: rgba(0, 79, 156, 0.15);
+  border: 1px solid rgba(0, 79, 156, 0.25);
   color: var(--accent);
   display: flex;
   align-items: center;
@@ -2892,8 +2997,8 @@ button {
   margin-top: 24px;
   padding: 20px 24px;
   border-radius: 20px;
-  background: rgba(214, 169, 73, 0.12);
-  border: 1px solid rgba(214, 169, 73, 0.35);
+  background: rgba(0, 79, 156, 0.12);
+  border: 1px solid rgba(0, 79, 156, 0.35);
   display: flex;
   align-items: flex-start;
   gap: 16px;
@@ -2918,14 +3023,14 @@ button {
   font-size: 11px;
   font-weight: 700;
   color: var(--ink);
-  background: rgba(214, 169, 73, 0.25);
+  background: rgba(0, 79, 156, 0.25);
   padding: 3px 10px;
   border-radius: 12px;
-  border: 1px solid rgba(214, 169, 73, 0.4);
+  border: 1px solid rgba(0, 79, 156, 0.4);
 }
 
 .success-icon {
-  color: #c4952e;
+  color: var(--accent);
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -3128,7 +3233,7 @@ button {
 .team-accordion-card.is-active {
   flex-grow: 4.2;
   box-shadow: 0 24px 60px rgba(16, 18, 15, 0.2);
-  border-color: rgba(214, 169, 73, 0.3);
+  border-color: rgba(0, 79, 156, 0.3);
 }
 
 /* Media Background */
@@ -3210,7 +3315,7 @@ button {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--ink);
+  color: var(--white);
   background: var(--accent);
   padding: 6px 14px;
   border-radius: 20px;
@@ -3282,7 +3387,7 @@ button {
 
 .expanded-action-btn:hover {
   background: var(--accent);
-  color: var(--ink);
+  color: var(--white);
   transform: translateY(-2px);
 }
 
@@ -3442,9 +3547,9 @@ button {
   gap: 8px;
   padding: 8px 16px;
   border-radius: 20px;
-  background: rgba(214, 169, 73, 0.2);
-  border: 1px solid rgba(214, 169, 73, 0.4);
-  color: #f5d78e;
+  background: rgba(0, 79, 156, 0.2);
+  border: 1px solid rgba(0, 79, 156, 0.4);
+  color: #4da3ff;
   font-size: 12px;
   font-weight: 600;
   backdrop-filter: blur(10px);
@@ -3655,10 +3760,10 @@ button {
 
 .footer-newsletter-form:focus-within {
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(214, 169, 73, 0.5);
+  border-color: rgba(0, 79, 156, 0.5);
   box-shadow:
     0 8px 24px rgba(0, 0, 0, 0.25),
-    0 0 0 3px rgba(214, 169, 73, 0.12);
+    0 0 0 3px rgba(0, 79, 156, 0.12);
 }
 
 .newsletter-input-box {
@@ -3695,7 +3800,7 @@ button {
   align-items: center;
   gap: 6px;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--white);
   border: none;
   padding: 8px 18px;
   border-radius: 30px;
@@ -3704,13 +3809,14 @@ button {
   cursor: pointer;
   flex-shrink: 0;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 12px rgba(214, 169, 73, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 79, 156, 0.25);
 }
 
 .newsletter-btn:hover:not(:disabled) {
-  background: #e4bc5a;
+  background: var(--accent-hover);
+  color: var(--white);
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(214, 169, 73, 0.35);
+  box-shadow: 0 6px 18px rgba(0, 79, 156, 0.35);
 }
 
 .newsletter-btn .arrow-icon {
@@ -3809,8 +3915,8 @@ button {
   gap: 14px;
   padding: 16px 20px;
   border-radius: 18px;
-  background: rgba(214, 169, 73, 0.1);
-  border: 1px solid rgba(214, 169, 73, 0.25);
+  background: rgba(0, 79, 156, 0.1);
+  border: 1px solid rgba(0, 79, 156, 0.25);
   text-decoration: none;
   color: var(--white);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -3818,7 +3924,7 @@ button {
 }
 
 .reach-out-card:hover {
-  background: rgba(214, 169, 73, 0.18);
+  background: rgba(0, 79, 156, 0.18);
   border-color: var(--accent);
   transform: translateY(-3px);
 }
@@ -3828,7 +3934,7 @@ button {
   height: 42px;
   border-radius: 12px;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3959,8 +4065,8 @@ button {
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent) 0%, #f5d78e 100%);
-  box-shadow: 0 0 10px rgba(214, 169, 73, 0.6);
+  background: linear-gradient(90deg, var(--accent) 0%, #4da3ff 100%);
+  box-shadow: 0 0 10px rgba(0, 79, 156, 0.6);
   transform-origin: left center;
   z-index: 1000;
   pointer-events: none;
@@ -4224,10 +4330,10 @@ button {
 
 .partner-card:hover,
 .partner-card.is-hovered {
-  border-color: rgba(214, 169, 73, 0.6);
+  border-color: rgba(0, 79, 156, 0.6);
   box-shadow:
     0 10px 30px rgba(16, 18, 15, 0.1),
-    0 0 0 3px rgba(214, 169, 73, 0.14);
+    0 0 0 3px rgba(0, 79, 156, 0.14);
   transform: translateY(-3px);
 }
 
@@ -4245,7 +4351,7 @@ button {
 
 .partner-card:hover .partner-logo-container {
   background: #fdfaf0;
-  border-color: rgba(214, 169, 73, 0.4);
+  border-color: rgba(0, 79, 156, 0.4);
 }
 
 .partner-logo-badge {
@@ -4253,7 +4359,7 @@ button {
   height: 48px;
   border-radius: 50%;
   background: var(--ink);
-  color: var(--accent);
+  color: #4da3ff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4264,7 +4370,7 @@ button {
 
 .partner-card:hover .partner-logo-badge {
   background: var(--accent);
-  color: var(--ink);
+  color: var(--white);
   transform: scale(1.06);
 }
 
@@ -4344,13 +4450,14 @@ button {
 /* Over dark section (Footer, CTA banner, Contact) */
 .back-to-top.is-on-dark {
   background: var(--accent);
-  color: var(--ink);
-  border-color: rgba(214, 169, 73, 0.6);
-  box-shadow: 0 12px 36px rgba(214, 169, 73, 0.45);
+  color: var(--white);
+  border-color: rgba(0, 79, 156, 0.6);
+  box-shadow: 0 12px 36px rgba(0, 79, 156, 0.45);
 }
 
 .back-to-top.is-on-dark:hover {
-  background: #f5d78e;
+  background: var(--accent-hover);
+  color: var(--white);
   transform: translateY(-4px) scale(1.1);
 }
 
@@ -5079,8 +5186,8 @@ button {
 
   .contact-chip:active {
     transform: scale(0.98);
-    background: rgba(214, 169, 73, 0.18);
-    border-color: rgba(214, 169, 73, 0.45);
+    background: rgba(0, 79, 156, 0.18);
+    border-color: rgba(0, 79, 156, 0.45);
     color: #fff;
   }
 
@@ -5312,7 +5419,7 @@ button {
   height: 8px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 10px rgba(214, 169, 73, 0.9);
+  box-shadow: 0 0 10px rgba(0, 79, 156, 0.9);
   pointer-events: none;
   will-change: transform;
   transform: translate3d(-100px, -100px, 0);
@@ -5405,7 +5512,7 @@ button {
   width: 48px;
   height: 48px;
   border-color: var(--accent);
-  background: rgba(214, 169, 73, 0.12);
+  background: rgba(0, 79, 156, 0.12);
 }
 
 .cursor--hover .btp-cursor-dot {
@@ -5495,15 +5602,15 @@ button {
 /* ── Ribbon 1: Amber Caution Tape (Top Layer -3.2deg) ───────── */
 .ribbon-strip--gold {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(0, 0, 0, 0.08) 100%),
-    #e5a932;
-  color: #10120f;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(0, 0, 0, 0.12) 100%),
+    #004f9c;
+  color: #ffffff;
   transform: rotate(-3.2deg);
   box-shadow:
-    0 20px 40px rgba(16, 18, 15, 0.22),
+    0 20px 40px rgba(0, 79, 156, 0.35),
     0 4px 14px rgba(16, 18, 15, 0.12);
-  border-top: 2px dashed rgba(16, 18, 15, 0.35);
-  border-bottom: 2px dashed rgba(16, 18, 15, 0.35);
+  border-top: 2px dashed rgba(255, 255, 255, 0.45);
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.45);
   z-index: 2;
 }
 
@@ -5517,8 +5624,8 @@ button {
   box-shadow:
     0 16px 36px rgba(16, 18, 15, 0.25),
     0 4px 14px rgba(16, 18, 15, 0.12);
-  border-top: 1.5px solid rgba(229, 169, 50, 0.45);
-  border-bottom: 1.5px solid rgba(229, 169, 50, 0.45);
+  border-top: 1.5px solid rgba(0, 79, 156, 0.45);
+  border-bottom: 1.5px solid rgba(0, 79, 156, 0.45);
   z-index: 1;
 }
 
@@ -5600,7 +5707,7 @@ button {
 }
 
 .ribbon-icon {
-  color: #10120f;
+  color: #ffffff;
   flex-shrink: 0;
 }
 
@@ -5611,8 +5718,8 @@ button {
   background: repeating-linear-gradient(-45deg,
       #10120f,
       #10120f 5px,
-      #e1a730 5px,
-      #e1a730 10px);
+      #0062c4 5px,
+      #0062c4 10px);
   border-radius: 2px;
   flex-shrink: 0;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.4);
@@ -5629,8 +5736,8 @@ button {
   width: 32px;
   height: 10px;
   background: repeating-linear-gradient(90deg,
-      rgba(225, 167, 48, 0.6),
-      rgba(225, 167, 48, 0.6) 1.5px,
+      rgba(77, 163, 255, 0.6),
+      rgba(77, 163, 255, 0.6) 1.5px,
       transparent 1.5px,
       transparent 6px);
   flex-shrink: 0;
@@ -5750,7 +5857,7 @@ button {
   letter-spacing: 0.08em;
   padding: 4px 10px;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--white);
   border-radius: 20px;
 }
 
@@ -6265,7 +6372,7 @@ button {
 
 .catalogue-filter-pill.is-active .pill-counter {
   background: var(--accent);
-  color: var(--ink);
+  color: var(--white);
 }
 
 /* Grid & Cards inside Catalogue */
@@ -6310,7 +6417,7 @@ button {
 .catalogue-project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 16px 36px rgba(16, 18, 15, 0.12);
-  border-color: rgba(214, 169, 73, 0.6);
+  border-color: rgba(0, 79, 156, 0.6);
 }
 
 .card-media-wrapper {
@@ -6361,7 +6468,7 @@ button {
   font-size: 10px;
   font-weight: 700;
   background: var(--accent);
-  color: var(--ink);
+  color: var(--white);
   padding: 3px 8px;
   border-radius: 12px;
 }
@@ -6386,7 +6493,7 @@ button {
 
 .catalogue-project-card:hover .card-open-btn {
   background: var(--accent);
-  color: var(--ink);
+  color: var(--white);
   transform: translate(2px, -2px);
 }
 

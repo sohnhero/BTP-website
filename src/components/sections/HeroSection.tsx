@@ -22,7 +22,7 @@ export const HeroSection: React.FC = () => {
             type="button"
             className="hero-video-trigger"
             onClick={() => setIsVideoModalOpen(true)}
-            aria-label="Ouvrir le film de présentation de FIDÈLE SARL"
+            aria-label="Ouvrir le film de présentation de FIDELE SARL"
           >
             {/* Play Button with Pulsing Radar Ring */}
             <div className="hero-video-play-wrap">
@@ -48,7 +48,7 @@ export const HeroSection: React.FC = () => {
                 <span>VIDEO DE PRÉSENTATION</span>
               </div>
               <strong className="video-text-title">
-                Découvrir FIDÈLE SARL
+                Découvrir FIDELE SARL
               </strong>
             </div>
 

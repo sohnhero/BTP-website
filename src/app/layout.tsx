@@ -30,9 +30,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "FIDÈLE SARL — Construire l’excellence",
+  title: "FIDELE SARL — Construire l’excellence",
   description:
-    "FIDÈLE SARL — Construction, rénovation et ingénierie avec une exigence premium. Nous concevons et réalisons des ouvrages durables et performants.",
+    "FIDELE SARL — Construction, rénovation et ingénierie avec une exigence premium. Nous concevons et réalisons des ouvrages durables et performants.",
   keywords: [
     "BTP",
     "Construction",
@@ -41,23 +41,23 @@ export const metadata: Metadata = {
     "Dakar",
     "Sénégal",
     "Génie civil",
-    "FIDÈLE SARL",
+    "FIDELE SARL",
   ],
-  authors: [{ name: "FIDÈLE SARL" }],
+  authors: [{ name: "FIDELE SARL" }],
   openGraph: {
-    title: "FIDÈLE SARL — Construire l’excellence",
+    title: "FIDELE SARL — Construire l’excellence",
     description:
-      "FIDÈLE SARL — Construction, rénovation et ingénierie avec une exigence premium.",
+      "FIDELE SARL — Construction, rénovation et ingénierie avec une exigence premium.",
     url: "https://fidele.sn",
-    siteName: "FIDÈLE SARL",
+    siteName: "FIDELE SARL",
     locale: "fr_FR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FIDÈLE SARL — Construire l’excellence",
+    title: "FIDELE SARL — Construire l’excellence",
     description:
-      "FIDÈLE SARL — Construction, rénovation et ingénierie avec une exigence premium.",
+      "FIDELE SARL — Construction, rénovation et ingénierie avec une exigence premium.",
   },
   robots: {
     index: true,

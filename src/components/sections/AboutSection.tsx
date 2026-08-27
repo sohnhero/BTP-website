@@ -20,7 +20,7 @@ export const AboutSection: React.FC = () => {
         </h2>
 
         <p className="lead">
-          FIDÈLE SARL accompagne entreprises, promoteurs et particuliers dans la réalisation de projets exigeants. Notre approche associe ingénierie, design, pilotage et exécution pour garantir des résultats maîtrisés de bout en bout.
+          FIDELE SARL accompagne entreprises, promoteurs et particuliers dans la réalisation de projets exigeants. Notre approche associe ingénierie, design, pilotage et exécution pour garantir des résultats maîtrisés de bout en bout.
         </p>
 
         {/* Core Pillars Mini Grid with Scroll-In Animation */}

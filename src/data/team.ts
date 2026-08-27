@@ -29,7 +29,7 @@ export const teamMembers: TeamMember[] = [
     role: "Directeur Général",
     category: "direction",
     tagline: "Vision stratégique & suivi des grands ouvrages complexes.",
-    bio: "Ingénieur civil de formation formé à l'ESTP, Moussa pilote la stratégie globale de FIDÈLE SARL avec plus de 18 ans d'expérience dans la conduite de chantiers majeurs et d'infrastructures tertiaires d'envergure au Sénégal et en Afrique de l'Ouest.",
+    bio: "Ingénieur civil de formation formé à l'ESTP, Moussa pilote la stratégie globale de FIDELE SARL avec plus de 18 ans d'expérience dans la conduite de chantiers majeurs et d'infrastructures tertiaires d'envergure au Sénégal et en Afrique de l'Ouest.",
     imageSrc: "/team-director.png",
     yearsOfExp: 18,
     specialties: ["Management Stratégique", "Grands Ouvrages", "Financement BTP"],

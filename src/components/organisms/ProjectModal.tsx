@@ -222,7 +222,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 </div>
                 <div className="metric-box-data">
                   <span className="metric-label">Maîtrise d'Œuvre</span>
-                  <strong>FIDÈLE SARL</strong>
+                  <strong>FIDELE SARL</strong>
                 </div>
               </div>
             </div>
@@ -252,7 +252,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <Award size={20} className="quote-badge-icon" />
                 <blockquote>
                   &ldquo;{project.architectQuote}&rdquo;
-                  <cite>— Direction Technique FIDÈLE SARL</cite>
+                  <cite>— Direction Technique FIDELE SARL</cite>
                 </blockquote>
               </div>
             )}

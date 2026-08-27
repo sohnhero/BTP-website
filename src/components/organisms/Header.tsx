@@ -188,7 +188,7 @@ export const Header: React.FC = () => {
               <span>Démarrer un projet</span>
               <ArrowUpRight size={16} />
             </Link>
-            <span className="minimal-drawer-brand">FIDÈLE SARL • BTP & Ingénierie</span>
+            <span className="minimal-drawer-brand">FIDELE SARL • BTP & Ingénierie</span>
           </div>
         </div>
       </div>

@@ -147,13 +147,13 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 <div className="info-direct-contacts">
-                  <a href="tel:+221338000000" className="contact-chip">
+                  <a href="tel:+221338214974" className="contact-chip">
                     <PhoneCall size={14} />
-                    <span>+221 33 800 00 00</span>
+                    <span>+221 33 821 49 74</span>
                   </a>
-                  <a href="mailto:contact@fidelesarl.com" className="contact-chip">
+                  <a href="mailto:Fidele@fidele.sn" className="contact-chip">
                     <Mail size={14} />
-                    <span>contact@fidelesarl.com</span>
+                    <span>Fidele@fidele.sn</span>
                   </a>
                 </div>
               </>
@@ -206,9 +206,9 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 <div className="info-direct-contacts">
-                  <a href="mailto:partenariat@fidelesarl.com" className="contact-chip">
+                  <a href="mailto:Fidele@fidele.sn" className="contact-chip">
                     <Mail size={14} />
-                    <span>partenariat@fidelesarl.com</span>
+                    <span>Fidele@fidele.sn</span>
                   </a>
                   <div className="contact-chip">
                     <MapPin size={14} />
@@ -265,9 +265,9 @@ export const ContactSection: React.FC = () => {
                 </div>
 
                 <div className="info-direct-contacts">
-                  <a href="mailto:emploi@fidelesarl.com" className="contact-chip">
+                  <a href="mailto:Fidele@fidele.sn" className="contact-chip">
                     <Mail size={14} />
-                    <span>emploi@fidelesarl.com (avec CV)</span>
+                    <span>Fidele@fidele.sn (avec CV)</span>
                   </a>
                   <div className="contact-chip">
                     <MapPin size={14} />

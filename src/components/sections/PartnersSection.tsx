@@ -3,16 +3,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import {
-  ShieldCheck,
+  Landmark,
   Building2,
-  Box,
-  Layers,
-  Compass,
-  Zap,
-  Award,
-  Triangle,
-  Hexagon,
-  Sparkles,
+  Leaf,
+  ShieldCheck,
+  Banknote,
+  Briefcase,
 } from "lucide-react";
 import { partnersData, Partner } from "@/data/partners";
 import { useReveal } from "@/hooks/useReveal";
@@ -20,28 +16,20 @@ import { useReveal } from "@/hooks/useReveal";
 /* ─── Partner Logo Emblem Component ──────────────────────── */
 const PartnerIcon: React.FC<{ type: Partner["iconType"] }> = ({ type }) => {
   switch (type) {
-    case "compass":
-      return <Compass size={24} className="partner-vector-icon" />;
-    case "cube":
-      return <Hexagon size={24} className="partner-vector-icon" />;
+    case "landmark":
+      return <Landmark size={22} className="partner-vector-icon" />;
     case "building":
-      return <Building2 size={24} className="partner-vector-icon" />;
+      return <Building2 size={22} className="partner-vector-icon" />;
+    case "leaf":
+      return <Leaf size={22} className="partner-vector-icon" />;
     case "shield":
-      return <ShieldCheck size={24} className="partner-vector-icon" />;
-    case "layers":
-      return <Layers size={24} className="partner-vector-icon" />;
-    case "zap":
-      return <Zap size={24} className="partner-vector-icon" />;
-    case "box":
-      return <Box size={24} className="partner-vector-icon" />;
-    case "badge":
-      return <Award size={24} className="partner-vector-icon" />;
-    case "triangle":
-      return <Triangle size={24} className="partner-vector-icon" />;
-    case "award":
-      return <Sparkles size={24} className="partner-vector-icon" />;
+      return <ShieldCheck size={22} className="partner-vector-icon" />;
+    case "bank":
+      return <Banknote size={22} className="partner-vector-icon" />;
+    case "briefcase":
+      return <Briefcase size={22} className="partner-vector-icon" />;
     default:
-      return <Building2 size={24} className="partner-vector-icon" />;
+      return <Building2 size={22} className="partner-vector-icon" />;
   }
 };
 
@@ -76,8 +64,8 @@ const PartnerCard: React.FC<{ partner: Partner }> = ({ partner }) => {
 export const PartnersSection: React.FC = () => {
   const { ref, revealClass } = useReveal();
 
-  const row1 = partnersData.slice(0, 5);
-  const row2 = partnersData.slice(5, 10);
+  const row1 = partnersData.slice(0, 7);
+  const row2 = partnersData.slice(7);
 
   return (
     <section className="partners-section section-pad" id="partenaires">
