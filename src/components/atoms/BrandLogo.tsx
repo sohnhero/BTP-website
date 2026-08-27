@@ -21,11 +21,11 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ isFooter = false }) => {
       className={`brand ${isFooter ? "brand-footer" : ""}`}
       href="#top"
       onClick={handleClick}
-      aria-label="FIDÈLE SARL - Accueil"
+      aria-label="FIDELE SARL - Accueil"
     >
       <img
         src={isFooter ? "/images/logo_white.png" : "/images/logo.png"}
-        alt="FIDÈLE SARL"
+        alt="FIDELE SARL"
         className="brand-logo-img"
       />
     </Link>

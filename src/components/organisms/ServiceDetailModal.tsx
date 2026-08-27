@@ -103,19 +103,18 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
           <div className="service-modal-media">
             <Image
               src={activeService.imageSrc}
-              alt={`Illustration du service ${activeService.title} - FIDÈLE SARL`}
+              alt={`Illustration du service ${activeService.title} - FIDELE SARL`}
               fill
               sizes="(max-width: 900px) 100vw, 480px"
               className="service-modal-img"
               priority
             />
             <div className="service-modal-media-badge">
-              <span className="badge-num">{activeService.number}</span>
               <span className="badge-cat">{activeService.categoryLabel}</span>
             </div>
             <div className="service-modal-media-tag">
               <ShieldCheck size={14} />
-              <span>Garantie Qualité FIDÈLE SARL</span>
+              <span>Garantie Qualité FIDELE SARL</span>
             </div>
           </div>
 

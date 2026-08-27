@@ -49,7 +49,7 @@ export const servicesData: ServiceItem[] = [
       "Respect strict des normes environnementales et de sécurité",
     ],
     detailedText:
-      "FIDÈLE SARL mobilise ses équipes d'ingénieurs et techniciens pour concrétiser vos projets de construction de toutes dimensions. De la fondation aux superstructures, nous appliquons un contrôle qualité rigoureux et utilisons des matériaux certifiés pour garantir la pérennité de chaque ouvrage.",
+      "FIDELE SARL mobilise ses équipes d'ingénieurs et techniciens pour concrétiser vos projets de construction de toutes dimensions. De la fondation aux superstructures, nous appliquons un contrôle qualité rigoureux et utilisons des matériaux certifiés pour garantir la pérennité de chaque ouvrage.",
   },
   {
     id: "terrassement",
@@ -91,7 +91,7 @@ export const servicesData: ServiceItem[] = [
       "Finitions esthétiques et résistantes au trafic lourd",
     ],
     detailedText:
-      "Spécialiste reconnu auprès des municipalités et promoteurs, FIDÈLE SARL conçoit et pose des revêtements en pavés autobloquants conçus pour durer face aux charges répétées et aux aléas climatiques.",
+      "Spécialiste reconnu auprès des municipalités et promoteurs, FIDELE SARL conçoit et pose des revêtements en pavés autobloquants conçus pour durer face aux charges répétées et aux aléas climatiques.",
   },
   {
     id: "finition",
@@ -133,7 +133,7 @@ export const servicesData: ServiceItem[] = [
       "Désenclavement rapide pour collectivités et sites industriels",
     ],
     detailedText:
-      "Acteur engagé du développement territorial, FIDÈLE SARL intervient pour ouvrir et réhabiliter les axes d'accès essentiels, facilitant les échanges économiques et l'accès aux services fondamentaux pour les populations.",
+      "Acteur engagé du développement territorial, FIDELE SARL intervient pour ouvrir et réhabiliter les axes d'accès essentiels, facilitant les échanges économiques et l'accès aux services fondamentaux pour les populations.",
   },
   {
     id: "amenagement",
@@ -175,7 +175,7 @@ export const servicesData: ServiceItem[] = [
       "Solutions d'alimentation par pompage solaire pour zones isolées",
     ],
     detailedText:
-      "L'accès à l'eau potable est une priorité vitale. FIDÈLE SARL déploie des infrastructures hydrauliques complètes, garantissant un approvisionnement fiable et sécurisé pour les communes et complexes industriels.",
+      "L'accès à l'eau potable est une priorité vitale. FIDELE SARL déploie des infrastructures hydrauliques complètes, garantissant un approvisionnement fiable et sécurisé pour les communes et complexes industriels.",
   },
   {
     id: "transport-hydrocarbures",
@@ -217,6 +217,6 @@ export const servicesData: ServiceItem[] = [
       "Conseil technique personnalisé selon les exigences du cahier des charges",
     ],
     detailedText:
-      "FIDÈLE SARL approvisionne les chantiers en matériaux de premier choix et matériels professionnels pour garantir un déroulement fluide et sans rupture de stock pour tous vos projets de construction.",
+      "FIDELE SARL approvisionne les chantiers en matériaux de premier choix et matériels professionnels pour garantir un déroulement fluide et sans rupture de stock pour tous vos projets de construction.",
   },
 ];

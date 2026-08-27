@@ -68,17 +68,14 @@ export const ServiceCard: React.FC<ServiceCardProps> = (props) => {
         className="service-card"
         aria-label={`Découvrir notre service : ${title}`}
       >
-        {/* Top Header: Icon + Number + Interactive Arrow */}
+        {/* Top Header: Icon + Interactive Arrow */}
         <div className="service-card-top">
           <div className="service-icon-box">
             <IconComponent size={19} />
           </div>
-          <div className="service-card-top-right">
-            <span className="service-card-num">{number}</span>
-            <span className="service-card-arrow" aria-hidden="true">
-              <ArrowUpRight size={14} />
-            </span>
-          </div>
+          <span className="service-card-arrow" aria-hidden="true">
+            <ArrowUpRight size={14} />
+          </span>
         </div>
 
         {/* Category & Tagline line */}
