@@ -3122,6 +3122,12 @@ button {
   .team-helmet-container {
     display: none;
   }
+  .team-heading-row .heading-right {
+    flex: initial;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
 }
 
 .heading-right {
@@ -4871,10 +4877,19 @@ button {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .team-heading-row .heading-right {
+    flex: initial;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
   }
 
   .heading-right {
     align-items: flex-start;
+    gap: 14px;
   }
 
   .team-filter-bar {
