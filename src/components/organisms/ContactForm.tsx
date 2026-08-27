@@ -485,14 +485,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ mode }) => {
             )}
           </Button>
 
-          <span className="notification-hint">
-            📧 Notification envoyée à :{" "}
-            <strong>
-              {mode === "general" && "contact@fidelesarl.com"}
-              {mode === "partnership" && "partenariat@fidelesarl.com"}
-              {mode === "career" && "emploi@fidelesarl.com (CV joint)"}
-            </strong>
-          </span>
+
         </div>
       </form>
 

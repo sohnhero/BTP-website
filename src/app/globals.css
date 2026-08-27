@@ -1760,28 +1760,44 @@ button {
 
 /* ── CONCRETE MIXER ACCENT (Projects Section Center Accent) ── */
 .projects-heading-wrap {
-  position: relative;
+  display: flex;
   align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(16px, 2.5vw, 40px);
+  position: relative;
+}
+
+.projects-heading-wrap .heading-left {
+  flex: 0 1 auto;
+  max-width: 520px;
 }
 
 .concrete-mixer-container {
-  position: absolute;
-  left: 63.5%;
-  bottom: -12px;
-  transform: translateX(-50%);
+  position: relative;
+  flex: 1 1 auto;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   pointer-events: none;
   z-index: 3;
+  min-width: 0;
+  margin-bottom: -10px;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .concrete-mixer-media {
   position: relative;
-  width: 430px;
+  width: clamp(180px, 20vw, 340px);
+  max-width: 100%;
   height: auto;
   filter: drop-shadow(0 24px 38px rgba(16, 18, 15, 0.24));
   animation: mixerVibration 5s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.projects-cta-btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
 @keyframes mixerVibration {
@@ -1813,37 +1829,13 @@ button {
   display: block;
 }
 
-@media (max-width: 1400px) {
-  .concrete-mixer-container {
-    left: 63%;
-  }
-
+@media (max-width: 1150px) {
   .concrete-mixer-media {
-    width: 360px;
+    width: clamp(140px, 16vw, 220px);
   }
 }
 
-@media (max-width: 1200px) {
-  .concrete-mixer-container {
-    left: 61%;
-  }
-
-  .concrete-mixer-media {
-    width: 290px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .concrete-mixer-container {
-    left: 59%;
-  }
-
-  .concrete-mixer-media {
-    width: 220px;
-  }
-}
-
-@media (max-width: 850px) {
+@media (max-width: 900px) {
   .concrete-mixer-container {
     display: none;
   }
@@ -3093,27 +3085,34 @@ button {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 32px;
+  gap: clamp(16px, 2.5vw, 40px);
   margin-bottom: 40px;
   position: relative;
 }
 
+.team-heading-row .heading-left {
+  flex: 0 1 auto;
+  max-width: 500px;
+}
+
 /* 3D Realistic Industrial Safety Helmet in Center Empty Space */
 .team-helmet-container {
-  position: absolute;
-  left: 55%;
-  bottom: -4px;
-  transform: translateX(-50%);
+  position: relative;
+  flex: 1 1 auto;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   pointer-events: none;
   z-index: 3;
+  min-width: 0;
+  margin-bottom: -4px;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .team-helmet-media {
   position: relative;
-  width: 280px;
+  width: clamp(140px, 16vw, 240px);
+  max-width: 100%;
   height: auto;
   filter: drop-shadow(0 20px 32px rgba(16, 18, 15, 0.22));
   animation: helmetSway 5.5s ease-in-out infinite alternate;
@@ -3141,27 +3140,21 @@ button {
   display: block;
 }
 
-@media (max-width: 1350px) {
-  .team-helmet-container {
-    left: 54%;
-  }
-
-  .team-helmet-media {
-    width: 235px;
-  }
+.team-heading-row .heading-right {
+  flex: 0 1 400px;
+  max-width: 400px;
 }
 
 @media (max-width: 1150px) {
-  .team-helmet-container {
-    left: 52%;
-  }
-
   .team-helmet-media {
-    width: 190px;
+    width: clamp(110px, 13vw, 170px);
+  }
+  .team-heading-row .heading-right {
+    max-width: 330px;
   }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 900px) {
   .team-helmet-container {
     display: none;
   }
