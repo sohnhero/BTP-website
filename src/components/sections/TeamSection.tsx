@@ -111,10 +111,10 @@ export const TeamSection: React.FC = () => {
         <div className="team-helmet-container" aria-hidden="true">
           <div className="team-helmet-media">
             <Image
-              src="/images/Untitled - August 25, 2026 at 21.20.10 (1).png"
+              src="/images/helmet.png"
               alt="Casque de chantier BTP de sécurité"
               width={400}
-              height={270}
+              height={300}
               priority
               className="team-helmet-img"
             />

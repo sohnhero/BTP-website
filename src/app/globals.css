@@ -213,74 +213,36 @@ button {
     box-shadow 0.3s ease;
 }
 
-.header--bubble .brand-text {
-  opacity: 0;
-  max-width: 0;
-  transform: translateX(-6px);
-  pointer-events: none;
-}
-
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  text-decoration: none;
   min-width: max-content;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.brand-mark {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #ffffff;
-  border: 1px solid rgba(0, 79, 156, 0.25);
-  box-shadow: 0 4px 12px rgba(0, 79, 156, 0.14);
-  padding: 3px;
-  overflow: hidden;
-  transition:
-    border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease;
+.brand:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
 }
 
 .brand-logo-img {
-  width: 100%;
-  height: 100%;
+  height: 42px;
+  width: auto;
+  max-width: 145px;
   object-fit: contain;
   display: block;
+  transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s ease;
 }
 
-.header--bubble .brand-mark {
-  border-radius: 50%;
+.header--bubble .brand-logo-img {
+  height: 34px;
+  max-width: 125px;
 }
 
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-  gap: 4px;
-  max-width: 140px;
-  opacity: 1;
-  overflow: hidden;
-  white-space: nowrap;
-  transition:
-    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.brand-text strong {
-  letter-spacing: .12em;
-  font-size: 14px;
-}
-
-.brand-text small {
-  color: var(--muted);
-  font-size: 9px;
-  letter-spacing: .06em;
+.brand-footer .brand-logo-img {
+  height: 52px;
+  max-width: 180px;
 }
 
 .desktop-nav {
@@ -1787,10 +1749,10 @@ button {
 
 .concrete-mixer-media {
   position: relative;
-  width: clamp(180px, 20vw, 340px);
+  width: clamp(230px, 24vw, 410px);
   max-width: 100%;
   height: auto;
-  filter: drop-shadow(0 24px 38px rgba(16, 18, 15, 0.24));
+  filter: drop-shadow(0 26px 42px rgba(16, 18, 15, 0.24));
   animation: mixerVibration 5s ease-in-out infinite alternate;
   will-change: transform;
 }
@@ -1831,7 +1793,7 @@ button {
 
 @media (max-width: 1150px) {
   .concrete-mixer-media {
-    width: clamp(140px, 16vw, 220px);
+    width: clamp(170px, 19vw, 260px);
   }
 }
 
@@ -3827,14 +3789,6 @@ button {
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
 
-.brand-footer .brand-mark {
-  background: var(--white);
-  color: var(--ink);
-}
-
-.brand-footer .brand-text small {
-  color: rgba(255, 255, 255, 0.5);
-}
 
 .footer-social-bar {
   display: flex;
@@ -4607,25 +4561,8 @@ button {
     padding: 0 8px 0 12px;
   }
 
-  .header--bubble .brand-text {
-    opacity: 1;
-    max-width: 200px;
-    overflow: visible;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .header--bubble .brand-text strong {
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    color: var(--ink);
-  }
-
-  .header--bubble .brand-text small {
-    font-size: 8.5px;
-    letter-spacing: 0.04em;
-    color: var(--muted);
+  .header--bubble .brand-logo-img {
+    height: 30px;
   }
 
   .section-pad {
@@ -4797,25 +4734,8 @@ button {
     border-radius: 40px;
   }
 
-  .header--bubble .brand-text {
-    opacity: 1;
-    max-width: 170px;
-    overflow: visible;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .header--bubble .brand-text strong {
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-  }
-
-  .header--bubble .brand-text small {
-    font-size: 8px;
-    letter-spacing: 0.03em;
-    color: var(--muted);
+  .header--bubble .brand-logo-img {
+    height: 26px;
   }
 
   .section-pad {
