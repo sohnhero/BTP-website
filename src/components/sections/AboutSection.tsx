@@ -47,12 +47,12 @@ export const AboutSection: React.FC = () => {
 
       <div ref={photoReveal.ref} className={`intro-photo photo-card ${photoReveal.revealClass}`}>
         <Image
-          src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=90"
-          alt="Équipe de chantier sur un projet de construction"
+          src="/images/apropos-img.png"
+          alt="Équipe technique et encadrement de FIDÈLE SARL sur un chantier BTP"
           fill
-          sizes="(max-width: 768px) 100vw, 500px"
-          style={{ objectFit: "cover" }}
-          unoptimized
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+          style={{ objectFit: "cover", objectPosition: "center 40%" }}
+          priority
         />
         <div className="intro-photo-shade" />
 

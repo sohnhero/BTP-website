@@ -1170,8 +1170,10 @@ button {
 
 .intro h2 em,
 .section-heading h2 em,
-.process-content h2 em {
-  color: #5d625d;
+.process-content h2 em,
+.contact-content h2 em,
+.catalogue-header-left h2 em {
+  color: #7bb96c;
 }
 
 .lead {
@@ -6162,7 +6164,7 @@ button {
   font-family: var(--font-playfair), "Playfair Display", serif;
   font-style: italic;
   font-weight: 500;
-  color: var(--accent);
+  color: #7bb96c;
 }
 
 .catalogue-header-left p {
