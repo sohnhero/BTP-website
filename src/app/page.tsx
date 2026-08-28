@@ -10,6 +10,7 @@ import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { PartnersSection } from "@/components/sections/PartnersSection";
 import { TestimonialSection } from "@/components/sections/TestimonialSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { MapSection } from "@/components/sections/MapSection";
 
 export default function HomePage() {
   return (
@@ -37,11 +38,14 @@ export default function HomePage() {
         {/* 6. PARTENAIRES */}
         <PartnersSection />
 
-        {/* 7. TÉMOIGNAGES */}
-        <TestimonialSection />
+        {/* 7. TÉMOIGNAGES (Masqué temporairement) */}
+        {/* <TestimonialSection /> */}
 
         {/* 8. CONTACT */}
         <ContactSection />
+
+        {/* 9. LOCALISATION & CARTE */}
+        <MapSection />
       </main>
       <Footer />
     </>

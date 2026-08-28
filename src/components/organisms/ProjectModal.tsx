@@ -5,7 +5,6 @@ import Image from "next/image";
 import {
   X,
   MapPin,
-  Maximize2,
   Clock,
   CheckCircle2,
   Building2,
@@ -13,7 +12,9 @@ import {
   ChevronRight,
   ArrowRight,
   ShieldCheck,
-  Award,
+  Layers,
+  Banknote,
+  HardHat,
 } from "lucide-react";
 import { ProjectItem } from "@/data/projects";
 
@@ -184,8 +185,18 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               </div>
             </div>
 
-            {/* Technical Metrics Bento Bar */}
+            {/* Technical Metrics Bento Bar (6 Verified Key Facts) */}
             <div className="project-metrics-grid">
+              <div className="metric-box">
+                <div className="metric-box-icon">
+                  <Building2 size={18} />
+                </div>
+                <div className="metric-box-data">
+                  <span className="metric-label">Client</span>
+                  <strong>{project.client}</strong>
+                </div>
+              </div>
+
               <div className="metric-box">
                 <div className="metric-box-icon">
                   <MapPin size={18} />
@@ -198,11 +209,31 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
               <div className="metric-box">
                 <div className="metric-box-icon">
-                  <Maximize2 size={18} />
+                  <Layers size={18} />
                 </div>
                 <div className="metric-box-data">
-                  <span className="metric-label">Superficie</span>
-                  <strong>{project.surface}</strong>
+                  <span className="metric-label">Secteur &amp; Type</span>
+                  <strong>{project.type}</strong>
+                </div>
+              </div>
+
+              <div className="metric-box">
+                <div className="metric-box-icon">
+                  <Banknote size={18} />
+                </div>
+                <div className="metric-box-data">
+                  <span className="metric-label">Investissement</span>
+                  <strong>{project.investment}</strong>
+                </div>
+              </div>
+
+              <div className="metric-box">
+                <div className="metric-box-icon">
+                  <HardHat size={18} />
+                </div>
+                <div className="metric-box-data">
+                  <span className="metric-label">Entreprise Exécutante</span>
+                  <strong>{project.contractor}</strong>
                 </div>
               </div>
 
@@ -211,18 +242,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   <Clock size={18} />
                 </div>
                 <div className="metric-box-data">
-                  <span className="metric-label">Durée des travaux</span>
-                  <strong>{project.duration}</strong>
-                </div>
-              </div>
-
-              <div className="metric-box">
-                <div className="metric-box-icon">
-                  <Building2 size={18} />
-                </div>
-                <div className="metric-box-data">
-                  <span className="metric-label">Maîtrise d'Œuvre</span>
-                  <strong>FIDELE SARL</strong>
+                  <span className="metric-label">Statut du Projet</span>
+                  <strong>{project.status}</strong>
                 </div>
               </div>
             </div>
@@ -245,17 +266,6 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 ))}
               </ul>
             </div>
-
-            {/* Architect's Quote */}
-            {project.architectQuote && (
-              <div className="project-quote-box">
-                <Award size={20} className="quote-badge-icon" />
-                <blockquote>
-                  &ldquo;{project.architectQuote}&rdquo;
-                  <cite>— Direction Technique FIDELE SARL</cite>
-                </blockquote>
-              </div>
-            )}
 
             {/* Modal Bottom Action Bar */}
             <div className="project-modal-cta-row">

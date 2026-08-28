@@ -3,7 +3,6 @@ import { DM_Sans, Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { BackToTop } from "@/components/atoms/BackToTop";
 import { ScrollProgress } from "@/components/atoms/ScrollProgress";
-import { CustomCursor } from "@/components/atoms/CustomCursor";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -76,7 +75,6 @@ export default function RootLayout({
       className={`${dmSans.variable} ${manrope.variable} ${playfairDisplay.variable}`}
     >
       <body>
-        <CustomCursor />
         <ScrollProgress />
         <div className="page-shell">{children}</div>
         <BackToTop />

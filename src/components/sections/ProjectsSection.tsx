@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { ProjectItem, mainProjectsData, secondaryProjectsData } from "@/data/projects";
+import { ProjectItem, allProjectsData } from "@/data/projects";
 import { ProjectCard } from "@/components/molecules/ProjectCard";
 import { useReveal } from "@/hooks/useReveal";
 import { ProjectModal } from "@/components/organisms/ProjectModal";
@@ -44,31 +44,18 @@ export const ProjectsSection: React.FC = () => {
           className="btn btn-outline projects-cta-btn"
           onClick={() => setIsCatalogueOpen(true)}
         >
-          <span>Voir tous les projets</span>
+          <span>Détails des projets</span>
           <ArrowRight size={16} />
         </button>
       </div>
 
-      {/* Main Top Grid (Featured Projects) */}
+      {/* Main Bento Grid (The 3 Real Projects) */}
       <div className="projects-grid">
-        {mainProjectsData.map((project, index) => (
+        {allProjectsData.map((project, index) => (
           <ProjectCard
             key={project.id}
             {...project}
             index={index}
-            onClick={() => setSelectedProject(project)}
-          />
-        ))}
-      </div>
-
-      {/* Single Bottom Row of Compact Secondary Project Cards */}
-      <div className="projects-secondary-row">
-        {secondaryProjectsData.map((project, index) => (
-          <ProjectCard
-            key={project.id}
-            {...project}
-            isMini
-            index={index + 3}
             onClick={() => setSelectedProject(project)}
           />
         ))}

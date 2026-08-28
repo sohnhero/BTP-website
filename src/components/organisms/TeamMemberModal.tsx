@@ -41,17 +41,28 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({ member, onClos
         <div className="team-modal-grid">
           {/* Left Column: Member Media & Info Highlights */}
           <div className="team-modal-media">
-            <Image
-              src={member.imageSrc}
-              alt={member.name}
-              fill
-              sizes="(max-width: 768px) 100vw, 400px"
-              style={{ objectFit: "cover", objectPosition: "top center" }}
-            />
+            {member.imageSrc ? (
+              <Image
+                src={member.imageSrc}
+                alt={member.name}
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                style={{ objectFit: "cover", objectPosition: "top center" }}
+              />
+            ) : (
+              <div className="team-monogram-canvas">
+                <div className="monogram-glow-ring">
+                  <span className="monogram-initials">{member.initials}</span>
+                </div>
+                <div className="monogram-dept-badge">
+                  <span>{member.department}</span>
+                </div>
+              </div>
+            )}
             <div className="team-modal-media-overlay"></div>
             <div className="team-modal-exp-badge">
               <Award size={14} className="badge-icon" />
-              <span>{member.yearsOfExp} ans d'expérience</span>
+              <span>{member.department}</span>
             </div>
           </div>
 
@@ -104,9 +115,11 @@ export const TeamMemberModal: React.FC<TeamMemberModalProps> = ({ member, onClos
               <a href={`mailto:${member.email}`} className="btn btn-accent btn-sm">
                 <Mail size={14} /> {member.email}
               </a>
-              <a href={`tel:${member.phone.replace(/\s/g, "")}`} className="btn btn-outline btn-sm">
-                <Phone size={14} /> {member.phone}
-              </a>
+              {member.phone && (
+                <a href={`tel:${member.phone.replace(/\s/g, "")}`} className="btn btn-outline btn-sm">
+                  <Phone size={14} /> {member.phone}
+                </a>
+              )}
             </div>
           </div>
         </div>

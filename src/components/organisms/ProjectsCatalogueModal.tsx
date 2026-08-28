@@ -8,8 +8,10 @@ import {
   Building2,
   MapPin,
   ArrowUpRight,
+  ArrowRight,
   Maximize2,
   Layers,
+  Banknote,
   Sparkles,
 } from "lucide-react";
 import { ProjectItem, allProjectsData } from "@/data/projects";
@@ -20,7 +22,7 @@ interface ProjectsCatalogueModalProps {
   onSelectProject: (proj: ProjectItem) => void;
 }
 
-type FilterCategory = "all" | "residential" | "commercial" | "renovation" | "infrastructure";
+type FilterCategory = "all" | "infrastructure" | "renovation" | "sport";
 
 export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
   isOpen,
@@ -54,24 +56,19 @@ export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
     () => [
       { id: "all" as FilterCategory, label: "Tous les projets", count: allProjectsData.length },
       {
-        id: "residential" as FilterCategory,
-        label: "Résidentiel d'Exception",
-        count: allProjectsData.filter((p) => p.categorySlug === "residential").length,
-      },
-      {
-        id: "commercial" as FilterCategory,
-        label: "Tertiaire & Sièges",
-        count: allProjectsData.filter((p) => p.categorySlug === "commercial").length,
+        id: "infrastructure" as FilterCategory,
+        label: "Infrastructures Portuaires",
+        count: allProjectsData.filter((p) => p.categorySlug === "infrastructure").length,
       },
       {
         id: "renovation" as FilterCategory,
-        label: "Rénovation & Surélévation",
+        label: "Réhabilitation & Aménagement",
         count: allProjectsData.filter((p) => p.categorySlug === "renovation").length,
       },
       {
-        id: "infrastructure" as FilterCategory,
-        label: "Infrastructures & Tech",
-        count: allProjectsData.filter((p) => p.categorySlug === "infrastructure").length,
+        id: "sport" as FilterCategory,
+        label: "Infrastructures Sportives",
+        count: allProjectsData.filter((p) => p.categorySlug === "sport").length,
       },
     ],
     []
@@ -89,7 +86,8 @@ export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
         project.subtitle.toLowerCase().includes(query) ||
         project.location.toLowerCase().includes(query) ||
         project.category.toLowerCase().includes(query) ||
-        project.surface.toLowerCase().includes(query);
+        (project.surface ? project.surface.toLowerCase().includes(query) : false) ||
+        (project.client ? project.client.toLowerCase().includes(query) : false);
 
       return matchCategory && matchQuery;
     });
@@ -211,25 +209,35 @@ export const ProjectsCatalogueModal: React.FC<ProjectsCatalogueModalProps> = ({
                   {/* Card Info Bottom */}
                   <div className="card-content-block">
                     <div className="card-location-row">
-                      <MapPin size={12} />
+                      <MapPin size={13} />
                       <span>{project.location}</span>
                     </div>
 
-                    <h3>{project.title}</h3>
+                    <h3 className="card-project-title">{project.title}</h3>
                     <p className="card-subtitle-desc">{project.subtitle}</p>
 
+                    {/* Technical Badges Row */}
+                    <div className="card-badges-row">
+                      <span className="card-badge-investment">
+                        <Banknote size={13} />
+                        <span>{project.investment}</span>
+                      </span>
+                      <span className="card-badge-scope">
+                        <Layers size={13} />
+                        <span>{project.scope.length} corps d&apos;état</span>
+                      </span>
+                    </div>
+
+                    {/* Card Specs Footer with Dedicated CTA */}
                     <div className="card-specs-footer">
-                      <div className="spec-item">
-                        <Maximize2 size={12} />
+                      <div className="spec-surface-item" title={project.surface}>
+                        <Maximize2 size={13} />
                         <span>{project.surface}</span>
                       </div>
-                      <div className="spec-divider" />
-                      <div className="spec-item">
-                        <Layers size={12} />
-                        <span>{project.scope.length} lots</span>
+                      <div className="spec-view-pill">
+                        <span>Fiche</span>
+                        <ArrowRight size={13} />
                       </div>
-                      <div className="spec-divider" />
-                      <span className="spec-view-link">Fiche &rarr;</span>
                     </div>
                   </div>
                 </article>

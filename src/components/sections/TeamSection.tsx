@@ -2,9 +2,26 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  Building2,
+  HardHat,
+  Truck,
+  ShieldCheck,
+} from "lucide-react";
 import { teamMembers, teamCategories, TeamMember } from "@/data/team";
 import { useReveal } from "@/hooks/useReveal";
+
+/* Helper to get Department Icon */
+const getDepartmentIcon = (category: string, role: string) => {
+  if (category === "transport") return Truck;
+  if (category === "btp") return HardHat;
+  if (role.toLowerCase().includes("comptable") || role.toLowerCase().includes("finance"))
+    return ShieldCheck;
+  return Building2;
+};
 
 /* ─── Individual Team Member Card with Staggered Scroll Reveal ─── */
 const TeamMemberCard: React.FC<{
@@ -18,6 +35,8 @@ const TeamMemberCard: React.FC<{
     delay: Math.min(index * 110, 550),
   });
 
+  const DeptIcon = getDepartmentIcon(member.category, member.role);
+
   return (
     <article
       ref={ref}
@@ -25,36 +44,51 @@ const TeamMemberCard: React.FC<{
       onMouseEnter={onSelect}
       onClick={onSelect}
     >
-      {/* Portrait Background */}
+      {/* Media or Monogram Avatar Canvas */}
       <div className="accordion-media">
-        <Image
-          src={member.imageSrc || "/team-director.png"}
-          alt={`${member.name} — ${member.role}`}
-          fill
-          sizes="(max-width: 900px) 100vw, 50vw"
-          style={{ objectFit: "cover", objectPosition: "top center" }}
-          priority={index === 0}
-        />
+        {member.imageSrc ? (
+          <Image
+            src={member.imageSrc}
+            alt={`${member.name} — ${member.role}`}
+            fill
+            sizes="(max-width: 900px) 100vw, 50vw"
+            style={{ objectFit: "cover", objectPosition: "top center" }}
+            priority={index === 0}
+          />
+        ) : (
+          <div className="team-monogram-canvas">
+            {/* Subtle Architectural Ambient Watermark */}
+            <div className="monogram-ambient-watermark" aria-hidden="true">
+              <span>{member.initials}</span>
+            </div>
+          </div>
+        )}
         <div className="accordion-overlay"></div>
       </div>
 
-      {/* Subtle Collapsed Hint Bar */}
-      {!isActive && (
-        <div className="accordion-collapsed-hint">
-          <div className="collapsed-info">
-            <span className="collapsed-role">{member.role}</span>
-            <strong className="collapsed-name">{member.name}</strong>
-          </div>
-          <div className="collapsed-action-pill">
-            <span>Toucher pour déplier</span>
-            <ChevronDown size={13} className="collapsed-icon" />
-          </div>
+      {/* ── Collapsed Vertical Mode (When Card is Narrow / Enroulée) ── */}
+      <div className="accordion-collapsed-vertical" aria-hidden={isActive}>
+        <div className="collapsed-top-icon">
+          <DeptIcon size={16} />
         </div>
-      )}
 
-      {/* Active Expanded Card Content */}
-      <div className="accordion-expanded-content">
+        <div className="collapsed-vertical-text">
+          <span className="collapsed-v-role">{member.role}</span>
+          <strong className="collapsed-v-name">{member.name}</strong>
+        </div>
+
+        <div className="collapsed-bottom-initials">
+          <span>{member.initials}</span>
+        </div>
+      </div>
+
+      {/* ── Active Expanded Card Content ── */}
+      <div className="accordion-expanded-content" aria-hidden={!isActive}>
         <div className="expanded-top">
+          <div className="expanded-dept-pill">
+            <DeptIcon size={13} />
+            <span>{member.department}</span>
+          </div>
           <span className="expanded-role">{member.role}</span>
           <h3 className="expanded-name">{member.name}</h3>
           <p className="expanded-tagline">{member.tagline}</p>
@@ -103,7 +137,7 @@ export const TeamSection: React.FC = () => {
           <span className="overline">Notre équipe</span>
           <h2>
             L’excellence portée par<br />
-            <em>des experts passionnés.</em>
+            <em>des experts engagés.</em>
           </h2>
         </div>
 
@@ -123,7 +157,7 @@ export const TeamSection: React.FC = () => {
 
         <div className="heading-right">
           <p>
-            Des ingénieurs, architectes et conducteurs de travaux unis par la même exigence de précision, d'innovation et de résultat.
+            Direction Générale, Direction BTP et Direction Transport : des compétences complémentaires au service de l'exécution rigoureuse de vos ouvrages.
           </p>
 
           {/* Navigation Arrows (Top Right) */}
