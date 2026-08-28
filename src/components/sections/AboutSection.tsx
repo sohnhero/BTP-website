@@ -47,7 +47,7 @@ export const AboutSection: React.FC = () => {
 
       <div ref={photoReveal.ref} className={`intro-photo photo-card ${photoReveal.revealClass}`}>
         <Image
-          src="/images/apropos-img.png"
+          src="/images/apropos-img.jpg"
           alt="Équipe technique et encadrement de FIDELE SARL sur un chantier BTP"
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"

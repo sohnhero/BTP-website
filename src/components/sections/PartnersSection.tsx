@@ -44,11 +44,25 @@ const PartnerCard: React.FC<{ partner: Partner }> = ({ partner }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Prominent Large Logo Box */}
-      <div className="partner-logo-container">
-        <div className="partner-logo-badge">
-          <PartnerIcon type={partner.iconType} />
-        </div>
-        <span className="partner-logo-mark">{partner.logoType}</span>
+      <div
+        className={`partner-logo-container ${
+          partner.logoImage ? "partner-logo-container--image" : ""
+        }`}
+      >
+        {partner.logoImage ? (
+          <img
+            src={partner.logoImage}
+            alt={`Logo ${partner.name}`}
+            className="partner-custom-logo-img"
+          />
+        ) : (
+          <>
+            <div className="partner-logo-badge">
+              <PartnerIcon type={partner.iconType} />
+            </div>
+            <span className="partner-logo-mark">{partner.logoType}</span>
+          </>
+        )}
       </div>
 
       {/* Partner Info Details */}

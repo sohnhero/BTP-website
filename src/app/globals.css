@@ -4608,10 +4608,10 @@ button {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 14px 28px 14px 14px;
-  min-height: 82px;
-  border-radius: 60px;
+  gap: 20px;
+  padding: 14px 32px 14px 16px;
+  min-height: 98px;
+  border-radius: 70px;
   background: var(--white);
   border: 1px solid rgba(16, 18, 15, 0.12);
   cursor: default;
@@ -4634,11 +4634,11 @@ button {
 .partner-logo-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   background: #f6f6f0;
   border: 1px solid rgba(16, 18, 15, 0.1);
-  padding: 6px 18px 6px 6px;
-  border-radius: 40px;
+  padding: 6px 20px 6px 6px;
+  border-radius: 50px;
   transition: all 0.3s ease;
 }
 
@@ -4647,9 +4647,41 @@ button {
   border-color: rgba(0, 79, 156, 0.4);
 }
 
+.partner-logo-container--image {
+  padding: 6px 20px;
+  height: 74px;
+  min-width: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-color: rgba(16, 18, 15, 0.12);
+  border-radius: 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.partner-card:hover .partner-logo-container--image {
+  background: #ffffff;
+  border-color: rgba(0, 79, 156, 0.45);
+  box-shadow: 0 4px 14px rgba(0, 79, 156, 0.12);
+}
+
+.partner-custom-logo-img {
+  height: 62px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.partner-card:hover .partner-custom-logo-img {
+  transform: scale(1.06);
+}
+
 .partner-logo-badge {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: var(--ink);
   color: #4da3ff;
@@ -4672,7 +4704,7 @@ button {
 }
 
 .partner-logo-mark {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--ink);
@@ -4688,14 +4720,14 @@ button {
 }
 
 .partner-brand-name {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
   color: var(--ink);
   letter-spacing: -0.01em;
 }
 
 .partner-brand-domain {
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 500;
   color: var(--muted);
 }
@@ -5337,31 +5369,42 @@ button {
   }
 
   .partner-card {
-    min-height: 74px;
-    padding: 10px 20px 10px 10px;
-    gap: 14px;
+    min-height: 86px;
+    padding: 12px 24px 12px 12px;
+    gap: 16px;
   }
 
   .partner-logo-container {
-    gap: 8px;
-    padding: 4px 12px 4px 4px;
+    gap: 10px;
+    padding: 4px 14px 4px 4px;
+  }
+
+  .partner-logo-container--image {
+    height: 64px;
+    padding: 4px 14px;
+    min-width: 85px;
+  }
+
+  .partner-custom-logo-img {
+    height: 52px;
+    max-width: 120px;
   }
 
   .partner-logo-badge {
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
   }
 
   .partner-logo-mark {
-    font-size: 11.5px;
+    font-size: 12px;
   }
 
   .partner-brand-name {
-    font-size: 13.5px;
+    font-size: 14.5px;
   }
 
   .partner-brand-domain {
-    font-size: 10.5px;
+    font-size: 11.5px;
   }
 
 
