@@ -13,7 +13,7 @@ export const HeroSection: React.FC = () => {
 
   return (
     <>
-      <section ref={ref} className={`hero ${revealClass}`}>
+      <section ref={ref} className={`hero ${revealClass}`} id="hero">
         <div className="hero-media">
           <div className="hero-overlay"></div>
 
@@ -78,7 +78,7 @@ export const HeroSection: React.FC = () => {
                 Voir nos réalisations
                 <ArrowRight size={16} />
               </Link>
-              <Link className="btn-hero-contact" href="/contact">
+              <Link className="btn btn-hero-contact" href="/contact">
                 Nous contacter
                 <ArrowRight size={16} />
               </Link>

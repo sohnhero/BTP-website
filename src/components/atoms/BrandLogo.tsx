@@ -14,10 +14,13 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ isFooter = false }) => {
   const handleClick = (e: React.MouseEvent) => {
     if (pathname === "/") {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       if (window.location.hash) {
         window.history.replaceState(null, "", window.location.pathname);
       }
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 350);
     }
   };
 

@@ -3236,6 +3236,7 @@ button {
 .home-cta-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
   padding: 6px 16px;
   border-radius: 20px;
@@ -3245,8 +3246,14 @@ button {
   font-size: 11px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  max-width: 100%;
   margin-bottom: 20px;
+}
+
+.home-cta-badge svg {
+  flex-shrink: 0;
 }
 
 .home-cta-title {
@@ -5804,6 +5811,7 @@ button {
   }
 
   .hero-actions .btn,
+  .hero-actions .btn-hero-contact,
   .hero-actions .text-link {
     min-height: 44px;
     padding: 0 18px;
@@ -6131,18 +6139,27 @@ button {
     width: 100%;
   }
 
-  .hero-actions .btn {
+  .hero-actions .btn,
+  .hero-actions .btn-hero-contact {
     width: 100%;
+    display: inline-flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     min-height: 48px;
   }
 
   .hero-video-trigger {
     top: 14px;
-    right: 14px;
-    padding: 6px 12px 6px 7px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    padding: 6px 14px 6px 8px;
     gap: 8px;
     border-radius: 40px;
+    width: max-content;
+    max-width: calc(100% - 24px);
+    justify-content: center;
   }
 
   .hero-video-play-wrap {
@@ -6167,10 +6184,16 @@ button {
     display: none;
   }
 
-  .hero-social-proof {
-    left: 12px;
-    bottom: 12px;
-    padding: 6px 12px;
+  .hero-social-proof,
+  .hero-quality-pill {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 14px;
+    width: max-content;
+    max-width: calc(100% - 24px);
+    padding: 8px 16px 8px 10px;
+    justify-content: center;
   }
 
   .hero-social-avatars img {
@@ -6525,6 +6548,47 @@ button {
     justify-content: center;
   }
 
+  /* Home CTA Banner Mobile */
+  .home-cta-section {
+    padding: 30px 16px 60px;
+  }
+
+  .home-cta-card {
+    padding: 34px 16px 30px;
+    border-radius: 24px;
+  }
+
+  .home-cta-badge {
+    font-size: 9.5px;
+    padding: 5px 12px;
+    letter-spacing: 0.06em;
+    gap: 6px;
+    white-space: nowrap;
+    margin-bottom: 14px;
+  }
+
+  .home-cta-title {
+    font-size: clamp(22px, 6.2vw, 30px);
+    margin-bottom: 12px;
+  }
+
+  .home-cta-subtitle {
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+
+  .home-cta-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .home-cta-btn-main,
+  .home-cta-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
   /* Compact Mobile Footer Layout */
   .site-footer {
     padding: 0 10px 16px;
@@ -6559,18 +6623,28 @@ button {
   .footer-social-bar {
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
     gap: 10px;
   }
 
   .social-label {
     font-size: 10.5px;
+    text-align: center;
+  }
+
+  .social-pill-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
 
   .social-icon-btn {
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
   }
 
   .footer-divider {
@@ -6657,6 +6731,17 @@ button {
 
 /* ── TIER 4: Small Mobile Phones (<= 480px) ── */
 @media (max-width: 480px) {
+  .home-cta-badge {
+    font-size: 8.5px;
+    padding: 4px 10px;
+    letter-spacing: 0.04em;
+    gap: 5px;
+  }
+
+  .home-cta-section {
+    padding: 20px 14px 50px;
+  }
+
   .footer-nav-groups {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px 10px;
@@ -6664,12 +6749,13 @@ button {
 
   .footer-social-bar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 10px;
   }
 
   .social-pill-group {
-    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .cv-dropzone {

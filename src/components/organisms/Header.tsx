@@ -18,6 +18,10 @@ export const Header: React.FC = () => {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     if (pathname === "/") {
       const hash = window.location.hash;
       if (hash && hash !== "#top" && hash !== "#hero") {
@@ -36,7 +40,7 @@ export const Header: React.FC = () => {
         }, 120);
         return () => clearTimeout(timer);
       } else {
-        window.scrollTo({ top: 0, behavior: "instant" });
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
       }
     }
   }, [pathname]);
@@ -50,12 +54,17 @@ export const Header: React.FC = () => {
     const handleScroll = () => {
       const y = window.scrollY;
 
-      // Hysteresis threshold: triggers bubble at >32px, reverts at <14px
+      // Hysteresis threshold: triggers bubble at >32px, reverts at <10px
       setScrolled((prev) => {
         if (!prev && y > 32) return true;
-        if (prev && y < 14) return false;
+        if (prev && y < 10) return false;
         return prev;
       });
+
+      // Clear hash when scrolled all the way back to the top
+      if (y < 60 && window.location.hash) {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
 
       // Track active section on homepage
       if (pathname === "/") {
@@ -117,7 +126,7 @@ export const Header: React.FC = () => {
     if (href === "/contact") {
       if (pathname === "/contact") {
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       }
       return; // Let Next.js navigate to /contact if on /
     }
@@ -126,10 +135,13 @@ export const Header: React.FC = () => {
     if (href === "#top" || href === "/#top" || href === "/" || href === "#hero" || href === "/#hero") {
       if (pathname === "/") {
         e.preventDefault();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         if (window.location.hash) {
           window.history.replaceState(null, "", window.location.pathname);
         }
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 350);
       }
       return;
     }
