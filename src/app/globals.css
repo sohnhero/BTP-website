@@ -2231,6 +2231,7 @@ button {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-md);
+  cursor: pointer;
 }
 
 .project-large {
