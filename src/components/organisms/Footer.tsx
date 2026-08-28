@@ -79,23 +79,39 @@ export const Footer: React.FC = () => {
             <div className="footer-social-bar">
               <span className="social-label">Réseaux Sociaux</span>
               <div className="social-pill-group">
-                <a href="#" className="social-icon-btn" aria-label="Facebook">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon-btn"
+                  aria-label="Facebook FIDELE SARL"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                   </svg>
                 </a>
 
-                <a href="#" className="social-icon-btn" aria-label="TikTok">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 1 1-5.2-1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V5.8a6.34 6.34 0 0 0-1-.08A6.34 6.34 0 1 0 15.7 12V8.34a8.27 8.27 0 0 0 4.84 1.55V6.69z" />
+                <a
+                  href="https://tiktok.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon-btn"
+                  aria-label="TikTok FIDELE SARL"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.525 0h3.88c.07 1.54.64 3.09 1.77 4.18 1.13 1.1 2.69 1.6 4.23 1.76v3.98c-1.42-.02-2.82-.37-4.07-.99v6.52c0 1.63-.44 3.24-1.34 4.54-1.52 2.22-4.14 3.65-7 3.63-2.31.02-4.54-.88-6.15-2.52-1.63-1.63-2.52-3.87-2.52-6.18 0-2.32.89-4.56 2.52-6.19 1.61-1.64 3.84-2.54 6.15-2.52.43 0 .86.04 1.28.12v4.22a4.42 4.42 0 0 0-1.28-.19c-1.16 0-2.28.46-3.1 1.28a4.39 4.39 0 0 0-1.28 3.1c0 1.16.46 2.28 1.28 3.1.82.82 1.94 1.28 3.1 1.28 1.16 0 2.28-.46 3.1-1.28.82-.82 1.28-1.94 1.28-3.1V0z" />
                   </svg>
                 </a>
 
-                <a href="#" className="social-icon-btn" aria-label="LinkedIn">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon-btn"
+                  aria-label="LinkedIn FIDELE SARL"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
                   </svg>
                 </a>
               </div>
