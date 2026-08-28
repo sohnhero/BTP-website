@@ -5,7 +5,6 @@ import Image from "next/image";
 import { ArrowUpRight, Award, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/atoms/Button";
 import { useReveal } from "@/hooks/useReveal";
-import { AnimatedNumber } from "@/components/atoms/AnimatedNumber";
 
 export const AboutSection: React.FC = () => {
   const copyReveal = useReveal({ variant: "left" });
@@ -16,26 +15,27 @@ export const AboutSection: React.FC = () => {
       <div ref={copyReveal.ref} className={`intro-copy ${copyReveal.revealClass}`}>
         <span className="overline">À propos</span>
         <h2>
-          Une construction fondée sur <em>la précision, la maîtrise</em> et la confiance.
+          Des infrastructures bâties sur<br />
+          <em>la rigueur, la maîtrise</em> et l’engagement.
         </h2>
 
         <p className="lead">
-          FIDELE SARL accompagne entreprises, promoteurs et particuliers dans la réalisation de projets exigeants. Notre approche associe ingénierie, design, pilotage et exécution pour garantir des résultats maîtrisés de bout en bout.
+          FIDELE SARL est une entreprise sénégalaise spécialisée dans le bâtiment, les travaux publics, la réhabilitation et l’aménagement d’infrastructures. Elle intervient notamment dans l’exécution de marchés publics et de projets institutionnels, avec une approche fondée sur la maîtrise technique, la rigueur d’exécution et le respect des exigences contractuelles.
         </p>
 
         {/* Core Pillars Mini Grid with Scroll-In Animation */}
         <div className="about-pillars-grid">
           <div className="about-pillar-chip">
             <ShieldCheck size={16} className="pillar-icon" />
-            <span>Normes ISO & Sécurité</span>
+            <span>Bâtiment & Travaux Publics</span>
           </div>
           <div className="about-pillar-chip">
             <Award size={16} className="pillar-icon" />
-            <span>Matériaux Certifiés</span>
+            <span>Réhabilitation & Aménagement</span>
           </div>
           <div className="about-pillar-chip">
             <CheckCircle2 size={16} className="pillar-icon" />
-            <span>Supervision Clé en Main</span>
+            <span>Marchés Publics & Institutionnels</span>
           </div>
         </div>
 
@@ -55,30 +55,6 @@ export const AboutSection: React.FC = () => {
           priority
         />
         <div className="intro-photo-shade" />
-
-        {/* Floating Animated Achievement Stats Capsule */}
-        <div className="about-floating-capsule">
-          <div className="capsule-stat-col">
-            <strong>
-              <AnimatedNumber value={15} suffix="+" duration={1800} />
-            </strong>
-            <small>Années d'expertise</small>
-          </div>
-          <div className="capsule-divider" />
-          <div className="capsule-stat-col">
-            <strong>
-              <AnimatedNumber value={50} suffix="+" duration={2000} />
-            </strong>
-            <small>Ouvrages livrés</small>
-          </div>
-          <div className="capsule-divider" />
-          <div className="capsule-stat-col">
-            <strong>
-              <AnimatedNumber value={100} suffix="%" duration={2200} />
-            </strong>
-            <small>Délais garantis</small>
-          </div>
-        </div>
       </div>
     </section>
   );

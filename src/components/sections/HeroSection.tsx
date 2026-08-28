@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, ArrowDownRight, Play } from "lucide-react";
+import { ArrowRight, ArrowDownRight, Play, ShieldCheck } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 import { AnimatedNumber } from "@/components/atoms/AnimatedNumber";
 import { CompanyVideoModal } from "@/components/organisms/CompanyVideoModal";
@@ -61,16 +61,16 @@ export const HeroSection: React.FC = () => {
           <div className="hero-content">
             <div className="eyebrow">
               <span className="eyebrow-dot"></span>
-              Construction • Génie civil • Rénovation
+              BTP & Transport de matériel génie civil
             </div>
 
             <h1>
-              Construire aujourd’hui.<br />
-              <em>Créer de la valeur</em> pour demain.
+              Des infrastructures durables<br />
+              au service du <em>développement local.</em>
             </h1>
 
             <p>
-              Nous concevons et réalisons des ouvrages durables, performants et remarquables — du premier plan jusqu’à la livraison finale.
+              Du bâtiment gros œuvre aux aménagements sportifs et économiques, Fidèle SARL conçoit et réhabilite les espaces publics sénégalais avec un standard d'excellence.
             </p>
 
             <div className="hero-actions">
@@ -78,45 +78,20 @@ export const HeroSection: React.FC = () => {
                 Voir nos réalisations
                 <ArrowRight size={16} />
               </Link>
-              <Link className="text-link" href="#about">
-                Découvrir notre méthode
-                <ArrowDownRight size={16} />
+              <Link className="btn-hero-contact" href="#contact">
+                Nous contacter
+                <ArrowRight size={16} />
               </Link>
             </div>
           </div>
 
-          <div className="hero-social-proof">
-            <div className="avatar-stack">
-              <span
-                style={
-                  {
-                    "--bg":
-                      "url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80')",
-                  } as React.CSSProperties
-                }
-              ></span>
-              <span
-                style={
-                  {
-                    "--bg":
-                      "url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80')",
-                  } as React.CSSProperties
-                }
-              ></span>
-              <span
-                style={
-                  {
-                    "--bg":
-                      "url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80')",
-                  } as React.CSSProperties
-                }
-              ></span>
+          <div className="hero-quality-pill">
+            <div className="hero-quality-icon-box">
+              <ShieldCheck size={20} className="quality-shield-icon" />
             </div>
-            <div>
-              <strong>
-                <AnimatedNumber value={4.9} decimals={1} duration={2200} />/5
-              </strong>
-              <small>Satisfaction client</small>
+            <div className="hero-quality-info">
+              <strong>Excellence &amp; Qualité</strong>
+              <small>Standard d'exécution garanti</small>
             </div>
           </div>
         </div>
