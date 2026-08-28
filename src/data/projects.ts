@@ -105,9 +105,9 @@ export const allProjectsData: ProjectItem[] = [
     status: "Réception provisoire · 2026",
     surface: "Terrain de football 7 contre 7",
     duration: "Livraison 2026",
-    imageUrl: "https://res.cloudinary.com/drxouwbms/image/upload/v1787907536/terrain-diamalaye_u460hz.jpg",
+    imageUrl: "/images/terrain.png",
     gallery: [
-      "https://res.cloudinary.com/drxouwbms/image/upload/v1787907536/terrain-diamalaye_u460hz.jpg",
+      "/images/terrain.png",
     ],
     description:
       "Réalisation d’une infrastructure sportive de proximité au cœur de la commune de Yoff. FIDELE SARL a assuré l’exécution des travaux du terrain de football synthétique 7/7 de la Cité Poste de Diamalaye, un équipement destiné à offrir aux jeunes et aux habitants un cadre moderne et adapté à la pratique du football. Financé sur fonds propres par la Commune de Yoff pour un investissement annoncé de 33 millions FCFA, le projet s’inscrit dans la politique municipale de développement des infrastructures sportives et d’amélioration du cadre de vie.",
