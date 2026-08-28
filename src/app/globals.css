@@ -1130,13 +1130,9 @@ button {
   align-items: center;
   border: 1px solid rgba(0, 79, 156, 0.15);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  user-select: none;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.hero-quality-pill:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(0, 79, 156, 0.18);
-  border-color: rgba(0, 79, 156, 0.3);
 }
 
 .hero-quality-icon-box {
@@ -6194,6 +6190,16 @@ button {
     max-width: calc(100% - 24px);
     padding: 8px 16px 8px 10px;
     justify-content: center;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .hero-social-proof:hover,
+  .hero-quality-pill:hover,
+  .hero-social-proof:active,
+  .hero-quality-pill:active {
+    transform: translateX(-50%) !important;
   }
 
   .hero-social-avatars img {
