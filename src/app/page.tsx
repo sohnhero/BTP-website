@@ -8,9 +8,7 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { TeamSection } from "@/components/sections/TeamSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { PartnersSection } from "@/components/sections/PartnersSection";
-import { TestimonialSection } from "@/components/sections/TestimonialSection";
-import { ContactSection } from "@/components/sections/ContactSection";
-import { MapSection } from "@/components/sections/MapSection";
+import { HomeContactCta } from "@/components/sections/HomeContactCta";
 
 export default function HomePage() {
   return (
@@ -38,14 +36,8 @@ export default function HomePage() {
         {/* 6. PARTENAIRES */}
         <PartnersSection />
 
-        {/* 7. TÉMOIGNAGES (Masqué temporairement) */}
-        {/* <TestimonialSection /> */}
-
-        {/* 8. CONTACT */}
-        <ContactSection />
-
-        {/* 9. LOCALISATION & CARTE */}
-        <MapSection />
+        {/* 7. CTA VERS PAGE CONTACT DÉDIÉE */}
+        <HomeContactCta />
       </main>
       <Footer />
     </>

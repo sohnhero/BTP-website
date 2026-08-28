@@ -63,7 +63,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = (props) => {
   return (
     <div ref={revealRef} className={revealClass}>
       <Link
-        href="#contact"
+        href="/contact"
         onClick={handleClick}
         className="service-card"
         aria-label={`Découvrir notre service : ${title}`}

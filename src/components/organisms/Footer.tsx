@@ -126,31 +126,31 @@ export const Footer: React.FC = () => {
             <div className="footer-nav-col">
               <span className="footer-col-header">Expertises</span>
               <ul>
-                <li><Link href="#services">Construction & BTP</Link></li>
-                <li><Link href="#services">Terrassement & Pavage</Link></li>
-                <li><Link href="#services">Pistes & Adduction d'eau</Link></li>
-                <li><Link href="#services">Transport Hydrocarbures</Link></li>
-                <li><Link href="#services">Fournitures & Équipements</Link></li>
+                <li><Link href="/#services">Construction & BTP</Link></li>
+                <li><Link href="/#services">Terrassement & Pavage</Link></li>
+                <li><Link href="/#services">Pistes & Adduction d'eau</Link></li>
+                <li><Link href="/#services">Transport Hydrocarbures</Link></li>
+                <li><Link href="/#services">Fournitures & Équipements</Link></li>
               </ul>
             </div>
 
             <div className="footer-nav-col">
               <span className="footer-col-header">Explorer</span>
               <ul>
-                <li><Link href="#projects">Projets récents</Link></li>
-                <li><Link href="#about">À propos de FIDELE</Link></li>
-                <li><Link href="#process">Notre méthode</Link></li>
-                <li><Link href="#team">Notre équipe</Link></li>
+                <li><Link href="/#projects">Projets récents</Link></li>
+                <li><Link href="/#about">À propos de FIDELE</Link></li>
+                <li><Link href="/#process">Notre méthode</Link></li>
+                <li><Link href="/#team">Notre équipe</Link></li>
               </ul>
             </div>
 
             <div className="footer-nav-col">
               <span className="footer-col-header">Aide & Contact</span>
               <ul>
-                <li><Link href="#contact">Formulaire projet</Link></li>
+                <li><Link href="/contact">Formulaire projet</Link></li>
                 <li><a href="mailto:Fidele@fidele.sn">Fidele@fidele.sn</a></li>
                 <li><a href="tel:+221338214974">+221 33 821 49 74</a></li>
-                <li><span>Dakar, Sénégal</span></li>
+                <li><Link href="/contact">Dakar, Sénégal (Voir Carte)</Link></li>
               </ul>
             </div>
           </div>

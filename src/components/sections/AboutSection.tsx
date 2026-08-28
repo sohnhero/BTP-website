@@ -39,7 +39,7 @@ export const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        <Button variant="outline" href="#contact">
+        <Button variant="outline" href="/contact">
           Parlons de votre projet
           <ArrowUpRight size={16} />
         </Button>

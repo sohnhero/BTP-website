@@ -74,11 +74,11 @@ export const HeroSection: React.FC = () => {
             </p>
 
             <div className="hero-actions">
-              <Link className="btn btn-light" href="#projects">
+              <Link className="btn btn-light" href="/#projects">
                 Voir nos réalisations
                 <ArrowRight size={16} />
               </Link>
-              <Link className="btn-hero-contact" href="#contact">
+              <Link className="btn-hero-contact" href="/contact">
                 Nous contacter
                 <ArrowRight size={16} />
               </Link>

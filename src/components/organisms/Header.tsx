@@ -2,21 +2,50 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/atoms/BrandLogo";
 import { Button } from "@/components/atoms/Button";
 import { navItems } from "@/data/navigation";
 
 export const Header: React.FC = () => {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("");
 
+  // Handle cross-page anchor scrolling on mount (e.g., coming from /contact to /#partenaires)
   useEffect(() => {
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
+    if (typeof window === "undefined") return;
+
+    if (pathname === "/") {
+      const hash = window.location.hash;
+      if (hash && hash !== "#top" && hash !== "#hero") {
+        const targetId = hash.replace("#", "");
+        const timer = setTimeout(() => {
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            const offset = 80;
+            const elementPosition = targetEl.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - offset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          }
+        }, 120);
+        return () => clearTimeout(timer);
+      } else {
+        window.scrollTo({ top: 0, behavior: "instant" });
+      }
     }
-    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  // ScrollSpy & Sticky Bubble Header across all pages
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection(pathname);
+    }
 
     const handleScroll = () => {
       const y = window.scrollY;
@@ -28,38 +57,40 @@ export const Header: React.FC = () => {
         return prev;
       });
 
-      // Robust ScrollSpy to track active section
-      const scrollPosition = window.scrollY + 160;
-      const sectionIds = navItems.map((item) => item.href.replace("#", ""));
+      // Track active section on homepage
+      if (pathname === "/") {
+        const scrollPosition = window.scrollY + 180;
+        const sectionIds = ["about", "services", "team", "projects", "partenaires"];
 
-      let current = "";
-      for (let i = 0; i < sectionIds.length; i++) {
-        const id = sectionIds[i];
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            current = `#${id}`;
-            break;
-          } else if (scrollPosition >= top) {
-            current = `#${id}`;
+        let current = "";
+        for (let i = 0; i < sectionIds.length; i++) {
+          const id = sectionIds[i];
+          const el = document.getElementById(id);
+          if (el) {
+            const top = el.offsetTop;
+            const height = el.offsetHeight;
+            if (scrollPosition >= top && scrollPosition < top + height) {
+              current = `/#${id}`;
+              break;
+            } else if (scrollPosition >= top) {
+              current = `/#${id}`;
+            }
           }
         }
-      }
 
-      if (window.scrollY < 200) {
-        current = "";
-      }
+        if (window.scrollY < 180) {
+          current = "";
+        }
 
-      setActiveSection(current);
+        setActiveSection(current);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -80,29 +111,47 @@ export const Header: React.FC = () => {
   const closeMenu = () => setMenuOpen(false);
 
   const handleNavClick = (e: React.MouseEvent<HTMLElement>, href: string) => {
-    e.preventDefault();
     closeMenu();
 
-    if (href === "#top") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      if (window.location.hash) {
-        window.history.replaceState(null, "", window.location.pathname);
+    // 1. If clicking /contact
+    if (href === "/contact") {
+      if (pathname === "/contact") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return; // Let Next.js navigate to /contact if on /
+    }
+
+    // 2. If clicking top anchor or home
+    if (href === "#top" || href === "/#top" || href === "/" || href === "#hero" || href === "/#hero") {
+      if (pathname === "/") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        if (window.location.hash) {
+          window.history.replaceState(null, "", window.location.pathname);
+        }
       }
       return;
     }
 
-    const targetId = href.replace("#", "");
-    const targetEl = document.getElementById(targetId);
-    if (targetEl) {
-      const offset = 80;
-      const elementPosition = targetEl.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-      window.history.pushState(null, "", href);
+    // 3. If clicking a section anchor while on homepage
+    if (pathname === "/") {
+      const targetId = href.replace("/#", "").replace("#", "");
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        const offset = 80;
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - offset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+        window.history.pushState(null, "", `/#${targetId}`);
+        setActiveSection(href);
+      }
     }
+    // If on /contact and clicking /#partenaires, Next.js Link navigates to /#partenaires and our useEffect scrolls to it!
   };
 
   return (
@@ -112,7 +161,13 @@ export const Header: React.FC = () => {
 
         <nav className="desktop-nav" aria-label="Navigation principale">
           {navItems.map((item) => {
-            const isActive = activeSection === item.href;
+            const isActive =
+              pathname === "/contact"
+                ? item.href === "/contact"
+                : activeSection === item.href ||
+                  activeSection === item.href.replace("/", "") ||
+                  activeSection === `/${item.href}`;
+
             return (
               <Link
                 key={item.href}
@@ -127,7 +182,12 @@ export const Header: React.FC = () => {
           })}
         </nav>
 
-        <Button variant="dark" href="#contact" className="desktop-cta" onClick={(e) => handleNavClick(e, "#contact")}>
+        <Button
+          variant="dark"
+          href="/contact"
+          className="desktop-cta"
+          onClick={(e) => handleNavClick(e, "/contact")}
+        >
           Démarrer un projet
           <ArrowUpRight size={16} />
         </Button>
@@ -163,7 +223,12 @@ export const Header: React.FC = () => {
           {/* Clean Airy Nav Links with Active State */}
           <nav className="minimal-mobile-nav" aria-label="Navigation mobile">
             {navItems.map((item) => {
-              const isActive = activeSection === item.href;
+              const isActive =
+                pathname === "/contact"
+                  ? item.href === "/contact"
+                  : activeSection === item.href ||
+                    activeSection === item.href.replace("/", "");
+
               return (
                 <Link
                   key={item.href}
@@ -181,9 +246,9 @@ export const Header: React.FC = () => {
           {/* Minimalist Bottom CTA */}
           <div className="minimal-mobile-footer">
             <Link
-              href="#contact"
+              href="/contact"
               className="minimal-drawer-btn"
-              onClick={(e) => handleNavClick(e, "#contact")}
+              onClick={(e) => handleNavClick(e, "/contact")}
             >
               <span>Démarrer un projet</span>
               <ArrowUpRight size={16} />

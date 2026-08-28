@@ -270,14 +270,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             {/* Modal Bottom Action Bar */}
             <div className="project-modal-cta-row">
               <a
-                href="#contact"
+                href="/contact"
                 className="btn btn-primary modal-action-btn"
                 onClick={() => {
                   onClose();
-                  const contactEl = document.getElementById("contact");
-                  if (contactEl) {
-                    contactEl.scrollIntoView({ behavior: "smooth" });
-                  }
                 }}
               >
                 <span>Étudier un projet similaire</span>
