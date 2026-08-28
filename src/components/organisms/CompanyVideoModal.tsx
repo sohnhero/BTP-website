@@ -77,8 +77,7 @@ export const CompanyVideoModal: React.FC<CompanyVideoModalProps> = ({
         <div className="video-player-container">
           <video
             ref={videoRef}
-            src="https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-construction-site-41551-large.mp4"
-            poster="https://images.unsplash.com/photo-1541888946425-d0fbb1861563?auto=format&fit=crop&w=1600&q=85"
+            src="/images/fidele-new.mp4"
             controls
             autoPlay
             playsInline
