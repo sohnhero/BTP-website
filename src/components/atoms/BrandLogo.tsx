@@ -32,7 +32,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ isFooter = false }) => {
       aria-label="FIDELE SARL - Accueil"
     >
       <img
-        src={isFooter ? "/images/logo_white.png" : "/images/logo.png"}
+        src={isFooter ? "/images/branding/logo_white.png" : "/images/branding/logo.png"}
         alt="FIDELE SARL"
         className="brand-logo-img"
       />

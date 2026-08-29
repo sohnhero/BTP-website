@@ -56,7 +56,7 @@ export const TeamCard: React.FC<TeamCardProps & Partial<TeamMember>> = (props) =
         {/* Media Background */}
         <div className="team-bento-media">
           <Image
-            src={member.imageSrc || "/team-director.png"}
+            src={member.imageSrc || "/images/team/team-director.png"}
             alt={`${member.name} — ${member.role}`}
             fill
             sizes={

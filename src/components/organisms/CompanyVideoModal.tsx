@@ -77,12 +77,16 @@ export const CompanyVideoModal: React.FC<CompanyVideoModalProps> = ({
         <div className="video-player-container">
           <video
             ref={videoRef}
-            src="/images/fidele-new.mp4"
+            src="/videos/fidele-sarl-presentation.mp4"
             controls
             autoPlay
             playsInline
+            preload="auto"
             className="video-pure-element"
-          />
+          >
+            <source src="/videos/fidele-sarl-presentation.mp4" type="video/mp4" />
+            Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
+          </video>
         </div>
       </div>
     </div>

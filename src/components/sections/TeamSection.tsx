@@ -145,7 +145,7 @@ export const TeamSection: React.FC = () => {
         <div className="team-helmet-container" aria-hidden="true">
           <div className="team-helmet-media">
             <Image
-              src="/images/helmet.png"
+              src="/images/decorations/hardhat-helmet.png"
               alt="Casque de chantier BTP de sécurité"
               width={400}
               height={300}

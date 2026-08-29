@@ -40,7 +40,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Gros œuvre & structures durables",
     description:
       "Édification de bâtiments résidentiels, tertiaires, industriels et institutionnels avec un contrôle strict des normes et de la qualité structurelle.",
-    imageSrc: "/images/service_construction.jpg",
+    imageSrc: "/images/services/service_construction.jpg",
     tags: ["Gros œuvre", "Bâtiments tertiaires", "Résidentiel", "Génie civil"],
     features: [
       "Études structurelles béton armé & calculs de charge",
@@ -61,7 +61,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Préparation des sols & plateformes",
     description:
       "Terrassement de masse, déblais, remblais, décapage et compactage rigoureux pour garantir des fondations stables sur tous types de terrains.",
-    imageSrc: "/images/service_terrassement.jpg",
+    imageSrc: "/images/services/service_terrassement.jpg",
     tags: ["Terrassement de masse", "Nivellement", "Déblais / Remblais", "Plateformes"],
     features: [
       "Flotte complète d'engins : pelles hydrauliques, chargeuses, dumpers",
@@ -82,7 +82,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Revêtements et bordures urbaines",
     description:
       "Pose soignée de pavés autobloquants haute résistance, aménagement de trottoirs, allées carrossables, esplanades piétonnes et parkings.",
-    imageSrc: "/images/service_pavage.jpg",
+    imageSrc: "/images/services/service_pavage.jpg",
     tags: ["Pavés autobloquants", "Trottoirs", "Allées carrossables", "Bordures"],
     features: [
       "Pavés autobloquants vibro-pressés haute densité",
@@ -103,7 +103,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Second œuvre & haute exigence",
     description:
       "Plâtrerie, revêtements de sols et murs, étanchéité, peinture technique et menuiserie avec un souci méticuleux du détail et de l'esthétique.",
-    imageSrc: "/images/service_finition.jpg",
+    imageSrc: "/images/services/service_finition.jpg",
     tags: ["Second œuvre", "Carrelage & Sols", "Étanchéité", "Peinture & Déco"],
     features: [
       "Peintures techniques anti-humidité et revêtements muraux décoratifs",
@@ -124,7 +124,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Voies d'accès & reprofilage",
     description:
       "Ouverture, reprofilage, compactage et réhabilitation de pistes rurales et voies d'accès pour désenclaver les zones communautaires et chantiers.",
-    imageSrc: "/images/service_pistes.jpg",
+    imageSrc: "/images/services/service_pistes.jpg",
     tags: ["Pistes rurales", "Reprofilage", "Voies d'accès", "Désenclavement"],
     features: [
       "Nivellement et compactage à la chaux ou latérite naturelle",
@@ -145,7 +145,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Espaces publics & communaux",
     description:
       "Aménagement de places communales, esplanades, parcs publics et valorisation paysagère au service des municipalités et partenaires institutionnels.",
-    imageSrc: "/images/service_amenagement.jpg",
+    imageSrc: "/images/services/service_amenagement.jpg",
     tags: ["Espaces publics", "Aménagement communal", "Paysagisme", "Mobilier urbain"],
     features: [
       "Création d'esplanades publiques et places de convivialité",
@@ -166,7 +166,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Réseaux d'eau potable & hydraulique",
     description:
       "Pose de réseaux de canalisations, raccordements AEP, forages, stations de pompage et châteaux d'eau pour l'accès durable à l'eau potable.",
-    imageSrc: "/images/service_adduction.jpg",
+    imageSrc: "/images/services/service_adduction.jpg",
     tags: ["Réseaux AEP", "Canalisations", "Châteaux d'eau", "Hydraulique"],
     features: [
       "Pose de canalisations en PEHD et fonte ductile certifiées",
@@ -187,7 +187,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Logistique sécurisée & certifiée",
     description:
       "Flotte de camions-citernes conformes aux normes de sécurité internationales pour le transport fiable et sécurisé de produits pétroliers et carburants.",
-    imageSrc: "/images/service_hydrocarbures.jpg",
+    imageSrc: "/images/services/service_hydrocarbures.jpg",
     tags: ["Camions-citernes", "Produits pétroliers", "Normes de sécurité", "Logistique dédiée"],
     features: [
       "Flotte moderne de camions-citernes compartimentés aux normes ADR",
@@ -208,7 +208,7 @@ export const servicesData: ServiceItem[] = [
     tagline: "Matériaux BTP & outillage technique",
     description:
       "Approvisionnement et négoce de matériaux de construction de haute qualité, outillages spécialisés, quincaillerie de chantier et équipements industriels.",
-    imageSrc: "/images/service_fournitures.jpg",
+    imageSrc: "/images/services/service_fournitures.jpg",
     tags: ["Matériaux de construction", "Outillage technique", "Équipements BTP", "Négoce"],
     features: [
       "Ciment certifié, fers à béton FeE500 et agrégats criblés",

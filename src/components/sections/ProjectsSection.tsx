@@ -29,7 +29,7 @@ export const ProjectsSection: React.FC = () => {
         <div className="concrete-mixer-container" aria-hidden="true">
           <div className="concrete-mixer-media">
             <Image
-              src="/images/Gemini_Generated_Image_ogbicsogbicsogbi-removebg-preview.png.png"
+              src="/images/decorations/blueprint-tools.png"
               alt="Bétonnière de chantier BTP"
               width={520}
               height={380}

@@ -58,6 +58,14 @@ export const metadata: Metadata = {
     description:
       "FIDELE SARL — Construction, rénovation et ingénierie avec une exigence premium.",
   },
+  icons: {
+    icon: [
+      { url: "/images/branding/favicon-fidele-sarl.png", sizes: "any" },
+      { url: "/images/branding/favicon-fidele-sarl.png", type: "image/png" },
+    ],
+    shortcut: "/images/branding/favicon-fidele-sarl.png",
+    apple: "/images/branding/favicon-fidele-sarl.png",
+  },
   robots: {
     index: true,
     follow: true,

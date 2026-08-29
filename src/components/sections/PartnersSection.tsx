@@ -97,7 +97,7 @@ export const PartnersSection: React.FC = () => {
           {/* 3D Realistic Industrial Handshake (Gants de chantier BTP) */}
           <div className="partners-handshake-media" aria-hidden="true">
             <Image
-              src="/images/Adobe Express - file.png"
+              src="/images/decorations/handshake-btp.png"
               alt="Partenariat BTP et alliance stratégique"
               width={340}
               height={190}

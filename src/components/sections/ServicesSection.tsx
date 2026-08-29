@@ -24,7 +24,7 @@ export const ServicesSection: React.FC = () => {
       {/* 3D Crane Hook Hanging directly from the top border of the section */}
       <div className="crane-hook-hanger" aria-hidden="true">
         <Image
-          src="/images/Gemini_Generated_Image_bw87q6bw87q6bw87-removebg-preview.png"
+          src="/images/decorations/crane-hook.png"
           alt="Crochet de grue BTP"
           width={130}
           height={260}
