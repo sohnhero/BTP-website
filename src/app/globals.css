@@ -81,7 +81,7 @@ button {
   width: 100%;
   background: var(--paper);
   overflow: hidden;
-  padding-top: 72px;
+  padding-top: 76px;
 }
 
 .section-pad {
@@ -89,7 +89,7 @@ button {
 }
 
 .site-header {
-  height: 72px;
+  height: 76px;
   padding: 0 64px;
   display: flex;
   align-items: center;
@@ -202,8 +202,10 @@ button {
 .brand {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   text-decoration: none;
   min-width: max-content;
+  padding: 3px 0;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
@@ -213,9 +215,9 @@ button {
 }
 
 .brand-logo-img {
-  height: 56px;
+  height: 50px;
   width: auto;
-  max-width: 190px;
+  max-width: 180px;
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 1px 3px rgba(0, 79, 156, 0.12));
@@ -223,8 +225,8 @@ button {
 }
 
 .header--bubble .brand-logo-img {
-  height: 44px;
-  max-width: 160px;
+  height: 40px;
+  max-width: 150px;
 }
 
 .brand-footer .brand-logo-img {
