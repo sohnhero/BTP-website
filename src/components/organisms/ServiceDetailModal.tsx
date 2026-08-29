@@ -157,7 +157,8 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
                 className="service-modal-back"
                 onClick={handleClose}
               >
-                Retour aux services
+                <X size={15} />
+                <span>Fermer la fiche</span>
               </button>
             </div>
           </div>

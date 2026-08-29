@@ -2066,15 +2066,15 @@ button {
   margin-top: auto;
   display: flex;
   align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  padding-top: 18px;
+  gap: 12px;
+  padding-top: 20px;
   border-top: 1px solid rgba(16, 18, 15, 0.08);
 }
 
 .service-modal-cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   background: var(--accent);
   color: #ffffff;
@@ -2082,44 +2082,56 @@ button {
   border-radius: 30px;
   font-weight: 700;
   font-size: 13px;
-  border: none;
+  border: 1px solid var(--accent);
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 14px rgba(0, 79, 156, 0.2);
+  flex: 1;
+  text-align: center;
 }
 
 .service-modal-cta:hover {
   background: #003e7a;
+  border-color: #003e7a;
   transform: translateY(-2px);
   box-shadow: 0 8px 22px rgba(0, 79, 156, 0.3);
 }
 
 .service-modal-back {
-  background: none;
-  border: none;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #f1f5f9;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
   cursor: pointer;
-  transition: color 0.2s ease;
-  padding: 6px 10px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
 }
 
 .service-modal-back:hover {
-  color: var(--ink);
-  text-decoration: underline;
+  background: #e2e8f0;
+  color: #0f172a;
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 900px) {
   .service-modal-card {
     grid-template-columns: 1fr;
-    max-height: 90vh;
+    max-height: 92vh;
     overflow-y: auto;
+    border-radius: 20px;
   }
 
   .service-modal-media {
-    min-height: 240px;
-    height: 240px;
+    min-height: 220px;
+    height: 220px;
   }
 
   .service-modal-body {
@@ -2128,6 +2140,25 @@ button {
 
   .service-modal-title {
     font-size: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding-top: 16px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 12px));
+  }
+
+  .service-modal-cta,
+  .service-modal-back {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
   }
 }
 
@@ -8070,34 +8101,175 @@ button {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+  .project-metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 680px) {
   .project-modal-backdrop {
     padding: 0;
+    align-items: flex-end;
   }
 
   .project-modal-dialog {
     width: 100vw;
-    height: 100dvh;
-    max-height: 100dvh;
-    border-radius: 0;
+    height: 94dvh;
+    max-height: 94dvh;
+    border-radius: 24px 24px 0 0;
+    margin: 0;
+  }
+
+  .project-modal-topbar {
+    padding: 12px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(251, 249, 245, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .modal-header-meta {
+    gap: 6px;
+  }
+
+  .modal-category-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .modal-ref-code {
+    display: none;
+  }
+
+  .modal-status-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .project-modal-close {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
   }
 
   .gallery-main-viewport {
     height: 220px;
   }
 
-  .project-modal-info {
-    padding: 18px 16px;
-    gap: 18px;
+  .gallery-nav-btn {
+    width: 36px;
+    height: 36px;
   }
 
+  .gallery-nav-btn--prev {
+    left: 10px;
+  }
+
+  .gallery-nav-btn--next {
+    right: 10px;
+  }
+
+  .gallery-thumb-strip {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+
+  .gallery-thumb-btn {
+    width: 54px;
+    height: 38px;
+  }
+
+  .project-modal-info {
+    padding: 20px 16px 36px;
+    gap: 20px;
+  }
+
+  .project-title-row h2 {
+    font-size: 21px;
+    line-height: 1.25;
+    margin-top: 4px;
+  }
+
+  .project-subtitle-text {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* Compact 2-column key facts grid on mobile */
   .project-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .metric-box {
+    padding: 10px 12px;
+    border-radius: 12px;
+    gap: 10px;
+  }
+
+  .metric-box-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+
+  .metric-box-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .metric-label {
+    font-size: 9.5px;
+  }
+
+  .metric-box-data strong {
+    font-size: 11.5px;
+    line-height: 1.25;
+  }
+
+  .project-desc-section h3,
+  .project-scope-section h3 {
+    font-size: 14.5px;
+    margin-bottom: 8px;
+  }
+
+  .project-desc-section p {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .project-scope-list {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .project-scope-list li {
+    font-size: 12.5px;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
   }
 
   .project-modal-cta-row {
     flex-direction: column;
     align-items: stretch;
+    gap: 10px;
+    padding-top: 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom, 16px));
+  }
+
+  .modal-action-btn,
+  .modal-cancel-btn {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
   }
 }
 
