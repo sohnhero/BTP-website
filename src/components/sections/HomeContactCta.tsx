@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, MessageSquare, PhoneCall, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, HelpCircle, ShieldCheck } from "lucide-react";
 import { useReveal } from "@/hooks/useReveal";
 
 export const HomeContactCta: React.FC = () => {
@@ -36,15 +36,13 @@ export const HomeContactCta: React.FC = () => {
                 <span>Démarrer votre projet</span>
                 <ArrowUpRight size={16} />
               </Link>
-              <a
-                href="https://wa.me/221338214974"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/faq"
                 className="btn btn-outline home-cta-btn-secondary"
               >
-                <MessageSquare size={16} />
-                <span>Discuter sur WhatsApp</span>
-              </a>
+                <HelpCircle size={16} />
+                <span>Consulter la FAQ</span>
+              </Link>
             </div>
           </div>
         </div>
