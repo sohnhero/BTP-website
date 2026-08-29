@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import Image from "next/image";
 import { X, CheckCircle2, ArrowRight, ShieldCheck } from "lucide-react";
 import { ServiceItem } from "@/data/services";
@@ -18,24 +18,6 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
   onClose,
   onSelectServiceForContact,
 }) => {
-  const [isClosing, setIsClosing] = useState(false);
-  const [activeService, setActiveService] = useState<ServiceItem | null>(service);
-
-  useEffect(() => {
-    if (service) {
-      setActiveService(service);
-      setIsClosing(false);
-    }
-  }, [service]);
-
-  const handleClose = useCallback(() => {
-    setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-      setIsClosing(false);
-    }, 380);
-  }, [onClose]);
-
   // Lock body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
@@ -49,34 +31,56 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
 
   // Escape key listener
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
-        handleClose();
+      if (e.key === "Escape") {
+        document.body.style.overflow = "";
+        onClose();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, handleClose]);
+  }, [isOpen, onClose]);
 
-  if (!isOpen && !isClosing) return null;
-  if (!activeService) return null;
+  const handleClose = useCallback(
+    (e?: React.MouseEvent | React.TouchEvent) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      document.body.style.overflow = "";
+      onClose();
+    },
+    [onClose]
+  );
 
-  const handleCtaClick = () => {
-    if (onSelectServiceForContact) {
-      onSelectServiceForContact(activeService.title);
+  const handleCtaClick = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (onSelectServiceForContact && service) {
+      onSelectServiceForContact(service.title);
     }
-    handleClose();
+    document.body.style.overflow = "";
+    onClose();
+
+    // Scroll to contact form or navigate
     setTimeout(() => {
       const contactSection = document.getElementById("contact");
       if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
+        const top = contactSection.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: "smooth" });
+      } else {
+        window.location.href = "/contact";
       }
-    }, 390);
+    }, 60);
   };
+
+  if (!isOpen || !service) return null;
 
   return (
     <div
-      className={`service-modal-overlay ${isClosing ? "service-modal-overlay--closing" : ""}`}
+      className="service-modal-overlay"
       onClick={handleClose}
       role="dialog"
       aria-modal="true"
@@ -86,9 +90,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
         className="service-modal-perspective"
         onClick={(e) => e.stopPropagation()}
       >
-        <div
-          className={`service-modal-card ${isClosing ? "service-modal-card--closing" : ""}`}
-        >
+        <div className="service-modal-card">
           {/* Close button */}
           <button
             type="button"
@@ -102,15 +104,15 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
           {/* Left Column / Media Header: Illustrative Image */}
           <div className="service-modal-media">
             <Image
-              src={activeService.imageSrc}
-              alt={`Illustration du service ${activeService.title} - FIDELE SARL`}
+              src={service.imageSrc}
+              alt={`Illustration du service ${service.title} - FIDELE SARL`}
               fill
               sizes="(max-width: 900px) 100vw, 480px"
               className="service-modal-img"
               priority
             />
             <div className="service-modal-media-badge">
-              <span className="badge-cat">{activeService.categoryLabel}</span>
+              <span className="badge-cat">{service.categoryLabel}</span>
             </div>
             <div className="service-modal-media-tag">
               <ShieldCheck size={14} />
@@ -121,19 +123,19 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
           {/* Right Column: Detailed Specifications & Content */}
           <div className="service-modal-body">
             <div className="service-modal-header">
-              <span className="service-modal-sub">{activeService.tagline}</span>
+              <span className="service-modal-sub">{service.tagline}</span>
               <h2 id="service-modal-title" className="service-modal-title">
-                {activeService.title}
+                {service.title}
               </h2>
             </div>
 
-            <p className="service-modal-desc">{activeService.detailedText}</p>
+            <p className="service-modal-desc">{service.detailedText}</p>
 
             {/* Checklist of features / equipment */}
             <div className="service-modal-features">
               <h3 className="features-title">Capacités & Engagements Techniques :</h3>
               <ul className="features-list">
-                {activeService.features.map((feature, idx) => (
+                {service.features.map((feature, idx) => (
                   <li key={idx} className="feature-item">
                     <CheckCircle2 size={16} className="feature-icon" />
                     <span>{feature}</span>
@@ -148,6 +150,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
                 type="button"
                 className="service-modal-cta"
                 onClick={handleCtaClick}
+                onTouchEnd={handleCtaClick}
               >
                 <span>Demander un devis pour ce service</span>
                 <ArrowRight size={16} />
@@ -156,6 +159,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
                 type="button"
                 className="service-modal-back"
                 onClick={handleClose}
+                onTouchEnd={handleClose}
               >
                 <X size={15} />
                 <span>Fermer la fiche</span>
