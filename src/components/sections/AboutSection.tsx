@@ -16,7 +16,7 @@ export const AboutSection: React.FC = () => {
         <span className="overline">À propos</span>
         <h2>
           Des infrastructures bâties sur<br />
-          <em>la rigueur, la maîtrise</em> et l’engagement.
+          <em>la rigueur, la maîtrise et l’engagement.</em>
         </h2>
 
         <p className="lead">
