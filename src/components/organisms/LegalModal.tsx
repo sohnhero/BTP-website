@@ -102,32 +102,41 @@ export const LegalModal: React.FC<LegalModalProps> = ({
         </div>
 
         {/* Interactive Navigation Tabs */}
-        <div className="legal-modal-tabs">
+        <div className="legal-modal-tabs" role="tablist">
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === "cgu"}
             className={`legal-tab-btn ${activeTab === "cgu" ? "is-active" : ""}`}
             onClick={() => setActiveTab("cgu")}
           >
-            <Scale size={15} />
-            <span>Conditions d'Utilisation (CGU)</span>
+            <Scale size={15} className="legal-tab-icon" />
+            <span className="tab-label-full">Conditions d&apos;Utilisation (CGU)</span>
+            <span className="tab-label-short">CGU</span>
           </button>
 
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === "confidentialite"}
             className={`legal-tab-btn ${activeTab === "confidentialite" ? "is-active" : ""}`}
             onClick={() => setActiveTab("confidentialite")}
           >
-            <Lock size={15} />
-            <span>Politique de Confidentialité</span>
+            <Lock size={15} className="legal-tab-icon" />
+            <span className="tab-label-full">Politique de Confidentialité</span>
+            <span className="tab-label-short">Confidentialité</span>
           </button>
 
           <button
             type="button"
+            role="tab"
+            aria-selected={activeTab === "mentions"}
             className={`legal-tab-btn ${activeTab === "mentions" ? "is-active" : ""}`}
             onClick={() => setActiveTab("mentions")}
           >
-            <FileText size={15} />
-            <span>Mentions Légales</span>
+            <FileText size={15} className="legal-tab-icon" />
+            <span className="tab-label-full">Mentions Légales</span>
+            <span className="tab-label-short">Mentions</span>
           </button>
         </div>
 
