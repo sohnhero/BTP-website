@@ -40,56 +40,34 @@ export default function ContactPage() {
 
             </div>
 
-            {/* Banner Main Grid: Left Content + Right 3D Asset */}
-            <div className="chic-banner-grid">
-              {/* Left Column */}
-              <div className="chic-banner-left">
-                <h1 className="chic-banner-title">
-                  Parlons de votre projet <em>avec nos experts.</em>
-                </h1>
-                <p className="chic-banner-subtitle">
-                  Ingénierie BTP, réhabilitation d&apos;ouvrages, terrassement et logistique de transport : bénéficiez d&apos;une étude technique rigoureuse et d&apos;un accompagnement personnalisé.
-                </p>
+            {/* Banner Main Content */}
+            <div className="chic-banner-left">
+              <h1 className="chic-banner-title">
+                Parlons de votre projet <em>avec nos experts.</em>
+              </h1>
+              <p className="chic-banner-subtitle">
+                Ingénierie BTP, réhabilitation d&apos;ouvrages, terrassement et logistique de transport : bénéficiez d&apos;une étude technique rigoureuse et d&apos;un accompagnement personnalisé.
+              </p>
 
-                {/* Quick Key Commitments */}
-                <div className="chic-commitments-grid">
-                  <div className="chic-commitment-item">
-                    <div className="chic-commit-icon">
-                      <ShieldCheck size={16} />
-                    </div>
-                    <div className="chic-commit-text">
-                      <strong>Réponse sous 24h</strong>
-                      <span>Étude de faisabilité & chiffrage</span>
-                    </div>
+              {/* Quick Key Commitments */}
+              <div className="chic-commitments-grid">
+                <div className="chic-commitment-item">
+                  <div className="chic-commit-icon">
+                    <ShieldCheck size={16} />
                   </div>
-
-                  <div className="chic-commitment-item">
-                    <div className="chic-commit-icon">
-                      <Building2 size={16} />
-                    </div>
-                    <div className="chic-commit-text">
-                      <strong>Couverture Nationale</strong>
-                      <span>Déploiement partout au Sénégal</span>
-                    </div>
+                  <div className="chic-commit-text">
+                    <strong>Réponse sous 24h</strong>
+                    <span>Étude de faisabilité & chiffrage</span>
                   </div>
                 </div>
-              </div>
 
-              {/* Right Column: 3D Tactical Tablet & Walkie Asset */}
-              <div className="chic-banner-right">
-                <div className="chic-asset-card">
-                  <div className="chic-asset-glow" aria-hidden="true" />
-                  <Image
-                    src="/images/tablet-talkie.png"
-                    alt="Tablette de supervision BTP et liaison chantier FIDELE SARL"
-                    width={440}
-                    height={260}
-                    className="chic-asset-img"
-                    priority
-                  />
-                  <div className="chic-asset-caption">
-                    <span className="chic-asset-dot" />
-                    <span>Liaison continue bureau d&apos;études & chantiers</span>
+                <div className="chic-commitment-item">
+                  <div className="chic-commit-icon">
+                    <Building2 size={16} />
+                  </div>
+                  <div className="chic-commit-text">
+                    <strong>Couverture Nationale</strong>
+                    <span>Déploiement partout au Sénégal</span>
                   </div>
                 </div>
               </div>
