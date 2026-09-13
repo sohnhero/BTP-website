@@ -90,7 +90,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
         className="service-modal-perspective"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="service-modal-card">
+        <div className="service-modal-card" key={service.id}>
           {/* Close button */}
           <button
             type="button"
@@ -104,11 +104,13 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
           {/* Left Column / Media Header: Illustrative Image */}
           <div className="service-modal-media">
             <Image
+              key={service.imageSrc}
               src={service.imageSrc}
               alt={`Illustration du service ${service.title} - FIDELE SARL`}
               fill
+              unoptimized
               sizes="(max-width: 900px) 100vw, 480px"
-              className="service-modal-img"
+              className="service-modal-img is-loaded"
               priority
             />
             <div className="service-modal-media-badge">

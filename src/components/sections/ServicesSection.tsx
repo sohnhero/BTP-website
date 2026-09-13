@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { servicesData, serviceCategories, ServiceItem } from "@/data/services";
@@ -13,6 +13,16 @@ export const ServicesSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedServiceForModal, setSelectedServiceForModal] = useState<ServiceItem | null>(null);
   const [showAllMobile, setShowAllMobile] = useState<boolean>(false);
+
+  // Preload all 9 service modal images in the browser cache for instant 0ms modal opening
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      servicesData.forEach((s) => {
+        const img = new window.Image();
+        img.src = s.imageSrc;
+      });
+    }
+  }, []);
 
   const filteredServices =
     selectedCategory === "all"
