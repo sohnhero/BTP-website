@@ -2091,6 +2091,7 @@ button {
   box-shadow: 0 4px 14px rgba(0, 79, 156, 0.2);
   flex: 1;
   text-align: center;
+  white-space: nowrap;
 }
 
 .service-modal-cta:hover {
@@ -2126,72 +2127,211 @@ button {
 
 @media (max-width: 900px) {
   .service-modal-overlay {
-    padding: 16px 12px;
+    padding: 14px 12px;
     align-items: center;
+    justify-content: center;
   }
 
   .service-modal-perspective {
     perspective: none;
     width: 100%;
-    max-height: 90vh;
+    max-width: 440px;
     display: flex;
     justify-content: center;
   }
 
   .service-modal-card {
     grid-template-columns: 1fr;
-    max-height: 88vh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 94dvh;
+    overflow: hidden;
     border-radius: 20px;
     transform-style: flat;
-    animation: serviceModalMobileSlide 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+    animation: serviceModalMobileSlide 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .service-modal-close {
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    background: rgba(16, 18, 15, 0.72);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    z-index: 20;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .service-modal-close:hover {
+    background: rgba(16, 18, 15, 0.9);
+    color: #ffffff;
   }
 
   .service-modal-media {
-    min-height: 200px;
-    height: 200px;
+    height: 140px;
+    min-height: 140px;
+    max-height: 140px;
     flex-shrink: 0;
+    position: relative;
+  }
+
+  .service-modal-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.05) 50%, rgba(0, 0, 0, 0.65) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .service-modal-media-badge {
+    top: 10px;
+    left: 10px;
+  }
+
+  .service-modal-media-badge .badge-cat {
+    font-size: 9.5px;
+    padding: 3px 8px;
+    border-radius: 5px;
+  }
+
+  .service-modal-media-tag {
+    bottom: 8px;
+    left: 10px;
+    padding: 3.5px 9px;
+    font-size: 10px;
+    border-radius: 14px;
+    background: rgba(16, 18, 15, 0.85);
   }
 
   .service-modal-body {
-    padding: 24px 20px;
-    overflow-y: visible;
-    flex: 1 0 auto;
+    padding: 14px 16px 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    background: #ffffff;
+  }
+
+  .service-modal-header {
+    margin-bottom: 6px;
+  }
+
+  .service-modal-sub {
+    font-size: 10.5px;
+    margin-bottom: 2px;
   }
 
   .service-modal-title {
-    font-size: 20px;
+    font-size: 17.5px;
+    line-height: 1.2;
+    font-weight: 800;
+  }
+
+  .service-modal-desc {
+    font-size: 12px;
+    line-height: 1.45;
+    color: #525a4f;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .service-modal-features {
+    margin-bottom: 10px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    background: #f8fafc;
+    border: 1px solid rgba(0, 79, 156, 0.07);
+  }
+
+  .features-title {
+    font-size: 10px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  .features-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 8px;
+  }
+
+  .feature-item {
+    font-size: 10.5px;
+    line-height: 1.25;
+    gap: 5px;
+    align-items: flex-start;
+    color: #2b302a;
+  }
+
+  .feature-icon {
+    width: 13px;
+    height: 13px;
+    margin-top: 1px;
   }
 
   .service-modal-footer {
-    position: sticky;
-    bottom: 0;
-    background: #ffffff;
-    padding-top: 14px;
-    padding-bottom: max(14px, env(safe-area-inset-bottom, 14px));
-    z-index: 30;
+    position: static;
+    background: transparent;
+    padding-top: 8px;
+    padding-bottom: 0;
     border-top: 1px solid rgba(16, 18, 15, 0.08);
-    box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.05);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    pointer-events: auto;
+    box-shadow: none;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
   }
 
-  .service-modal-cta,
-  .service-modal-back {
-    width: 100%;
-    min-height: 48px;
-    justify-content: center;
-    text-align: center;
-    font-size: 13.5px;
+  .service-modal-cta {
+    width: auto;
+    min-height: 42px;
+    height: 42px;
+    padding: 0 16px;
+    font-size: 12.5px;
     font-weight: 700;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    cursor: pointer;
-    position: relative;
-    z-index: 35;
+    border-radius: 24px;
+    flex: 1;
+    white-space: nowrap;
+    box-shadow: 0 3px 10px rgba(0, 79, 156, 0.2);
+  }
+
+  .service-modal-back {
+    width: auto;
+    min-height: 42px;
+    height: 42px;
+    padding: 0 14px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 24px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 900px) and (max-height: 680px) {
+  .service-modal-media {
+    height: 110px;
+    min-height: 110px;
+    max-height: 110px;
+  }
+
+  .service-modal-desc {
+    -webkit-line-clamp: 2;
+    margin-bottom: 6px;
+  }
+
+  .service-modal-features {
+    margin-bottom: 6px;
+    padding: 7px 10px;
   }
 }
 

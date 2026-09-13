@@ -154,7 +154,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({
                 onClick={handleCtaClick}
                 onTouchEnd={handleCtaClick}
               >
-                <span>Demander un devis pour ce service</span>
+                <span>Demander un devis</span>
                 <ArrowRight size={16} />
               </button>
               <button
