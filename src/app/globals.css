@@ -9486,3 +9486,255 @@ button {
     font-size: 12px;
   }
 }
+
+/* ── NOT FOUND 404 PAGE (2-COLUMN SPLIT ZERO-SCROLL) ── */
+.notfound-page {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg);
+}
+
+.notfound-hero {
+  padding: 40px clamp(20px, 4vw, 56px) 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.notfound-split-container {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: center;
+  gap: clamp(32px, 5vw, 76px);
+  max-width: 1360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.notfound-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.notfound-overline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.notfound-code {
+  color: #10120f;
+  font-weight: 800;
+  background: rgba(16, 18, 15, 0.07);
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.notfound-divider {
+  color: rgba(16, 18, 15, 0.25);
+}
+
+.notfound-label {
+  color: var(--muted);
+}
+
+.notfound-heading {
+  font-size: clamp(32px, 3.8vw, 50px);
+  font-weight: 800;
+  color: #10120f;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  max-width: 620px;
+}
+
+.notfound-heading em {
+  font-family: var(--font-playfair), serif;
+  font-style: italic;
+  font-weight: 500;
+  color: #004f9c;
+}
+
+.notfound-text {
+  font-size: 15px;
+  line-height: 1.62;
+  color: #525a4f;
+  max-width: 520px;
+  margin-bottom: 26px;
+}
+
+.notfound-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.notfound-main-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #10120f;
+  color: #ffffff;
+  padding: 13px 26px;
+  border-radius: 28px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(16, 18, 15, 0.16);
+}
+
+.notfound-main-btn:hover {
+  background: #004f9c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 79, 156, 0.26);
+}
+
+.notfound-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #ffffff;
+  color: #10120f;
+  border: 1px solid rgba(16, 18, 15, 0.14);
+  padding: 13px 24px;
+  border-radius: 28px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.notfound-secondary-btn:hover {
+  border-color: #004f9c;
+  color: #004f9c;
+  transform: translateY(-2px);
+}
+
+.notfound-quick-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.notfound-pill-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid rgba(16, 18, 15, 0.09);
+  padding: 8px 15px;
+  border-radius: 22px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.025);
+}
+
+.notfound-pill-icon {
+  color: #004f9c;
+  flex-shrink: 0;
+}
+
+.notfound-pill-arrow {
+  color: #949991;
+  transition: all 0.2s ease;
+}
+
+.notfound-pill-card:hover {
+  border-color: rgba(0, 79, 156, 0.35);
+  color: #004f9c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 79, 156, 0.08);
+}
+
+.notfound-pill-card:hover .notfound-pill-arrow {
+  color: #004f9c;
+  transform: translate(1px, -1px);
+}
+
+.notfound-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.notfound-visual-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notfound-3d-img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 42px rgba(16, 18, 15, 0.14));
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.notfound-3d-img:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+@media (max-width: 960px) {
+  .notfound-split-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .notfound-left {
+    align-items: center;
+    text-align: center;
+  }
+
+  .notfound-right {
+    order: -1;
+  }
+
+  .notfound-visual-wrap {
+    max-width: 340px;
+  }
+
+  .notfound-3d-img {
+    max-height: 300px;
+  }
+
+  .notfound-hero {
+    padding-top: 85px;
+    padding-bottom: 24px;
+  }
+
+  .notfound-actions-row {
+    justify-content: center;
+  }
+
+  .notfound-quick-links {
+    justify-content: center;
+  }
+}

@@ -80,11 +80,12 @@ export default function ContactPage() {
                 <div className="chic-asset-card">
                   <div className="chic-asset-glow" aria-hidden="true" />
                   <Image
-                    src="/images/banners/contact-banner.png"
+                    src="/images/banners/contact-banner.webp"
                     alt="Contact et assistance BTP FIDELE SARL"
                     width={750}
                     height={480}
                     className="chic-asset-img"
+                    unoptimized
                     priority
                   />
                 </div>

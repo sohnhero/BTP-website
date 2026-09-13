@@ -83,11 +83,12 @@ export default function FaqPage() {
                 <div className="chic-asset-card">
                   <div className="chic-asset-glow" aria-hidden="true" />
                   <Image
-                    src="/images/banners/faq-banner.png"
+                    src="/images/banners/faq-banner.webp"
                     alt="Centre d'aide et questions fréquentes BTP FIDELE SARL"
                     width={750}
                     height={480}
                     className="chic-asset-img"
+                    unoptimized
                     priority
                   />
                 </div>

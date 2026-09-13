@@ -7,8 +7,13 @@ export const GlobalAssetPreloader: React.FC = () => {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Immediately fetch & decode all service modal images in the browser GPU/memory cache
-    const preloadList = servicesData.map((s) => s.imageSrc);
+    // Immediately fetch & decode all modal & page banner images in the browser GPU/memory cache
+    const preloadList = [
+      ...servicesData.map((s) => s.imageSrc),
+      "/images/banners/contact-banner.webp",
+      "/images/banners/faq-banner.webp",
+      "/images/decorations/404-construction.webp",
+    ];
 
     preloadList.forEach((src) => {
       const img = new window.Image();
